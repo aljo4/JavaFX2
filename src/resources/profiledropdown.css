@@ -1,0 +1,6 @@
+.pdbg{
+ -fx-background-color : transparent;
+}
+ .menu-button > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+}

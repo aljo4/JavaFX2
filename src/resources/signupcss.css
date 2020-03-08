@@ -1,0 +1,18 @@
+.signupbg{
+ -fx-background-color : linear-gradient(to right, white, #127a51);
+}
+
+.signupbut{
+ -fx-background-color:#39cc8c;
+}
+
+.signupbut:hover{
+ -fx-background-color:#5dd5a1;
+ -fx-underline:true;
+ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.already:hover{
+ -fx-background-color:rgb(255,255,255,0.3);
+}
+

@@ -1,0 +1,26 @@
+.loginbutton{
+ -fx-background-color:#39cc8c;
+}
+
+.loginbutton:hover{
+ -fx-background-color:#5dd5a1;
+ -fx-underline:true;
+ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.anchor{
+ -fx-background-color : linear-gradient(to right, white, #127a51);
+}
+
+.forgotpassbutton:hover{
+ -fx-underline:true;
+ -fx-text-color:white;
+}
+
+.rememberme:hover{
+ -jfx-unchecked-color:#d7f4e8;
+}
+
+.signupbutton:hover{
+ -fx-underline:true;
+}
