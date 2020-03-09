@@ -41,7 +41,7 @@ public class SignUpController {
             return true;
     }
 
-    public boolean emailCheck(String t){
+    public static boolean emailCheck(String t){
         if (t == null || t.trim().isEmpty()) {
             System.out.println("Wrong form of string");
             return false;
@@ -60,3 +60,6 @@ public class SignUpController {
             return true;
     }
 }
+public static void main(String[] args){
+
+        }
