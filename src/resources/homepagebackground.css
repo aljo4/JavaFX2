@@ -1,8 +1,10 @@
 .hpbg{
- -fx-background-color : linear-gradient(to bottom right, white,  #127a51);
+ -fx-background-image :  url(rfbg.jpg);
+ -fx-background-size: cover;
 }
-.title{
- -fx-effect: dropshadow(gaussian, rgba(0,0,0,1), 8, 0, 0, 0);
+
+.darker{
+ -fx-background-color :  rgb(0,0,0,0.7);
 }
 
 .pdbg{
@@ -18,46 +20,6 @@
  -fx-padding:0;
 }
 
-.topbar{
- -fx-background-color:rgb(1,1,1,0.1);
-}
-
-.rightmenu{
- -fx-border-width: 2px;
- -fx-border-color: rgb(18, 122, 81,0.7);
- -fx-border-radius: 0px 15px 15px 0px;
-}
-.leftmenu{
- -fx-border-width: 2px;
- -fx-border-color: rgb(18, 122, 81,0.7);
- -fx-border-radius: 15px  0px 0px 15px;
-}
-.midmenutop{
- -fx-border-width: 2px 0px 2px 0px;
- -fx-border-color: rgb(18, 122, 81,0.7);
-}
-
-
-.lv{
- -fx-border-width: 2px;
- -fx-border-color: rgb(18, 122, 81,0.7);
-}
-
-.leftbuts:hover{
- -fx-background-color: rgb(0,0,0,0.1);
- -fx-background-radius: 15px 15px 15px 15px;
- -fx-border-width: 2px;
- -fx-border-color:rgb(0,0,0,0.4);
- -fx-border-radius: 15px 15px 15px 15px;
-}
-
-.botbuts:hover{
--fx-underline: true;
-}
-
-.rightbots{
- -fx-background-color:#39cc8c;
-}
 .rightbots:hover{
  -fx-background-color:#5dd5a1;
  -fx-underline:true;
@@ -66,13 +28,5 @@
 .iconbut:hover{
  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
-.gridleft{
- -fx-border-width: 2px 0px 0px 0px;
- -fx-border-color:rgb(18,122,81,0.4);
-}
 
-.gridright{
- -fx-border-width: 2px 0px 0px 0px;
- -fx-border-color:rgb(18,122,81,0.4);
-}
 
