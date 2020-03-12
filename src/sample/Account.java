@@ -1,74 +1,102 @@
 package sample;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.Label;
+
 public class Account {
 
     //fields
-    String username;
-    String email;
-    String password;
-    String name;
-    String surname;
+    private JFXTextField username;
+    private JFXTextField email;
+    private JFXPasswordField password;
+    private String name;
+    private String surname;
+    private JFXTextField fullname;
+
+
+    public Account(JFXTextField email, JFXTextField username, JFXPasswordField password, JFXTextField fullname, JFXPasswordField confirmPass) {
+        this.fullname = fullname;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
     //FitnessRegime fitnessRegime;
-    enum Sex{MALE, FEMALE};
+    enum Sex {MALE, FEMALE}
+
+    ;
     //goals Goal
     //diet Diet
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
 
-    public Account(String username, String email, String password, String name, String surname, AccountDetails details) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.details = details;
-    }
 
-    public String getUsername() {
+    public JFXTextField getUsername() {
         return username;
     }
 
-    public String getEmail() {
+    public void setUsername(JFXTextField username) {
+        this.username = username;
+    }
+
+    public JFXTextField getEmail() {
         return email;
     }
 
-    public String getPassword() {
+    public void setEmail(JFXTextField email) {
+        this.email = email;
+    }
+
+    public JFXPasswordField getPassword() {
         return password;
+    }
+
+    public void setPassword(JFXPasswordField password) {
+        this.password = password;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public AccountDetails getDetails() {
-        return details;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    public JFXTextField getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(JFXTextField fullname) {
+        this.fullname = fullname;
+    }
+
+    public AccountDetails getDetails() {
+        return details;
+    }
+
     public void setDetails(AccountDetails details) {
         this.details = details;
+    }
+
+    @Override
+    public String toString() {
+        return
+                username.getText() +
+                "," + email.getText() +
+                "," + password.getText() +
+                "," + name +
+                "," + surname +
+                "," + fullname.getText();
     }
 }
