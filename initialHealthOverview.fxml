@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.stage.Stage?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InitialHealthOverview">
+   <children>
+      <Label layoutX="208.0" layoutY="20.0" prefHeight="26.0" prefWidth="187.0" text="Initial Health Overview" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="68.0" text="Height" />
+      <Label layoutX="37.0" layoutY="120.0" text="Weight" />
+      <JFXTextField layoutX="122.0" layoutY="64.0" />
+      <JFXButton layoutX="244.0" layoutY="340.0" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Proceed" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField layoutX="122.0" layoutY="103.0" />
+      <Label layoutX="33.0" layoutY="162.0" text="Ideal Weight" />
+      <JFXTextField fx:id="idealweightbox" layoutX="117.0" layoutY="158.0" prefHeight="26.0" prefWidth="140.0" />
+       //testArea
+      <Label layoutX="420.0" layoutY="59.0" text="Body Type" />
+      <Label layoutX="35.0" layoutY="236.0" text="Current Diet" />
+      <Label layoutX="36.0" layoutY="200.0" text="Gender" />
+      <Label layoutX="35.0" layoutY="277.0" text="Activity levels" />
+      <RadioButton layoutX="107.0" layoutY="201.0" mnemonicParsing="false" text="Male" />
+      <RadioButton layoutX="224.0" layoutY="201.0" mnemonicParsing="false" text="Female" />
+      <ChoiceBox layoutX="115.0" layoutY="232.0" prefWidth="150.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <Blend />
+         </effect>
+      </ChoiceBox>
+      <JFXButton alignment="TOP_CENTER" contentDisplay="TOP" layoutX="331.0" layoutY="92.0" text="Ectomorph">
+         <graphic>
+            <ImageView fitHeight="106.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/ectomorph.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="TOP_CENTER" contentDisplay="TOP" layoutX="420.0" layoutY="94.0" text="Endomorph">
+         <graphic>
+            <ImageView fitHeight="106.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/endomorph.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="TOP_CENTER" contentDisplay="TOP" layoutX="510.0" layoutY="92.0" text="Mesomorph">
+         <graphic>
+            <ImageView fitHeight="102.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/mesomorph.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Slider accessibleText="ok" layoutX="120.0" layoutY="278.0" />
+   </children>
+   <stylesheets>
+      <URL value="@anchor.css" />
+      <URL value="@../resources/signupcss.css" />
+   </stylesheets>
+</AnchorPane>
