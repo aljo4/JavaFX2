@@ -1,0 +1,37 @@
+.hpbg{
+ -fx-background-image :  url(rfbg.jpg);
+ -fx-background-size: cover;
+}
+
+.darker{
+ -fx-background-color :  rgba(0,0,0,0.7);
+}
+
+.pdbg{
+ -fx-background-color : transparent;
+}
+/* this is to hide the arrow in a dropdown menu*/
+.menu-button > .arrow-button > .arrow {
+ -fx-background-color: transparent;
+ -fx-padding:0;
+}
+.menu-button > .arrow-button{
+ -fx-padding:0;
+}
+
+/* button styling for side buttons*/
+.sidebuts{
+ -fx-background-radius : 5em;
+ -fx-background-color: rgba(0,0,0,0.8);
+ -fx-text-fill: white;
+}
+.rightbots:hover{
+ -fx-background-color:#5dd5a1;
+ -fx-underline:true;
+ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.iconbut:hover{
+ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+
