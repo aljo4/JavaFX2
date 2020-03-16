@@ -1,13 +1,13 @@
 package sample;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
-
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Account {
+public class Account implements Serializable {
 
     //fields
     private String username;
@@ -16,6 +16,7 @@ public class Account {
     private String name;
     private String surname;
     private String fullname;
+    private AccountLists accountLists = new AccountLists();
 
 
     public Account(String fullname, String email, String username, String password) {
@@ -28,17 +29,17 @@ public class Account {
     public Account(String email) {
         this.email = email;
     }
-
-
     //FitnessRegime fitnessRegime;
     enum Sex {MALE, FEMALE}
-
     ;
     //goals Goal
     //diet Diet
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
 
+    public AccountLists getAccountLists() {
+        return accountLists;
+    }
 
     public String getUsername() {
         return username;
@@ -116,5 +117,17 @@ public class Account {
                 ", surname='" + surname + '\'' +
 
                 '}';
+    }
+
+    public static class AccountLists{
+        ArrayList<Account> accounts;
+
+        public AccountLists() {
+            accounts = new ArrayList<>();
+        }
+
+        public void addtolist(Account newAccount){
+            accounts.add(newAccount);
+        }
     }
 }

@@ -67,14 +67,14 @@ public class initialHealthOverviewController {
         String wei = weight.getText();
         if(male.isSelected())
         {
-            Account.Gender.isMale();
+            //Account.Gender.isMale();
         }
         else{
-            gender.isFemale();
+            //gender.isFemale();
         }
         boolean m  = male.isSelected();
-        female = female.isSelected();
-        activitylevels = activitylevels.
+        //female = female.isSelected();
+        activitylevels = activitylevels;
 
 
 

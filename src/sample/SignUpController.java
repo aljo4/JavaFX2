@@ -107,16 +107,17 @@ public class SignUpController implements Serializable {
             sb.append(account.getUsername() + ",");
             sb.append(account.getPassword() + ",");
             File file = new File("Accounts.txt");
+            account.getAccountLists().addtolist(account);
             FileWriter w = new FileWriter(file);
             w.write(sb.toString());
             w.close();
 
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
-            Scene signUpViewScene = new Scene(signUpParent);
-
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.show();
+//            Parent signUpParent = FXMLLoader.load(getClass().getResource("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\initialHealthOverview.fxml"));
+////            Scene signUpViewScene = new Scene(signUpParent);
+////
+////            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+////            window.setScene(signUpViewScene);
+////            window.show();
         }
         }
     }
