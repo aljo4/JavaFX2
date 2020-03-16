@@ -110,9 +110,13 @@ public class SignUpController implements Serializable {
             FileWriter w = new FileWriter(file);
             w.write(sb.toString());
             w.close();
-            //System.out.println(account.toString());
-//            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Accounts.txt"));
-//            out.writeObject(account.getFullname()+ account.getEmail()+ account.getUsername() + account.getPassword());
-            }
+
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent);
+
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
+        }
         }
     }
