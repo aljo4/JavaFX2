@@ -5,7 +5,16 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 
+import java.io.File;
+
 public class Account {
+    enum Sex {
+        MALE, FEMALE
+
+    }
+    enum BodyType{
+        ECTOMORPH, ENDOMORPH, MESOMORPH
+    }
 
     //fields
     private JFXTextField username;
@@ -14,25 +23,31 @@ public class Account {
     private String name;
     private String surname;
     private JFXTextField fullname;
+    private Sex sex;
+    private BodyType bodyType;
 
-
-    public Account(JFXTextField email, JFXTextField username, JFXPasswordField password, JFXTextField fullname, JFXPasswordField confirmPass) {
+    public Account(JFXTextField email, JFXTextField username, JFXPasswordField password, JFXTextField fullname, JFXPasswordField confirmPass, Sex x) {
         this.fullname = fullname;
         this.email = email;
         this.username = username;
         this.password = password;
+        sex = x;
     }
 
-    //FitnessRegime fitnessRegime;
-    enum Sex {MALE, FEMALE}
+    //another constructor
+    public Account(JFXTextField email, JFXTextField username, JFXPasswordField password, JFXTextField fullname, JFXPasswordField confirmPass, Sex x, BodyType y,  ){
+        this.fullname = fullname;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        x = null;
+        y = null;
+    }
 
-    ;
-    //goals Goal
-    //diet Diet
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
 
-
+    //GETTERS & SETTERS
     public JFXTextField getUsername() {
         return username;
     }
@@ -74,6 +89,7 @@ public class Account {
     }
 
     public JFXTextField getFullname() {
+
         return fullname;
     }
 
@@ -82,11 +98,21 @@ public class Account {
     }
 
     public AccountDetails getDetails() {
+
         return details;
     }
 
     public void setDetails(AccountDetails details) {
+
         this.details = details;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     @Override
