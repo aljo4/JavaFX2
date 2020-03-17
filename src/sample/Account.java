@@ -3,11 +3,13 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
-import java.io.Serializable;
+
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
+
 
     //fields
     private String username;
@@ -31,15 +33,16 @@ public class Account implements Serializable {
     }
     //FitnessRegime fitnessRegime;
     enum Sex {MALE, FEMALE}
+
+    public AccountLists getAccountLists() {
+        return accountLists;
+    }
+
     ;
     //goals Goal
     //diet Diet
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
-
-    public AccountLists getAccountLists() {
-        return accountLists;
-    }
 
     public String getUsername() {
         return username;
@@ -96,20 +99,11 @@ public class Account implements Serializable {
     public void setDetails(AccountDetails details) {
         this.details = details;
     }
-//
-//    public ArrayList<Account> accountArrayList(){
-//       accountArrayList().add(this.fullname)
-//        account[0] = this.fullname;
-//        account[1] = this.email;
-//        account[2] = this.username;
-//        account[3]= this.password;
-//
-//    }
 
     @Override
     public String toString() {
         return "Account{" +
-                ", fullname='" + fullname + '\'' +
+                "Fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -120,7 +114,7 @@ public class Account implements Serializable {
     }
 
     public static class AccountLists{
-        ArrayList<Account> accounts;
+        private ArrayList<Account> accounts;
 
         public AccountLists() {
             accounts = new ArrayList<>();
@@ -128,6 +122,27 @@ public class Account implements Serializable {
 
         public void addtolist(Account newAccount){
             accounts.add(newAccount);
+        }
+
+        public ArrayList<Account> getAccounts() {
+            return accounts;
+        }
+        public void saveToFile(){
+            try{
+                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
+                if(!filename.exists()){
+                    filename.createNewFile();
+                }
+                FileWriter fw = new FileWriter (filename, false);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for(Account account : accounts){
+                    bw.write(account.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
