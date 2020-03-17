@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -28,6 +29,7 @@ public class SignUpController implements Serializable {
 
     @FXML
     private JFXTextField email;
+
 
     @FXML
     private JFXTextField username;
@@ -63,7 +65,7 @@ public class SignUpController implements Serializable {
             System.out.println("Wrong form of string");
             return false;
         }
-        Pattern pat = Pattern.compile("[^A-Za-z]");
+        Pattern pat = Pattern.compile("[^ A-Za-z]");
         Matcher mat = pat.matcher(s);
         boolean boo = mat.find();
         if (boo) {
@@ -95,22 +97,50 @@ public class SignUpController implements Serializable {
 
     }
 
+
     public void signupButton(ActionEvent actionEvent) throws IOException {
         Account account;
-
-        if (emailCheck(email.getText()) && specialKCheck(fullname.getText())) {
+        if (!password.getText().equals(confirmPass.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Passwords are not the same! Try again");
+            alert.showAndWait();
+        } if (fullname.getText().equals(" ") || email.getText().equals(" ") || username.getText().equals(" ")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Empty fields, please try again");
+            alert.showAndWait();
+        } else {
             account = new Account(fullname.getText(), email.getText(), username.getText(), password.getText());
-            System.out.println(account.getFullname());
-            StringBuilder sb = new StringBuilder();
-            sb.append(account.getFullname() + ",");
-            sb.append(account.getEmail() + ",");
-            sb.append(account.getUsername() + ",");
-            sb.append(account.getPassword() + ",");
-            File file = new File("Accounts.txt");
-            account.getAccountLists().addtolist(account);
-            FileWriter w = new FileWriter(file);
-            w.write(sb.toString());
-            w.close();
+            boolean addUser = true;
+
+            for (int i = 0; i < account.getAccountLists().getAccounts().size(); i++) {
+                if (account.getAccountLists().getAccounts().get(i).getUsername().equals(username.getText())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setContentText("User exists in file");
+                    alert.showAndWait();
+                    addUser = false;
+                }
+            }
+                if (addUser) {
+                    account = new Account(fullname.getText(), email.getText(), username.getText(), password.getText());
+                    account.getAccountLists().addtolist(account);
+                    account.getAccountLists().saveToFile();
+                    System.out.println(fullname.getText());
+                }
+//            StringBuilder sb = new StringBuilder();
+////            sb.append(account.getFullname() + ",");
+////            sb.append(account.getEmail() + ",");
+////            sb.append(account.getUsername() + ",");
+////            sb.append(account.getPassword() + ",");
+//            File file = new File("Accounts.txt");
+//            account.getAccountLists().addtolist(account);
+//            System.out.println(account.getAccountLists().getAccounts());
+//            FileWriter w = new FileWriter(file);
+//            w.write(account.getAccountLists().getAccounts().toString());
+//            //w.write(sb.toString());
+//            w.close();
 
 //            Parent signUpParent = FXMLLoader.load(getClass().getResource("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\initialHealthOverview.fxml"));
 ////            Scene signUpViewScene = new Scene(signUpParent);
@@ -118,6 +148,7 @@ public class SignUpController implements Serializable {
 ////            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 ////            window.setScene(signUpViewScene);
 ////            window.show();
-        }
+            }
         }
     }
+
