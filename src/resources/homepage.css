@@ -21,8 +21,8 @@
 
 /* button styling for side buttons*/
 .sidebuts{
- -fx-background-radius : 5em;
- -fx-background-color: rgba(0,0,0,0.8);
+ -fx-background-radius : 50em;
+ -fx-background-color: rgba(0,0,0,0.9);
  -fx-text-fill: white;
 }
 .rightbots:hover{
@@ -34,4 +34,35 @@
  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
+.midpanes{
+ -fx-background-color: rgba(0, 26, 0,0.8)
+}
 
+.butbackgL{
+ -fx-background-color: rgba(159, 255, 128,0.4);
+ -fx-background-radius: 0em 7.3em 7.3em 0em;
+}
+
+.butbackgR{
+ -fx-background-color: rgba(159, 255, 128,0.4);
+ -fx-background-radius: 7.3em 0em 0em 07.3em;
+}
+
+.boxtextsize{
+ -fx-font-size: 2em;
+}
+
+.progress-indicator .percentage {
+ -fx-fill: white;
+}
+.prind{
+ -fx-progress-color: rgba(51, 204, 0);
+}
+
+.jfx-progress-bar > .track, .jfx-progress-bar > .bar {
+ -fx-background-radius: 1;
+ -fx-background-insets: 1;
+}
+.jfx-progress-bar > .bar {
+ -fx-background-color: #33cc00;
+}
