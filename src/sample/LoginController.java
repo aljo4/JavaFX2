@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 
-public class Controller {
+public class LoginController {
     @FXML private JFXTextField loguser;
     @FXML private JFXPasswordField logpass;
     public void toSignUp(ActionEvent ae) throws Exception{

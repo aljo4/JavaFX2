@@ -1,30 +1,42 @@
 package sample;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 
-public class Account {
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Account implements Serializable {
+
 
     //fields
-    private JFXTextField username;
-    private JFXTextField email;
-    private JFXPasswordField password;
+    private String username;
+    private String email;
+    private String password;
     private String name;
     private String surname;
-    private JFXTextField fullname;
+    private String fullname;
+    private AccountLists accountLists = new AccountLists();
 
 
-    public Account(JFXTextField email, JFXTextField username, JFXPasswordField password, JFXTextField fullname, JFXPasswordField confirmPass) {
+    public Account(String fullname, String email, String username, String password) {
         this.fullname = fullname;
         this.email = email;
         this.username = username;
         this.password = password;
     }
 
+    public Account(String email) {
+        this.email = email;
+    }
     //FitnessRegime fitnessRegime;
     enum Sex {MALE, FEMALE}
+
+    public AccountLists getAccountLists() {
+        return accountLists;
+    }
 
     ;
     //goals Goal
@@ -32,28 +44,27 @@ public class Account {
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
 
-
-    public JFXTextField getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(JFXTextField username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public JFXTextField getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(JFXTextField email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public JFXPasswordField getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(JFXPasswordField password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -73,11 +84,11 @@ public class Account {
         this.surname = surname;
     }
 
-    public JFXTextField getFullname() {
+    public String getFullname() {
         return fullname;
     }
 
-    public void setFullname(JFXTextField fullname) {
+    public void setFullname(String fullname) {
         this.fullname = fullname;
     }
 
@@ -91,12 +102,47 @@ public class Account {
 
     @Override
     public String toString() {
-        return
-                username.getText() +
-                "," + email.getText() +
-                "," + password.getText() +
-                "," + name +
-                "," + surname +
-                "," + fullname.getText();
+        return "Account{" +
+                "Fullname='" + fullname + '\'' +
+                ", email='" + email + '\'' +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+
+                '}';
+    }
+
+    public static class AccountLists{
+        private ArrayList<Account> accounts;
+
+        public AccountLists() {
+            accounts = new ArrayList<>();
+        }
+
+        public void addtolist(Account newAccount){
+            accounts.add(newAccount);
+        }
+
+        public ArrayList<Account> getAccounts() {
+            return accounts;
+        }
+        public void saveToFile(){
+            try{
+                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
+                if(!filename.exists()){
+                    filename.createNewFile();
+                }
+                FileWriter fw = new FileWriter (filename, false);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for(Account account : accounts){
+                    bw.write(account.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
