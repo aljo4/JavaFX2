@@ -18,8 +18,17 @@ public class Account implements Serializable {
     private String name;
     private String surname;
     private String fullname;
+    private static Account instance = new Account();
+    //private ArrayList<group> groups;
+    private ArrayList friends;
     private AccountLists accountLists = new AccountLists();
 
+    public static Account getInstance() {
+        return instance;
+    }
+
+    public Account() {
+    }
 
     public Account(String fullname, String email, String username, String password) {
         this.fullname = fullname;
@@ -31,6 +40,7 @@ public class Account implements Serializable {
     public Account(String email) {
         this.email = email;
     }
+
     //FitnessRegime fitnessRegime;
     enum Sex {MALE, FEMALE}
 
@@ -113,29 +123,30 @@ public class Account implements Serializable {
                 '}';
     }
 
-    public static class AccountLists{
+    public static class AccountLists {
         private ArrayList<Account> accounts;
 
         public AccountLists() {
             accounts = new ArrayList<>();
         }
 
-        public void addtolist(Account newAccount){
+        public void addtolist(Account newAccount) {
             accounts.add(newAccount);
         }
 
         public ArrayList<Account> getAccounts() {
             return accounts;
         }
-        public void saveToFile(){
-            try{
+
+        public void saveToFile() {
+            try {
                 File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
-                if(!filename.exists()){
+                if (!filename.exists()) {
                     filename.createNewFile();
                 }
-                FileWriter fw = new FileWriter (filename, false);
+                FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for(Account account : accounts){
+                for (Account account : accounts) {
                     bw.write(account.toString());
                     bw.newLine();
                 }
@@ -144,5 +155,35 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
+
+        public void loadFromFile(String username) {
+
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (br != null)
+                for (int i = 0; i < accounts.size(); i++)
+                    if (username.equals(accounts.get(i).username)) {
+                        System.out.println(accounts.get(i));
+                        break;
+                    }
+        }
+        public void loadFromFile() {
+
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (br != null)
+                for (int i = 0; i < accounts.size(); i++)
+                        System.out.println(accounts.get(i));
+                    }
+        }
+
     }
-}
+
