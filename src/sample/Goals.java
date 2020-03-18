@@ -2,12 +2,23 @@ package sample;
 
 public class Goals {
     //Fields
-    static enum goalType{WEIGHTGAIN,WEIGHTLOSS}
-    int daysLeftTarget;
-    double initialWeight;
-    double goalWeight;
-    double goalNutritionalAmount;
-    goalType GoalType;
+    public enum goalType{WEIGHTGAIN("Weight Gain"),WEIGHTLOSS("Weight Lost");
+
+    private String value;
+
+    goalType(String value){
+        this.value = value;
+    }
+
+    public String toString(){
+        return value;
+    }
+    }
+    private int daysLeftTarget;
+    private double initialWeight;
+    private double goalWeight;
+    private double goalNutritionalAmount;
+    private goalType GoalType;
 
     //Constructor
     Goals(goalType GoalType, double initialWeight, double goalWeight, int daysLeftTarget, double goalNutritionalAmount){

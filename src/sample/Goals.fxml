@@ -14,7 +14,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GoalSettingController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../resources/signupcss.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GoalSettingController">
     <children>
     <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="77.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
         <image>
@@ -32,5 +33,35 @@
         <JFXTextField fx:id="CurrentWeight" layoutX="30.0" layoutY="134.0" />
         <JFXTextField fx:id="TargetWeight" layoutX="30.0" layoutY="187.0" />
         <JFXTextField fx:id="DaysLeft" layoutX="30.0" layoutY="242.0" />
+        <ImageView id="anchor" fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/icons8-heart-health-64.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/icons8-exercise-50.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/icons8-dumbbell-50.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/icons8-sleeping-in-bed-50.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/icons8-no-smoking-50.png" />
+            </image>
+        </ImageView>
+        <JFXButton layoutX="31.0" layoutY="346.0" onAction="#confirm" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Continue" textFill="BLACK">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </JFXButton>
     </children>
 </AnchorPane>
