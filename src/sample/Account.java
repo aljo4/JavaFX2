@@ -30,6 +30,12 @@ public class Account implements Serializable {
     public Account() {
     }
 
+    public Account(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+
+
     public Account(String fullname, String email, String username, String password) {
         this.fullname = fullname;
         this.email = email;
@@ -112,16 +118,14 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "Fullname='" + fullname + '\'' +
-                ", email='" + email + '\'' +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-
-                '}';
+        return  fullname +
+                 ","+  email +
+               ","+  username +
+             ","+  password +
+               ","+  name +
+               ","+  surname;
     }
+
 
     public static class AccountLists {
         private ArrayList<Account> accounts;
@@ -156,22 +160,32 @@ public class Account implements Serializable {
             }
         }
 
-        public void loadFromFile(String username) {
-
+        public boolean checkUserExists(String email, String password) throws IOException {
+            boolean existingUser = false;
             BufferedReader br = null;
             try {
                 br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            if (br != null)
-                for (int i = 0; i < accounts.size(); i++)
-                    if (username.equals(accounts.get(i).username)) {
-                        System.out.println(accounts.get(i));
+            if (br != null) {
+                String st;
+                while ((st = br.readLine()) != null) {
+                    String[] splitted = st.split(",");
+                    System.out.println(splitted[1]);
+                    if (email.equals(splitted[1]) && password.equals(splitted[3])) {
+                        existingUser = true;
                         break;
                     }
+                }
+//                for (int i = 0; i < accounts.size(); i++)
+//                    if (email.equals(accounts.get(i).getEmail()) && password.equals(accounts.get(i).getPassword())) {
+//                        existingUser = true;
+//                        System.out.println(accounts.get(i).getEmail());
+            }
+            return existingUser;
         }
-        public void loadFromFile() {
+        public void checkUserExists() {
 
             BufferedReader br = null;
             try {
