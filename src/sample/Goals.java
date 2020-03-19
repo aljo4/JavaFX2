@@ -4,14 +4,14 @@ public class Goals {
     //Fields
     public enum goalType{WEIGHTGAIN("Weight Gain"),WEIGHTLOSS("Weight Lost");
 
-    private String value;
+    private String type;
 
-    goalType(String value){
-        this.value = value;
+    goalType(String type){
+        this.type = type;
     }
 
-    public String toString(){
-        return value;
+    @Override public String toString(){
+        return type;
     }
     }
     private int daysLeftTarget;
