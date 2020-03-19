@@ -8,8 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+
+import java.io.IOException;
 import java.net.URL;
 
 import java.io.Serializable;
@@ -32,19 +36,40 @@ public class GoalSettingController implements Serializable {
     @FXML
     private ComboBox<Goals.goalType> CB;
 
+    @FXML
+    private DatePicker datePick;
 
 
+    public void initialize() {
+
+        CB.getItems().addAll(Goals.goalType.values());
+        CB.setValue(Goals.goalType.DEFAULT);
+
+    }
 
 
+    public void continueBut(ActionEvent aE) throws IOException {
+        Goals goal;
+        if (CurrentWeight.getText().equals("") || TargetWeight.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Empty fields, please try again");
+            alert.showAndWait();
+        }
 
-public void initialize(){
+        if (CB.equals(Goals.goalType.DEFAULT)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please select a Goal Type!");
+            alert.showAndWait();
+        }
 
-    CB.getItems().addAll(Goals.goalType.values());
+        if (datePick.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please select a Target date!");
+            alert.showAndWait();
+        }
 
-}
-
-
-
-public void confirm(ActionEvent actionEvent){}
-
+    }
 }
