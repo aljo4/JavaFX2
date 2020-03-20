@@ -60,6 +60,6 @@
         </JFXButton>
         <ComboBox fx:id="CB" layoutX="30.0" layoutY="86.0" prefWidth="150.0"/>
         <Label layoutX="27.0" layoutY="60.0" prefHeight="17.0" prefWidth="127.0" text="Goal Type"/>
-        <DatePicker fx:id="datePick" layoutX="24.0" layoutY="255.0"/>
+        <DatePicker fx:id="datePicker" layoutX="24.0" layoutY="255.0"/>
     </children>
 </AnchorPane>

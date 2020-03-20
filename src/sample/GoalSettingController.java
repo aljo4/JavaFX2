@@ -37,7 +37,7 @@ public class GoalSettingController implements Serializable {
     private ComboBox<Goals.goalType> CB;
 
     @FXML
-    private DatePicker datePick;
+    private DatePicker datePicker;
 
 
     public void initialize() {
@@ -57,14 +57,14 @@ public class GoalSettingController implements Serializable {
             alert.showAndWait();
         }
 
-        if (CB.equals(Goals.goalType.DEFAULT)) {
+        if (CB.getSelectionModel().getSelectedItem() == Goals.goalType.DEFAULT) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Goal Type!");
             alert.showAndWait();
         }
 
-        if (datePick.equals("")) {
+        if (datePicker == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Target date!");
