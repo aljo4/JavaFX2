@@ -5,7 +5,7 @@ import java.util.Date;
 public class Goals {
     //Fields
     public enum goalType {
-        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Lost"), DEFAULT("-Select-");
+        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Loss"), DEFAULT("-Select-");
 
         private String type;
 

@@ -19,6 +19,7 @@ import java.net.URL;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class GoalSettingController implements Serializable {
@@ -44,7 +45,7 @@ public class GoalSettingController implements Serializable {
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
         datePicker.setValue(LocalDate.now());
-
+        LocalDate newdate = datePicker.getValue();
     }
 
 
@@ -65,9 +66,10 @@ public class GoalSettingController implements Serializable {
         }
 
         if (datePicker.getChronology().equals(LocalDate.now())) {
+            System.out.println(datePicker.getChronology());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setContentText("Please select a Target date!");
+            alert.setContentText("Please select a Target date that is not today!");
             alert.showAndWait();
         }
 
@@ -83,6 +85,22 @@ public class GoalSettingController implements Serializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
+            alert.showAndWait();
+
+        }
+
+        if (Integer.parseInt(CurrentWeight.getText()) > Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Current weight can not be higher than Target weight!");
+            alert.showAndWait();
+
+        }
+
+        if (Integer.parseInt(CurrentWeight.getText()) < Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
 
         }
