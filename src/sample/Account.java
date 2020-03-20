@@ -19,7 +19,7 @@ public class Account implements Serializable {
     private String surname;
     private String fullname;
     private static Account instance = new Account();
-    //private ArrayList<group> groups;
+    private ArrayList<String> groups;
     private ArrayList friends;
     private AccountLists accountLists = new AccountLists();
 
