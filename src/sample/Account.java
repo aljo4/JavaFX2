@@ -23,6 +23,11 @@ public class Account implements Serializable {
     private ArrayList friends;
     private AccountLists accountLists = new AccountLists();
 
+
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
+
     public static Account getInstance() {
         return instance;
     }
