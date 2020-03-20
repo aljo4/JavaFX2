@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class GoalSettingController implements Serializable {
@@ -31,9 +33,6 @@ public class GoalSettingController implements Serializable {
     private JFXTextField TargetWeight;
 
     @FXML
-    private JFXTextField DaysLeft;
-
-    @FXML
     private ComboBox<Goals.goalType> CB;
 
     @FXML
@@ -44,16 +43,17 @@ public class GoalSettingController implements Serializable {
 
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
+        datePicker.setValue(LocalDate.now());
 
     }
 
 
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
-        if (CurrentWeight.getText().equals("") || TargetWeight.getText().equals("")) {
+        if (CurrentWeight.getText().isEmpty() || TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setContentText("Empty fields, please try again");
+            alert.setContentText("Please input Current weight or Target Weight.");
             alert.showAndWait();
         }
 
@@ -64,12 +64,27 @@ public class GoalSettingController implements Serializable {
             alert.showAndWait();
         }
 
-        if (datePicker == null) {
+        if (datePicker.getChronology().equals(LocalDate.now())) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Target date!");
             alert.showAndWait();
         }
 
+
+        if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Goal reached");
+            alert.setContentText(("If you want to set a new goal, you can make your target weight lower. Recommendation: 5-10kg lower"));
+            alert.showAndWait();
+        }
+
+        if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Goal reached");
+            alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
+            alert.showAndWait();
+
+        }
     }
 }
