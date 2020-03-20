@@ -50,15 +50,15 @@ public class SocialPageController {
     @FXML
     public void initialize()throws Exception{
 
-        if (LoginController.currentAccount != null) {
-            if (LoginController.currentAccount.groupList.size() > 0)
-                groupsList.getItems().addAll(LoginController.currentAccount.groupList);
+        if (LoginController.getCurrentAccount() != null) {
+            if (LoginController.getCurrentAccount().getGroups().size() > 0)
+                groupsList.getItems().addAll(LoginController.getCurrentAccount().getGroups());
         }
-        else
-            groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
-        groupsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        LoginController.currentAccount = new Account("FullName", "email@ma.com",
-                "Nfull", "pass1" );
+       // else
+        //    groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
+       // groupsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+       // LoginController.getCurrentAccount() = new Account("FullName", "email@ma.com",
+       //         "Nfull", "pass1" );
 
     }
 
@@ -82,12 +82,12 @@ public class SocialPageController {
 
         if (groupsList.getSelectionModel().getSelectedItems().size()>0){
             Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            if (LoginController.currentAccount.getUsername()!=selectedGroup.groupOwner){
+            if (LoginController.getCurrentAccount().getUsername()!=selectedGroup.groupOwner){
                 groupsList.getItems().remove(selectedGroup);
-                if(selectedGroup.groupAdmins.contains(LoginController.currentAccount.getUsername()))
-                    selectedGroup.groupAdmins.remove(LoginController.currentAccount.getUsername());
-                LoginController.currentAccount.groupList.remove(selectedGroup);
-                selectedGroup.groupMembers.remove(LoginController.currentAccount.getUsername());
+                if(selectedGroup.groupAdmins.contains(LoginController.getCurrentAccount().getUsername()))
+                    selectedGroup.groupAdmins.remove(LoginController.getCurrentAccount().getUsername());
+                LoginController.getCurrentAccount().getGroups().remove(selectedGroup);
+                selectedGroup.groupMembers.remove(LoginController.getCurrentAccount().getUsername());
             }
         }
     }

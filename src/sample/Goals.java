@@ -1,9 +1,11 @@
 package sample;
 
+import java.util.Date;
+
 public class Goals {
     //Fields
     public enum goalType {
-        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Lost"), DEFAULT("-Select-");
+        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Loss"), DEFAULT("-Select-");
 
         private String type;
 
@@ -16,16 +18,20 @@ public class Goals {
             return type;
         }
     }
-    private int daysLeftTarget;
+
+    private Date startDate;
+    private Date endDate;
     private double initialWeight;
     private double goalWeight;
     private double goalNutritionalAmount;
     private goalType GoalType;
+    boolean isCompleted = false;
 
     //Constructor
-    Goals(goalType GoalType, double initialWeight, double goalWeight, int daysLeftTarget, double goalNutritionalAmount){
+    Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate, double goalNutritionalAmount) {
         this.initialWeight = initialWeight;
-        this.daysLeftTarget = daysLeftTarget;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.GoalType = GoalType;
         this.goalNutritionalAmount = goalNutritionalAmount;
         this.goalWeight = goalWeight;
@@ -35,8 +41,13 @@ public class Goals {
     public double getInitialWeight(){
         return initialWeight;
     }
-    public int getDaysLeftTarget(){
-        return daysLeftTarget;
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
     }
     public double getGoalWeight(){
         return goalWeight;
@@ -51,7 +62,14 @@ public class Goals {
 
     //Setters
     public void setInitialWeight(){this.initialWeight = initialWeight;}
-    public void setDaysLeftTarget(){this.daysLeftTarget = daysLeftTarget;}
+
+    public void setEndDate() {
+        this.endDate = endDate;
+    }
+
+    public void setStartDate() {
+        this.startDate = startDate;
+    }
     public void setGoalWeight(){this.goalWeight = goalWeight;}
     public void setGoalType(){this.GoalType = GoalType;}
     public void setGoalNutritionalAmount(){this.goalNutritionalAmount = goalNutritionalAmount;}
@@ -67,7 +85,8 @@ public class Goals {
         return
                 "Goals {"+"Goal Type = " + GoalType + "\'"
                         +"Goal Weight = " + goalWeight + "\'"
-                        +"Days Left to Fulfill Goal = " + daysLeftTarget + "\'"
+                        + "Start Date = " + startDate + "\'"
+                        + "End Date = " + endDate + "\'"
                         +"Nutritional goal = " + goalNutritionalAmount +"}";
     }
 }
