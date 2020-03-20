@@ -2,17 +2,19 @@ package sample;
 
 public class Goals {
     //Fields
-    public enum goalType{WEIGHTGAIN("Weight Gain"),WEIGHTLOSS("Weight Lost");
+    public enum goalType {
+        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Lost"), DEFAULT("-Select-");
 
-    private String type;
+        private String type;
 
-    goalType(String type){
-        this.type = type;
-    }
+        goalType(String type) {
+            this.type = type;
+        }
 
-    @Override public String toString(){
-        return type;
-    }
+        @Override
+        public String toString() {
+            return type;
+        }
     }
     private int daysLeftTarget;
     private double initialWeight;
