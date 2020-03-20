@@ -128,6 +128,13 @@ public class SignUpController implements Serializable {
                     account.getInstance().getAccountLists().addtolist(account);
                     account.getInstance().getAccountLists().saveToFile();
                     System.out.println(fullname.getText());
+
+                    Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
+                    Scene signUpViewScene = new Scene(signUpParent);
+
+                    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(signUpViewScene);
+                    window.show();
                 }
 
             }
