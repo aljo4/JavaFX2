@@ -18,18 +18,17 @@ public class LoginController {
     @FXML private JFXPasswordField password;
     private static Account currentAccount;
 
+
+    public static Account getCurrentAccount() {
+        return currentAccount;
+    }
+
     public void validateLogin(ActionEvent ae) throws IOException {
         currentAccount = new Account(email.getText(), password.getText());
         if (currentAccount.getAccountLists().checkUserExists(email.getText(), password.getText())) {
             System.out.println(email.getText());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Welcome");
             alert.showAndWait();
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
-            Scene signUpViewScene = new Scene(signUpParent);
-
-            Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.show();
 
         }
         else{
