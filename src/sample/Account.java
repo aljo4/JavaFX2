@@ -25,10 +25,6 @@ public class Account implements Serializable {
     private ArrayList<Goals> goalsList;
 
 
-    public ArrayList<String> getGroups() {
-        return groups;
-    }
-
     public static Account getInstance() {
         return instance;
     }
