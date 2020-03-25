@@ -9,9 +9,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
-
-
-    //fields
     private String username;
     private String email;
     private String password;
@@ -25,11 +22,11 @@ public class Account implements Serializable {
     private double idealWeight;
     public enum Gender {
         MALE("Male"),
-        FEMALE("Female");
+        FEMALE("Female"),
+        OTHER("Other");
 
         private final String genderType;
-
-        private Gender(String genderType){
+        Gender(String genderType){
             this.genderType = genderType;
         }
     };
