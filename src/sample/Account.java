@@ -18,6 +18,24 @@ public class Account implements Serializable {
     private String name;
     private String surname;
     private String fullname;
+    private ArrayList<Goals> goals;
+    private Diet diet; //user can only have one diet at a time
+    private double height; //TODO: have bounds for this
+    private double weight; //TODO: have bounds for this
+    private double idealWeight;
+    public enum Gender {
+        MALE("Male"),
+        FEMALE("Female");
+
+        private final String genderType;
+
+        private Gender(String genderType){
+            this.genderType = genderType;
+        }
+    };
+    private Gender gender;
+
+
     private static Account instance = new Account();
     private ArrayList<String> groups;
     private ArrayList friends;
@@ -53,15 +71,11 @@ public class Account implements Serializable {
     }
 
     //FitnessRegime fitnessRegime;
-    enum Sex {MALE, FEMALE}
 
     public AccountLists getAccountLists() {
         return accountLists;
     }
 
-    ;
-    //goals Goal
-    //diet Diet
     AccountDetails details;
     //UserDetails class with weight height profile pic etc
 
