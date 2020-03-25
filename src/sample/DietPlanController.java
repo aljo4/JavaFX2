@@ -10,6 +10,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class DietPlanController<JFXTextField> {
     //all fields on page
 
     @FXML
-    private JFXTextField DietName;
+    private TextField DietName;
     @FXML
     private ChoiceBox DietType;
     @FXML
@@ -29,9 +30,9 @@ public class DietPlanController<JFXTextField> {
     @FXML
     private DatePicker FinishDate;
     @FXML
-    private JFXTextField CaloriesLimit;
+    private TextField CaloriesLimit;
     @FXML
-    private JFXButton SaveDiet;
+    private Button SaveDiet;
 
     @FXML
     public void initialize() {
@@ -44,33 +45,51 @@ public class DietPlanController<JFXTextField> {
         DietType.getItems().add("HCG");
         DietType.getItems().add("Zone");
         DietType.getItems().add("Intermittent Fasting");
+
+        if (FinishDate.getValue() != null) {
+            StartDate.setDayCellFactory(picker -> new DateCell() {
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    LocalDate today = LocalDate.now();
+
+                    setDisable(empty || date.compareTo(StartDate.getValue()) > 0);
+                }
+            });
+        } else {
+            StartDate.setDayCellFactory(picker -> new DateCell() {
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    LocalDate today = LocalDate.now();
+
+                    setDisable(empty || date.compareTo(today) < 0);
+                }
+            });
+        }
+        if (FinishDate.getValue() == null) {
+            FinishDate.setDayCellFactory(picker -> new DateCell() {
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    LocalDate today = LocalDate.now();
+
+                    setDisable(empty || date.compareTo(today) < 0);
+                }
+
+            });
+        } else {
+            FinishDate.setDayCellFactory(picker -> new DateCell() {
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    LocalDate today = LocalDate.now();
+
+                    setDisable(empty || date.compareTo(StartDate.getValue()) < 0);
+                }
+            });
+        }
     }
-
-
-    //save to CSV
-
-
-    //WRITE TO CSV
-
-
-//    public void pickDiet(ActionEvent ae) throws Exception {
-//
-//    }
-//
-//    public static boolean pickDate(Date t) {
-//        if (t == null || t.trim().isEmpty()) {
-//            System.out.println("Please fill in date");
-//            return false;
-//        }
-//
-//        Date StartDate = s
-//        if (t < s || s.trim().isEarlier) {
-//            System.out.println("Please pick later date")
-//            retrun false;
-//        } else
-//            return true;
-//    }
 }
+
+
+
 
 
 
