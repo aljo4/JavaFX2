@@ -1,9 +1,11 @@
 package sample;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Goals {
-    //Fields
+
     public enum goalType {
         WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Loss"), DEFAULT("-Select-");
 
@@ -18,17 +20,33 @@ public class Goals {
             return type;
         }
     }
+    //Fields
 
-    private Date startDate;
+    private static LocalDateTime sD = LocalDateTime.now();
+    private static Date startDate = Date.from(sD.atZone(ZoneId.systemDefault()).toInstant());
     private Date endDate;
-    private double initialWeight;
+    private static double initialWeight;
     private double goalWeight;
     private double goalNutritionalAmount;
     private goalType GoalType;
+    private static Goals instance = new Goals();
     boolean isCompleted = false;
 
-    //Constructor
-    Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate, double goalNutritionalAmount) {
+    public static Goals getInstance() {
+        return instance;
+    }
+    //Constructors
+    public Goals(){}
+
+    public Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate){
+        this.GoalType = GoalType;
+        this.initialWeight = initialWeight;
+        this.goalWeight = goalWeight;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate, double goalNutritionalAmount) {
         this.initialWeight = initialWeight;
         this.startDate = startDate;
         this.endDate = endDate;
