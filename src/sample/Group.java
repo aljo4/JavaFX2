@@ -153,8 +153,6 @@ public class Group {
         br.close();
         fr.close();
         return null;
-
-
     }
 
     public static ArrayList<Group> loadGroups() throws IOException {
@@ -172,8 +170,6 @@ public class Group {
         return someGroups;
 
     }
-
-
 
     public static void deleteGroup(String gn) throws IOException {
         //open file and delete groupName
