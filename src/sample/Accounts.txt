@@ -1,0 +1,5 @@
+bob champion,b.champion@uea.ac.uk,bob,champion,null,null
+samuel bedeau,sambedeau@gmail.com,samuel,testing,null,null
+test user ,test@user.co.uk,test,student,null,null
+samuel bedeau ,samuelbedeau1@gmail.comusername: ,samuelpassword: ,testname: ,nullsurname: ,null
+Sam Bedeau,nkg17tru@uea.ac.uk,sam,samuel,null,null
