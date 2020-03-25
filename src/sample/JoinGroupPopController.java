@@ -42,9 +42,9 @@ public class JoinGroupPopController {
                 System.out.println(g.getGroupPass());
                 if (groupPass.equals(g.groupPass)) {
                     System.out.println("1");
-                    g.addMember(LoginController.currentAccount.getUsername());
+                    g.addMember(LoginController.getCurrentAccount().getUsername());
                     System.out.println("2");
-                    LoginController.currentAccount.groupList.add(groupName);
+                    LoginController.getCurrentAccount().getGroups().add(groupName);
                     System.out.println("3");
                     notify.setText("Success!");
                     Stage w = (Stage) ((Node) ae.getSource()).getScene().getWindow();

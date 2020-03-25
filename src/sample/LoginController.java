@@ -16,7 +16,12 @@ import java.io.IOException;
 public class LoginController {
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
-    public static Account currentAccount;
+    private static Account currentAccount;
+
+
+    public static Account getCurrentAccount() {
+        return currentAccount;
+    }
 
     public void validateLogin(ActionEvent ae) throws IOException {
         currentAccount = new Account(email.getText(), password.getText());
@@ -24,12 +29,7 @@ public class LoginController {
             System.out.println(email.getText());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Welcome");
             alert.showAndWait();
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene signUpViewScene = new Scene(signUpParent);
 
-            Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.show();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR, "User does not exist. Please sign up");

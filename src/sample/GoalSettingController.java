@@ -1,4 +1,5 @@
 package sample;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
@@ -17,6 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class GoalSettingController implements Serializable {
@@ -31,45 +35,58 @@ public class GoalSettingController implements Serializable {
     private JFXTextField TargetWeight;
 
     @FXML
-    private JFXTextField DaysLeft;
-
-    @FXML
     private ComboBox<Goals.goalType> CB;
 
     @FXML
-    private DatePicker datePick;
+    private DatePicker datePicker;
 
 
     public void initialize() {
 
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
-
+        datePicker.setValue(LocalDate.now());
     }
 
 
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
-        if (CurrentWeight.getText().equals("") || TargetWeight.getText().equals("")) {
+        if (CurrentWeight.getText().isEmpty() || TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setContentText("Empty fields, please try again");
+            alert.setContentText("Please input Current weight or Target Weight.");
             alert.showAndWait();
-        }
-
-        if (CB.equals(Goals.goalType.DEFAULT)) {
+        } else if (CB.getSelectionModel().getSelectedItem() == Goals.goalType.DEFAULT) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Goal Type!");
             alert.showAndWait();
-        }
-
-        if (datePick.equals("")) {
+        } else if (datePicker.getChronology().equals(LocalDate.now())) {
+            System.out.println(datePicker.getChronology());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setContentText("Please select a Target date!");
+            alert.setContentText("Please select a Target date that is not today!");
+            alert.showAndWait();
+        } else if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Goal reached");
+            alert.setContentText(("If you want to set a new goal, you can make your target weight lower. Recommendation: 5-10kg lower"));
+            alert.showAndWait();
+        } else if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Goal reached");
+            alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
+            alert.showAndWait();
+        } else if (Integer.parseInt(CurrentWeight.getText()) > Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Current weight can not be higher than Target weight!");
+            alert.showAndWait();
+        } else if (Integer.parseInt(CurrentWeight.getText()) < Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
         }
-
     }
 }

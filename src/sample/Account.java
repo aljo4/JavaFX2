@@ -24,6 +24,11 @@ public class Account implements Serializable {
     private AccountLists accountLists = new AccountLists();
     private ArrayList<Goals> goalsList;
 
+
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
+
     public static Account getInstance() {
         return instance;
     }
