@@ -6,6 +6,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.awt.event.ActionEvent;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class initialHealthOverviewController {
 
@@ -34,6 +42,22 @@ public class initialHealthOverviewController {
     @FXML
     private JFXButton proceedbutton;
 
+    //save to CSV
+
+    public void saveToFile(ArrayList <String> y)throws IOException{
+
+        File file = new File("//PATHNAME GOES HERE");
+        FileWriter fileWriter = new FileWriter(file);
+        BufferedWriter out = new BufferedWriter(fileWriter);
+
+
+            //out.write();//write to file here
+            out.flush();   // Flush the buffer and write all changes to the disk
+
+        out.close();
+    }
+
+    //WRITE TO CSV
 
     public Slider getActivitylevels() {
         activitylevels.setMin(0);
@@ -57,9 +81,8 @@ public class initialHealthOverviewController {
         double bmi = w/h;
         return  bmi;
 
-
-
     }
+
 
     public void proceedButton(ActionEvent actionEvent){
         String idealwei =  idealWeight.getText();
@@ -67,14 +90,12 @@ public class initialHealthOverviewController {
         String wei = weight.getText();
         if(male.isSelected())
         {
-            //Account.Gender.isMale();
-        }
+            //TODO: get account ID from file, change value of sex from null to male or female based on this radio button.
+    }
         else{
-            //gender.isFemale();
-        }
-        boolean m  = male.isSelected();
-        //female = female.isSelected();
-        activitylevels = activitylevels;
+        //gender.isFemale();
+    }
+
 
 
 
