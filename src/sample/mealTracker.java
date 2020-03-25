@@ -2,56 +2,74 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 
 import java.awt.event.ActionEvent;
 import java.io.*;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.Date;
-import java.util.*;
 
-public class mealTracker implements Initializable {
-    @FXML private ChoiceBox<Diet.mealType> mealtype;
-    ObservableList<Diet.mealType> mealTypeChoice = FXCollections.observableArrayList(Diet.mealType.values());
-    @FXML private ComboBox<FoodType.Foods> food;
-    ObservableList<FoodType.Foods> foodChoice = FXCollections.observableArrayList(FoodType.Foods.values());
+public class DietPlanController<JFXTextField> {
+
+    //all fields on page
+
     @FXML
-    private ComboBox<DrinkType.Drinks> drink;
-    ObservableList<DrinkType.Drinks> drinkChoice = FXCollections.observableArrayList(DrinkType.Drinks.values());
+    private JFXTextField DietName;
+    @FXML
+    private ChoiceBox DietType;
+    @FXML
+    private DatePicker StartDate;
+    @FXML
+    private DatePicker FinishDate;
+    @FXML
+    private JFXTextField CaloriesLimit;
+    @FXML
+    private JFXButton SaveDiet;
 
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        FoodType.Foods aFood;
-        food.setItems(foodChoice);
-        food.setPromptText("Other");
-        food.setEditable(true);
-        food.valueProperty().addListener(new ChangeListener<FoodType.Foods>() {
-            @Override
-            public void changed(ObservableValue<? extends FoodType.Foods> observableValue, FoodType.Foods foods, FoodType.Foods t1) {
-
-            }
-        });
-        drink.setItems(drinkChoice);
-        mealtype.setItems(mealTypeChoice);
+    @FXML
+    public void initialize() {
+        DietType.getItems().add("Paleo");
+        DietType.getItems().add("Vegan");
+        DietType.getItems().add("Low-Carb");
+        DietType.getItems().add("Dukan");
+        DietType.getItems().add("Ultra Low Fat");
+        DietType.getItems().add("Atkins");
+        DietType.getItems().add("HCG");
+        DietType.getItems().add("Zone");
+        DietType.getItems().add("Intermittent Fasting");
     }
 
-    
+
+    //save to CSV
+
+
+    //WRITE TO CSV
+
+
+//    public void pickDiet(ActionEvent ae) throws Exception {
+//
+//    }
+//
+//    public static boolean pickDate(Date t) {
+//        if (t == null || t.trim().isEmpty()) {
+//            System.out.println("Please fill in date");
+//            return false;
+//        }
+//
+//        Date StartDate = s
+//        if (t < s || s.trim().isEarlier) {
+//            System.out.println("Please pick later date")
+//            retrun false;
+//        } else
+//            return true;
+//    }
 }
 
 

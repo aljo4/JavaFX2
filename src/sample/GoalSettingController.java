@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
@@ -20,8 +19,13 @@ import java.net.URL;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class GoalSettingController implements Serializable {
 
@@ -40,17 +44,32 @@ public class GoalSettingController implements Serializable {
     @FXML
     private DatePicker datePicker;
 
+    public GoalSettingController(){
+
+    }
 
     public void initialize() {
 
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
         datePicker.setValue(LocalDate.now());
+
     }
 
+        public boolean fieldCheck(String s){
+            Pattern pat = Pattern.compile("\\d+(\\.\\d+)?");
+            Matcher mat = pat.matcher(s);
+            boolean boo = mat.matches();
+            if(boo){
+                return false;
+            }
+            else
+                return true;
+        }
 
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
+
         if (CurrentWeight.getText().isEmpty() || TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -87,6 +106,10 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
+        }
+
+        else{
+        
         }
     }
 }
