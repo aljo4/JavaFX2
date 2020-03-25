@@ -2,6 +2,8 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,19 +24,31 @@ import java.util.Scanner;
 import java.util.Date;
 import java.util.*;
 
-public class DietPlanController implements Initializable {
-    @FXML private ChoiceBox<FoodType.Foods> food;
+public class mealTracker implements Initializable {
+    @FXML private ChoiceBox<Diet.mealType> mealtype;
+    ObservableList<Diet.mealType> mealTypeChoice = FXCollections.observableArrayList(Diet.mealType.values());
+    @FXML private ComboBox<FoodType.Foods> food;
     ObservableList<FoodType.Foods> foodChoice = FXCollections.observableArrayList(FoodType.Foods.values());
     @FXML
-    private ChoiceBox<DrinkType.Drinks> drink;
+    private ComboBox<DrinkType.Drinks> drink;
     ObservableList<DrinkType.Drinks> drinkChoice = FXCollections.observableArrayList(DrinkType.Drinks.values());
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FoodType.Foods aFood;
         food.setItems(foodChoice);
+        food.setPromptText("Other");
+        food.setEditable(true);
+        food.valueProperty().addListener(new ChangeListener<FoodType.Foods>() {
+            @Override
+            public void changed(ObservableValue<? extends FoodType.Foods> observableValue, FoodType.Foods foods, FoodType.Foods t1) {
+
+            }
+        });
         drink.setItems(drinkChoice);
+        mealtype.setItems(mealTypeChoice);
     }
 
     
