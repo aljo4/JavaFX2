@@ -29,6 +29,12 @@ public class LoginController {
             System.out.println(email.getText());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Welcome");
             alert.showAndWait();
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent);
+
+            Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
 
         }
         else{

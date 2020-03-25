@@ -54,11 +54,11 @@ public class SocialPageController {
             if (LoginController.getCurrentAccount().getGroups().size() > 0)
                 groupsList.getItems().addAll(LoginController.getCurrentAccount().getGroups());
         }
-       // else
-        //    groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
-       // groupsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-       // LoginController.getCurrentAccount() = new Account("FullName", "email@ma.com",
-       //         "Nfull", "pass1" );
+//        else
+//            groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
+//        groupsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//        LoginController.getCurrentAccount() = new Account("FullName", "email@ma.com",
+//                "Nfull", "pass1" );
 
     }
 

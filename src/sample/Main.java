@@ -20,10 +20,10 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Goals.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Health Tracker");
         primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 
@@ -31,4 +31,20 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public void stop() throws Exception{
+        Account.getInstance().getAccountLists().saveToFile();
+
+    }
+
+    @Override
+    public void init() throws Exception{
+        try{
+            Account.getInstance().getAccountLists().checkUserExists();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
