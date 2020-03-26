@@ -1,14 +1,9 @@
 package sample;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.StringProperty;
-import javafx.scene.control.Label;
-
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
+    //instance variables below
     private String username;
     private String email;
     private String password;
@@ -20,7 +15,10 @@ public class Account implements Serializable {
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
     private double idealWeight;
-    public enum Gender {
+    private ArrayList<String> groups;
+    private ArrayList friends;
+    private AccountLists accountLists = new AccountLists();
+    public enum Gender { //enum class for gender
         MALE("Male"),
         FEMALE("Female"),
         OTHER("Other");
@@ -30,33 +28,42 @@ public class Account implements Serializable {
             this.genderType = genderType;
         }
     };
-    private Gender gender;
-
+    private Gender gender; //instance variable of type enum Gender
+//---------------end of gender enum class ------------------
 
     private static Account instance = new Account();
-    private ArrayList<String> groups;
-    private ArrayList friends;
-    private AccountLists accountLists = new AccountLists();
 
-
-    public ArrayList<String> getGroups() {
-        return groups;
-    }
 
     public static Account getInstance() {
         return instance;
     }
 
     public Account() {
+        this.username= username;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.fullname = fullname;
+        goals = new ArrayList<Goals>();
+        diet = diet;
+        this.height = height;
+        this.weight = weight;
+        this.idealWeight = idealWeight;
+        groups = new ArrayList<String>();
+        friends = new ArrayList();
+        this.gender = gender;
     }
 
     public Account(String email, String password){
+        this();
         this.email = email;
         this.password = password;
     }
 
 
     public Account(String fullname, String email, String username, String password) {
+        this();
         this.fullname = fullname;
         this.email = email;
         this.username = username;
@@ -64,16 +71,24 @@ public class Account implements Serializable {
     }
 
     public Account(String email) {
+        this();
         this.email = email;
     }
 
     //FitnessRegime fitnessRegime;
 
+
+
+
+
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
     public AccountLists getAccountLists() {
         return accountLists;
     }
 
-    AccountDetails details;
+
     //UserDetails class with weight height profile pic etc
 
     public String getUsername() {
@@ -124,13 +139,6 @@ public class Account implements Serializable {
         this.fullname = fullname;
     }
 
-    public AccountDetails getDetails() {
-        return details;
-    }
-
-    public void setDetails(AccountDetails details) {
-        this.details = details;
-    }
 
     @Override
     public String toString() {
@@ -142,7 +150,7 @@ public class Account implements Serializable {
                ","+  surname;
     }
 
-
+//nested static class called AccountLists. This stores accounts objects in arraylists in a file
     public static class AccountLists {
         private ArrayList<Account> accounts;
 
