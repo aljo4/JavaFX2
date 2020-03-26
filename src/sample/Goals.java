@@ -1,9 +1,7 @@
 package sample;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 public class Goals {
 
@@ -21,21 +19,17 @@ public class Goals {
             return type;
         }
     }
+
     //Fields
-
-
     private LocalDate startDate;
     private LocalDate endDate;
     private static double initialWeight;
     private double goalWeight;
     private double goalNutritionalAmount;
     private goalType GoalType;
-    private static Goals instance = new Goals();
     boolean isCompleted = false;
 
-    public static Goals getInstance() {
-        return instance;
-    }
+
     //Constructors
     public Goals(){}
 
@@ -95,18 +89,16 @@ public class Goals {
     public void setGoalNutritionalAmount(){this.goalNutritionalAmount = goalNutritionalAmount;}
 
     //Progression calculator
-    public static void goalPercentage(){
-        //int x = goalWeight - initialWeight;
-        //int y = currentWeight - initialWeight;
-        //int calculator = (y*100)/x;
-        //System.out.print("Goal progression is " +calculator+"%");
+    public static double goalPercentage(double initialWeight, double goalWeight) {
+        return initialWeight * 100 / goalWeight;
     }
-    public String toString(){
+
+    public String toString() {
         return
-                "Goals {"+"Goal Type = " + GoalType + "\'"
-                        +"Goal Weight = " + goalWeight + "\'"
+                "Goals {" + "Goal Type = " + GoalType + "\'"
+                        + "Goal Weight = " + goalWeight + "\'"
                         + "Start Date = " + startDate + "\'"
                         + "End Date = " + endDate + "\'"
-                        +"Nutritional goal = " + goalNutritionalAmount +"}";
+                        + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
 }

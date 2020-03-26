@@ -12,16 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-
 import java.io.IOException;
-import java.net.URL;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +22,7 @@ import java.util.regex.Pattern;
 
 public class GoalSettingController implements Serializable {
 
+    //Fields
     @FXML
     private JFXButton confirm;
 
@@ -56,17 +50,7 @@ public class GoalSettingController implements Serializable {
 
     }
 
-        public boolean fieldCheck(String s){
-            Pattern pat = Pattern.compile("\\d+(\\.\\d+)?");
-            Matcher mat = pat.matcher(s);
-            boolean boo = mat.matches();
-            if(boo){
-                return false;
-            }
-            else
-                return true;
-        }
-
+    //Action after the continue button is clicked
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
 
