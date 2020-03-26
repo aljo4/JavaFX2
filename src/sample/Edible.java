@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.ArrayList;
+
 public class Edible {
 
     public enum foodType{
@@ -12,6 +14,8 @@ public class Edible {
     private foodType fType;
     private String fName;
     private int calCount;
+    private ArrayList<Edible> existingFoods;
+    private ArrayList<Edible> existingDrinks;
 
     public Edible(){
         this.fName = "null";
