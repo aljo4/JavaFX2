@@ -28,7 +28,17 @@ public class TypeOfDiet{
         }
     }
     private Diets diet;
+
     public TypeOfDiet(Diets diet){this.diet= diet;}
+
+    public TypeOfDiet.Diets getDiet() {
+        return diet;
+    }
+
+    public void setDiet(TypeOfDiet.Diets diet) {
+        this.diet = diet;
+    }
+
 
 
 
