@@ -2,9 +2,14 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePageController">
    <left>
       <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
@@ -24,19 +29,29 @@
             <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
                <children>
                   <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="currentPageButton" />
+                        <String fx:value="sidebuts" />
+                     </styleClass>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -50,11 +65,26 @@
    <top>
       <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <Region prefHeight="59.0" prefWidth="211.0" />
             <Label style="-fx-background-color: black;" text="HealthSavvy" textFill="WHITE">
                <font>
                   <Font name="Leelawadee UI Bold" size="28.0" />
                </font>
             </Label>
+            <Region prefHeight="59.0" prefWidth="141.0" />
+            <MenuButton mnemonicParsing="false" style="-fx-background-color: clear;">
+              <items>
+                <MenuItem fx:id="manageAccountButton" mnemonicParsing="false" text="Manage Account" />
+                <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logOutButton" text="Log Out" />
+              </items>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-name-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
          </children></HBox>
    </top>
    <bottom>
@@ -148,19 +178,19 @@
             <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgR">
                <children>
                   <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="toSocialPage" minHeight="80.0" minWidth="80.0" onAction="#toSocialPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Social" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Social" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Diet" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Activity" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                      </VBox.margin>

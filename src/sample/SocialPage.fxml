@@ -2,8 +2,13 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -20,7 +25,7 @@
             <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
                <children>
                   <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -46,11 +51,26 @@
    <top>
       <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <Region prefHeight="59.0" prefWidth="211.0" />
             <Label style="-fx-background-color: black;" text="HealthSavvy" textFill="WHITE">
                <font>
                   <Font name="Leelawadee UI Bold" size="28.0" />
                </font>
             </Label>
+            <Region prefHeight="59.0" prefWidth="141.0" />
+            <MenuButton mnemonicParsing="false" style="-fx-background-color: clear;">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-name-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
          </children></HBox>
    </top>
    <bottom>
@@ -68,13 +88,17 @@
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton cancelButton="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: lightgreen; -fx-border-color: white; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Social" VBox.vgrow="ALWAYS">
+                  <JFXButton cancelButton="true" disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Social" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="currentPageButton" />
+                        <String fx:value="sidebuts" />
+                     </styleClass>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
                   <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">

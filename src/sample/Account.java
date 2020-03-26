@@ -34,14 +34,11 @@ public class Account implements Serializable {
 
 
     private static Account instance = new Account();
-    private ArrayList<String> groups;
+    public ArrayList<String> groupList;
     private ArrayList friends;
     private AccountLists accountLists = new AccountLists();
+    private ArrayList<Goals> goalsList;
 
-
-    public ArrayList<String> getGroups() {
-        return groups;
-    }
 
     public static Account getInstance() {
         return instance;
@@ -116,6 +113,7 @@ public class Account implements Serializable {
         this.surname = surname;
     }
 
+
     public String getFullname() {
         return fullname;
     }
@@ -130,6 +128,14 @@ public class Account implements Serializable {
 
     public void setDetails(AccountDetails details) {
         this.details = details;
+    }
+
+    public ArrayList getFriends() {
+        return friends;
+    }
+
+    public ArrayList<String> getGroups() {
+        return groupList;
     }
 
     @Override
