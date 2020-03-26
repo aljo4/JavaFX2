@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -22,9 +23,9 @@ public class Goals {
     }
     //Fields
 
-    private static LocalDateTime sD = LocalDateTime.now();
-    private static Date startDate = Date.from(sD.atZone(ZoneId.systemDefault()).toInstant());
-    private Date endDate;
+
+    private LocalDate startDate;
+    private LocalDate endDate;
     private static double initialWeight;
     private double goalWeight;
     private double goalNutritionalAmount;
@@ -38,7 +39,7 @@ public class Goals {
     //Constructors
     public Goals(){}
 
-    public Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate){
+    public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate) {
         this.GoalType = GoalType;
         this.initialWeight = initialWeight;
         this.goalWeight = goalWeight;
@@ -46,7 +47,7 @@ public class Goals {
         this.endDate = endDate;
     }
 
-    public Goals(goalType GoalType, double initialWeight, double goalWeight, Date startDate, Date endDate, double goalNutritionalAmount) {
+    public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate, double goalNutritionalAmount) {
         this.initialWeight = initialWeight;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -60,14 +61,15 @@ public class Goals {
         return initialWeight;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
-    public double getGoalWeight(){
+
+    public double getGoalWeight() {
         return goalWeight;
     }
     public goalType getGoalType(){
