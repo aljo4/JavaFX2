@@ -35,6 +35,14 @@ public class TypeOfDiet{
         public void setCalories(int calories) {
             this.calories = calories;
         }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
     }
     private Diets diet;
 
