@@ -1,12 +1,6 @@
 package sample;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Stack;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +10,6 @@ import javafx.scene.Parent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXListView;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
-
-import javax.swing.*;
 
 public class SocialPageController {
 
@@ -50,9 +38,9 @@ public class SocialPageController {
     @FXML
     public void initialize()throws Exception{
 
-        if (LoginController.getCurrentAccount() != null) {
-            if (LoginController.getCurrentAccount().getGroups().size() > 0)
-                groupsList.getItems().addAll(LoginController.getCurrentAccount().getGroups());
+        if (Account.getInstance() != null) {
+            if (Account.getInstance().getGroupList().size() > 0)
+                groupsList.getItems().addAll(Account.getInstance().getGroupList());
         }
 //        else
 //            groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
@@ -82,12 +70,12 @@ public class SocialPageController {
 
         if (groupsList.getSelectionModel().getSelectedItems().size()>0){
             Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            if (LoginController.getCurrentAccount().getUsername()!=selectedGroup.groupOwner){
+            if (Account.getInstance().getUsername()!=selectedGroup.groupOwner){
                 groupsList.getItems().remove(selectedGroup);
-                if(selectedGroup.groupAdmins.contains(LoginController.getCurrentAccount().getUsername()))
-                    selectedGroup.groupAdmins.remove(LoginController.getCurrentAccount().getUsername());
-                LoginController.getCurrentAccount().getGroups().remove(selectedGroup);
-                selectedGroup.groupMembers.remove(LoginController.getCurrentAccount().getUsername());
+                if(selectedGroup.groupAdmins.contains(Account.getInstance().getUsername()))
+                    selectedGroup.groupAdmins.remove(Account.getInstance().getUsername());
+                Account.getInstance().getGroupList().remove(selectedGroup);
+                selectedGroup.groupMembers.remove(Account.getInstance().getUsername());
             }
         }
     }
