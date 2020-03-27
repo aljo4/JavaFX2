@@ -16,17 +16,15 @@ import java.io.IOException;
 public class LoginController {
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
-    private static Account currentAccount;
 
 
-    public static Account getCurrentAccount() {
-        return currentAccount;
-    }
+
 
     public void validateLogin(ActionEvent ae) throws IOException {
-        currentAccount = new Account(email.getText(), password.getText());
-        if (currentAccount.getAccountLists().checkUserExists(email.getText(), password.getText())) {
-            System.out.println(email.getText());
+        if (Account.AccountLists.checkUserExists(email.getText(), password.getText())) {
+            Account account = Account.getInstance();
+            account.setEmail(email.getText()); account.setPassword(password.getText());
+            System.out.println(account.getEmail());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Welcome");
             alert.showAndWait();
             Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
