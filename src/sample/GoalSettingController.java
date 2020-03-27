@@ -93,7 +93,10 @@ public class GoalSettingController implements Serializable {
         }
 
         else{
-                goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
+            Account.getInstance().getGoals().add(goal);
+            System.out.println(Account.getInstance().getGoals().toString());
+
         }
     }
 }

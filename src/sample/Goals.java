@@ -28,14 +28,15 @@ public class Goals {
     private double goalNutritionalAmount;
     private goalType GoalType;
     boolean isCompleted = false;
+    private double currentWeight;
 
 
     //Constructors
     public Goals(){}
 
-    public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate) {
+    public Goals(goalType GoalType, double currentWeight, double goalWeight, LocalDate startDate, LocalDate endDate) {
         this.GoalType = GoalType;
-        this.initialWeight = initialWeight;
+        this.currentWeight = currentWeight;
         this.goalWeight = goalWeight;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -94,10 +95,11 @@ public class Goals {
 
     public String toString() {
         return
-                "Goals {" + "Goal Type = " + GoalType + "\'"
-                        + "Goal Weight = " + goalWeight + "\'"
-                        + "Start Date = " + startDate + "\'"
-                        + "End Date = " + endDate + "\'"
+                "Goals {" + "Goal Type = " + GoalType + "  ,  "
+                        + "Current Weight = " + currentWeight + "kg  ,  "
+                        + "Goal Weight = " + goalWeight + "kg  ,  "
+                        + "Start Date = " + startDate + "  ,  "
+                        + "End Date = " + endDate + "  ,  "
                         + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
 }
