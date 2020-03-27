@@ -30,7 +30,10 @@ public class HomePageController {
 
     @FXML JFXButton toSocialPage;
     @FXML JMenuItem manageAccountButton;
-    @FXML JMenuItem logOut;
+    @FXML
+    JMenuItem logOut;
+    @FXML
+    JFXButton toGoalsPage;
 
     @FXML
     public void initialize()throws Exception{
@@ -50,18 +53,18 @@ public class HomePageController {
     public void logOutButton (ActionEvent ae)throws Exception{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-                Scene signUpViewScene = new Scene(signUpParent, 600, 400);
-                Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-                window.setScene(signUpViewScene);
-                window.setResizable(false);
-                window.show();
-            }
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent, 600, 400);
+            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.setResizable(false);
+            window.show();
+        }
     }
 
-    public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GroupsPage.fxml"));
+    public void toGoals(ActionEvent ae) throws Exception {
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("Goals.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -70,7 +73,7 @@ public class HomePageController {
         window.show();
     }
 
-    public void toYouPage(ActionEvent ae)throws Exception{
+    public void toYouPage(ActionEvent ae) throws Exception {
         Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();

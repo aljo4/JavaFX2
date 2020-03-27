@@ -2,7 +2,6 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 public class GoalSettingController implements Serializable {
@@ -92,10 +91,18 @@ public class GoalSettingController implements Serializable {
             alert.showAndWait();
         }
 
-        else{
+        else {
             goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
             System.out.println(Account.getInstance().getGoals().toString());
+            System.out.println(Account.getInstance().getGoals().size());
+
+            Parent GoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+            Scene signUpViewScene = new Scene(GoalsParent);
+
+            Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
 
         }
     }

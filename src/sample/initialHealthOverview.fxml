@@ -14,17 +14,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InitialHealthOverview">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.initialHealthOverviewController">
    <children>
-      <Label layoutX="208.0" layoutY="20.0" prefHeight="26.0" prefWidth="187.0" text="Initial Health Overview" textAlignment="CENTER">
+      <Label layoutX="208.0" layoutY="20.0" prefHeight="26.0" prefWidth="187.0" text="Initial Health Overview"
+             textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="17.0"/>
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="68.0" text="Height" />
-      <Label layoutX="37.0" layoutY="120.0" text="Weight" />
-      <JFXTextField layoutX="122.0" layoutY="64.0" />
-      <JFXButton layoutX="244.0" layoutY="340.0" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Proceed" textFill="WHITE">
+      <Label layoutX="38.0" layoutY="68.0" text="Height"/>
+      <Label layoutX="37.0" layoutY="120.0" text="Weight"/>
+      <JFXTextField layoutX="122.0" layoutY="64.0"/>
+      <JFXButton layoutX="244.0" layoutY="340.0" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut"
+                 stylesheets="@../resources/signupcss.css" text="Proceed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
