@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #127a51;" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InitialHealthOverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InitialHealthOverview">
    <children>
       <Label layoutX="208.0" layoutY="20.0" prefHeight="26.0" prefWidth="187.0" text="Initial Health Overview" textAlignment="CENTER">
          <font>

@@ -11,10 +11,10 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DietPlanController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: lightgreen;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51#127a51;" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="SaveDiet" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" text="Save Diet Plan" />
-            <TextField fx:id="CaloriesLimit" layoutX="204.0" layoutY="221.0" />
+            <TextField fx:id="CaloriesLimit" layoutX="204.0" layoutY="187.0" />
             <Label layoutX="120.0" layoutY="67.0" text="Diet Name">
                <font>
                   <Font name="Arial Black" size="13.0" />
@@ -25,25 +25,19 @@
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="125.0" layoutY="148.0" text="Start Date">
+            <Label layoutX="115.0" layoutY="152.0" text="Finish Date ">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="115.0" layoutY="187.0" text="Finish Date ">
-               <font>
-                  <Font name="Arial Black" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="68.0" layoutY="225.0" text="Calories Limit (pd) ">
+            <Label layoutX="68.0" layoutY="190.0" text="Calories Limit (pd) ">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="DietName" layoutX="204.0" layoutY="64.0" />
-            <DatePicker fx:id="StartDate" layoutX="204.0" layoutY="145.0" />
-            <DatePicker fx:id="FinishDate" layoutX="204.0" layoutY="184.0" />
-            <ChoiceBox fx:id="DietType" layoutX="204.0" layoutY="104.0"  prefWidth="150.0" />
+            <DatePicker fx:id="FinishDate" layoutX="204.0" layoutY="149.0" />
+            <ChoiceBox fx:id="DietType" layoutX="204.0" layoutY="104.0" prefWidth="150.0" />
          </children>
     </AnchorPane>
   </children>

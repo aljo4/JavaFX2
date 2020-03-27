@@ -1,9 +1,14 @@
 package sample;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.Label;
+
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
-    //instance variables below
     private String username;
     private String email;
     private String password;
@@ -15,10 +20,7 @@ public class Account implements Serializable {
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
     private double idealWeight;
-    private ArrayList<String> groups;
-    private ArrayList friends;
-    private AccountLists accountLists = new AccountLists();
-    public enum Gender { //enum class for gender
+    public enum Gender {
         MALE("Male"),
         FEMALE("Female"),
         OTHER("Other");
@@ -28,11 +30,19 @@ public class Account implements Serializable {
             this.genderType = genderType;
         }
     };
-    private Gender gender; //instance variable of type enum Gender
-//---------------end of gender enum class ------------------
+    private Gender gender;
+
 
     private static Account instance = new Account();
+    public ArrayList<String> groupList;
+    private ArrayList friends;
+    private AccountLists accountLists = new AccountLists();
+    private ArrayList<Goals> goalsList;
 
+
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
 
     public static Account getInstance() {
         return instance;
@@ -77,19 +87,10 @@ public class Account implements Serializable {
 
     //FitnessRegime fitnessRegime;
 
-
-
-
-
-    public ArrayList<String> getGroups() {
-        return groups;
-    }
     public AccountLists getAccountLists() {
         return accountLists;
     }
 
-
-    //UserDetails class with weight height profile pic etc
 
     public String getUsername() {
         return username;
@@ -131,6 +132,7 @@ public class Account implements Serializable {
         this.surname = surname;
     }
 
+
     public String getFullname() {
         return fullname;
     }
@@ -138,6 +140,13 @@ public class Account implements Serializable {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
+
+
+    public ArrayList getFriends() {
+        return friends;
+    }
+
 
 
     @Override

@@ -26,8 +26,6 @@ public class DietPlanController<JFXTextField> {
     @FXML
     private ChoiceBox DietType;
     @FXML
-    private DatePicker StartDate;
-    @FXML
     private DatePicker FinishDate;
     @FXML
     private TextField CaloriesLimit;
@@ -46,47 +44,17 @@ public class DietPlanController<JFXTextField> {
         DietType.getItems().add("Zone");
         DietType.getItems().add("Intermittent Fasting");
 
-        if (FinishDate.getValue() != null) {
-            StartDate.setDayCellFactory(picker -> new DateCell() {
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
+        FinishDate.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
 
-                    setDisable(empty || date.compareTo(StartDate.getValue()) > 0);
-                }
-            });
-        } else {
-            StartDate.setDayCellFactory(picker -> new DateCell() {
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
-
-                    setDisable(empty || date.compareTo(today) < 0);
-                }
-            });
-        }
-        if (FinishDate.getValue() == null) {
-            FinishDate.setDayCellFactory(picker -> new DateCell() {
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
-
-                    setDisable(empty || date.compareTo(today) < 0);
-                }
-
-            });
-        } else {
-            FinishDate.setDayCellFactory(picker -> new DateCell() {
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
-
-                    setDisable(empty || date.compareTo(StartDate.getValue()) < 0);
-                }
-            });
+                setDisable(empty || date.compareTo(today) < 0 );
+            }
+        });
         }
     }
-}
+
 
 
 
