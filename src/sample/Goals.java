@@ -80,7 +80,6 @@ public class Goals {
     public void setEndDate() {
         this.endDate = endDate;
     }
-
     public void setStartDate() {
         this.startDate = startDate;
     }

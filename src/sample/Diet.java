@@ -7,7 +7,6 @@ public class Diet {
         BREAKFAST,
         LUNCH,
         DINNER;
-
         mealType() {
         }
     }
