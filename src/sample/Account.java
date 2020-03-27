@@ -107,6 +107,38 @@ public class Account implements Serializable {
         return email;
     }
 
+    public ArrayList<Goals> getGoals() {
+        return goals;
+    }
+
+    public Diet getDiet() {
+        return diet;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getIdealWeight() {
+        return idealWeight;
+    }
+
+    public ArrayList getFriends() {
+        return friends;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public static Account getAnAccount() {
+        return anAccount;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
