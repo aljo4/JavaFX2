@@ -40,20 +40,40 @@ public class Account implements Serializable {
     private ArrayList<Goals> goalsList;
 
 
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
+
     public static Account getInstance() {
         return instance;
     }
 
     public Account() {
+        this.username= username;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.fullname = fullname;
+        goals = new ArrayList<Goals>();
+        diet = diet;
+        this.height = height;
+        this.weight = weight;
+        this.idealWeight = idealWeight;
+        groups = new ArrayList<String>();
+        friends = new ArrayList();
+        this.gender = gender;
     }
 
     public Account(String email, String password){
+        this();
         this.email = email;
         this.password = password;
     }
 
 
     public Account(String fullname, String email, String username, String password) {
+        this();
         this.fullname = fullname;
         this.email = email;
         this.username = username;
@@ -61,6 +81,7 @@ public class Account implements Serializable {
     }
 
     public Account(String email) {
+        this();
         this.email = email;
     }
 
@@ -70,8 +91,6 @@ public class Account implements Serializable {
         return accountLists;
     }
 
-    AccountDetails details;
-    //UserDetails class with weight height profile pic etc
 
     public String getUsername() {
         return username;
@@ -122,21 +141,13 @@ public class Account implements Serializable {
         this.fullname = fullname;
     }
 
-    public AccountDetails getDetails() {
-        return details;
-    }
 
-    public void setDetails(AccountDetails details) {
-        this.details = details;
-    }
 
     public ArrayList getFriends() {
         return friends;
     }
 
-    public ArrayList<String> getGroups() {
-        return groupList;
-    }
+
 
     @Override
     public String toString() {
@@ -148,7 +159,7 @@ public class Account implements Serializable {
                ","+  surname;
     }
 
-
+//nested static class called AccountLists. This stores accounts objects in arraylists in a file
     public static class AccountLists {
         private ArrayList<Account> accounts;
 
