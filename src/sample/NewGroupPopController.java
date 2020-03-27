@@ -5,20 +5,10 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.Parent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.jfoenix.controls.JFXListView;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 
-import javax.imageio.IIOException;
-import javax.swing.*;
 import java.io.IOException;
 
 public class NewGroupPopController {
@@ -46,9 +36,9 @@ public class NewGroupPopController {
                 validPass = true;
             if (validPass && isAvailable){
                 notify2.setText("Success");
-                Group newGroup = new Group(LoginController.getCurrentAccount(), groupName, groupPass);
+                Group newGroup = new Group(Account.getInstance(), groupName, groupPass);
                 Group.addGroup(newGroup);
-                LoginController.getCurrentAccount().getGroups().add(groupName);
+                Account.getInstance().getGroupList().add(groupName);
             }
             else if(!isAvailable)
                 notify2.setText("Group name taken");
