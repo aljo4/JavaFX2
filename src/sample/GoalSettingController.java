@@ -2,7 +2,6 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +10,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 public class GoalSettingController implements Serializable {
@@ -47,6 +46,16 @@ public class GoalSettingController implements Serializable {
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
         datePicker.setValue(LocalDate.now());
+        datePicker.setDayCellFactory(datePicker1 -> new DateCell() {
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        LocalDate today = LocalDate.now();
+
+                        setDisable(empty || date.compareTo(today) < 0);
+                    }
+                }
+
+        );
 
     }
 
@@ -64,8 +73,8 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Goal Type!");
             alert.showAndWait();
-        } else if (datePicker.getChronology().equals(LocalDate.now())) {
-            System.out.println(datePicker.getChronology());
+        } else if (datePicker.getValue().equals(LocalDate.now())) {
+            System.out.println(datePicker);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Target date that is not today!");
@@ -91,11 +100,16 @@ public class GoalSettingController implements Serializable {
             alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
         }
-
-        else{
+        else {
             goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
-            System.out.println(Account.getInstance().getGoals().toString());
+
+            Parent GoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+            Scene signUpViewScene = new Scene(GoalsParent);
+
+            Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
 
         }
     }
