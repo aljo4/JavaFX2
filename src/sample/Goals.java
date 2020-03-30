@@ -27,7 +27,6 @@ public class Goals {
     private double goalWeight;
     private double goalNutritionalAmount;
     private goalType GoalType;
-    boolean isCompleted = false;
     private double currentWeight;
 
 
@@ -51,8 +50,18 @@ public class Goals {
         this.goalWeight = goalWeight;
     }
 
+    //Method
+    public static boolean goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
+        boolean isCompleted = false;
+        if (currentWeight == goalWeight && LocalDate.now().isBefore(endDate)) {
+            isCompleted = true;
+        }
+        return isCompleted;
+    }
+
+
     //Getters
-    public double getInitialWeight(){
+    public double getInitialWeight() {
         return initialWeight;
     }
 
