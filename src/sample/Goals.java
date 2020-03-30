@@ -1,8 +1,6 @@
 package sample;
 
 import java.time.LocalDate;
-
-
 public class Goals {
 
     public enum goalType {

@@ -13,7 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -74,7 +73,7 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Goal Type!");
             alert.showAndWait();
-        } else if (datePicker.equals(LocalDate.now())) {
+        } else if (datePicker.getValue().equals(LocalDate.now())) {
             System.out.println(datePicker);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
