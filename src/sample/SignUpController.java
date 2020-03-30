@@ -134,9 +134,8 @@ public class SignUpController implements Serializable {
                         account.setEmail(email.getText());
                         account.setUsername(username.getText());
                         account.setPassword(password.getText());
-                        System.out.println(account.getEmail());
-                        account.getAccountLists().addtolist(account);
-                        account.getAccountLists().saveToFile();
+//                        account.getAccountLists().addtolist(account);
+//                        account.getAccountLists().saveToFile();
 
 
                         Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
