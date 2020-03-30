@@ -139,6 +139,46 @@ public class Account implements Serializable {
         return anAccount;
     }
 
+    public void setGoals(ArrayList<Goals> goals) {
+        this.goals = goals;
+    }
+
+    public void setDiet(Diet diet) {
+        this.diet = diet;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setIdealWeight(double idealWeight) {
+        this.idealWeight = idealWeight;
+    }
+
+    public void setGroupList(ArrayList<String> groupList) {
+        this.groupList = groupList;
+    }
+
+    public void setFriends(ArrayList friends) {
+        this.friends = friends;
+    }
+
+    public void setAccountLists(AccountLists accountLists) {
+        this.accountLists = accountLists;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public static void setAnAccount(Account anAccount) {
+        Account.anAccount = anAccount;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -182,8 +222,11 @@ public class Account implements Serializable {
                  ","+  email +
                ","+  username +
              ","+  password +
-               ","+  name +
-               ","+  surname;
+                "," + height +
+                "," + weight +
+                "," + idealWeight +
+                "," + gender.genderType +
+                "," + anAccount.getGoals();
     }
 
 //nested static class called AccountLists. This stores accounts objects in arraylists in a file
