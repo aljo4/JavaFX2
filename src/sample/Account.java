@@ -1,5 +1,6 @@
 package sample;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
@@ -11,9 +12,9 @@ public class Account implements Serializable {
     private String surname;
     private String fullname;
     private ArrayList<Goals> goals;
-    private TypeOfDiet typeOfDiet;//user can only have one diet at a time
     private Meal meal;
-    private TypeOfDiet diet; //user can only have one diet at a time
+    private ArrayList<Meal> meals;
+    private TypeOfDiet.Diets diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
     private double idealWeight;
@@ -52,6 +53,7 @@ public class Account implements Serializable {
         groupList = new ArrayList<String>();
         friends = new ArrayList();
         this.gender = gender;
+        meals = new ArrayList<Meal>();
     }
 
     public static Account getInstance() {
@@ -137,11 +139,13 @@ public class Account implements Serializable {
         return friends;
     }
 
-    public TypeOfDiet getTypeOfDiet() {
-        return typeOfDiet;
+    public ArrayList<Meal> getMeals() {
+        return meals;
     }
 
-
+    public TypeOfDiet.Diets getDiet() {
+        return diet;
+    }
 
     public Gender getGender() {
         return gender;
@@ -158,7 +162,7 @@ public class Account implements Serializable {
     public void setMeal(Meal meal) {
         this.meal = meal;}
 
-    public void setTypeOfDiet(TypeOfDiet diet) {
+    public void setTypeOfDiet(TypeOfDiet.Diets diet) {
         this.diet = diet;
     }
 
@@ -240,6 +244,7 @@ public class Account implements Serializable {
                 "," + height +
                 "," + weight +
                 "," + idealWeight +
+                "," + diet.getDescription()+
                 "," + gender.genderType +
                 "," + goals.toString();
     }
