@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.HomePageController">
    <left>
       <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
-            <Insets />
+            <Insets/>
          </BorderPane.margin>
          <children>
-            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
+            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                  minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
                <children>
-                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS"/>
+                  <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0"
+                             text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -51,9 +45,11 @@
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" />
-                  <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="toGoalsPage" minHeight="80.0" minWidth="80.0" onAction="#toGoalsPage"
+                             prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE"
+                             VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0"/>
                      </VBox.margin>
                   </JFXButton>
                   <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
