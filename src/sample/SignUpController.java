@@ -21,6 +21,9 @@ import java.util.regex.Pattern;
 
 
 public class SignUpController implements Serializable {
+
+    private Account account;
+
     @FXML
     private JFXButton toLogIn;
 
@@ -99,45 +102,53 @@ public class SignUpController implements Serializable {
 
 
     public void signupButton(ActionEvent actionEvent) throws IOException {
-        Account account;
+        Account account = Account.getInstance();
         if (!password.getText().equals(confirmPass.getText())) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Passwords are not the same! Try again");
             alert.showAndWait();
-        } if (fullname.getText().equals(" ") || email.getText().equals(" ") || username.getText().equals(" ")) {
+        } if (fullname.getText().trim().isEmpty() || email.getText().trim().isEmpty() || username.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Empty fields, please try again");
             alert.showAndWait();
         } else {
-            account = new Account(fullname.getText(), email.getText(), username.getText(), password.getText());
+            account.setFullname(fullname.getText());
+            account.setEmail(email.getText());
+            account.setUsername(username.getText());
+            account.setPassword(password.getText());
             boolean addUser = true;
 
-            for (int i = 0; i < account.getAccountLists().getAccounts().size(); i++) {
-                if (account.getAccountLists().getAccounts().get(i).getUsername().equals(username.getText())) {
+            for (int i = 0; i < Account.getInstance().getAccountLists().getAccounts().size(); i++) {
+                if (Account.getInstance().getAccountLists().getAccounts().get(i).getUsername().equals(username.getText())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");
                     alert.setContentText("User exists in file");
                     alert.showAndWait();
-                    addUser = false;
                 }
             }
-                if (addUser) {
-                    account = new Account(fullname.getText(), email.getText(), username.getText(), password.getText());
-                    account.getInstance().getAccountLists().addtolist(account);
-                    account.getInstance().getAccountLists().saveToFile();
-                    System.out.println(fullname.getText());
 
-                    Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
-                    Scene signUpViewScene = new Scene(signUpParent);
+                    if (addUser) {
+                        account.setFullname(fullname.getText());
+                        account.setEmail(email.getText());
+                        account.setUsername(username.getText());
+                        account.setPassword(password.getText());
+//                        account.getAccountLists().addtolist(account);
+//                        account.getAccountLists().saveToFile();
 
-                    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-                    window.setScene(signUpViewScene);
-                    window.show();
+
+                        Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
+                        Scene signUpViewScene = new Scene(signUpParent);
+
+                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        window.setScene(signUpViewScene);
+                        window.show();
+                    }
+
                 }
-
             }
         }
-    }
+
+
 
