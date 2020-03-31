@@ -29,8 +29,8 @@ public class mealsController implements Initializable {
          FoodType aFood = new FoodType();
 
         @FXML
-        private ChoiceBox<Diet.mealType> mealtype;
-        ObservableList<Diet.mealType> mealTypeChoice = FXCollections.observableArrayList(Diet.mealType.values());
+        private ChoiceBox<Meal.mealType> mealtype;
+        ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
 
         @FXML private ComboBox<String> foods = new ComboBox<String>(FXCollections.observableArrayList(aFood.getFoods()));
        // ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods())
