@@ -57,34 +57,28 @@ public class Goals {
         return isCompleted;
     }
 
+    //Setters
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
-
     public static void setInitialWeight(double initialWeight) {
         Goals.initialWeight = initialWeight;
     }
-
     public void setGoalWeight(double goalWeight) {
         this.goalWeight = goalWeight;
     }
-
     public void setGoalNutritionalAmount(double goalNutritionalAmount) {
         this.goalNutritionalAmount = goalNutritionalAmount;
     }
-
     public void setGoalType(goalType goalType) {
         GoalType = goalType;
     }
-
     public double getCurrentWeight() {
         return currentWeight;
     }
-
     public void setCurrentWeight(double currentWeight) {
         this.currentWeight = currentWeight;
     }
@@ -93,22 +87,18 @@ public class Goals {
     public double getInitialWeight() {
         return initialWeight;
     }
-
     public LocalDate getStartDate() {
         return startDate;
     }
-
     public LocalDate getEndDate() {
         return endDate;
     }
-
     public double getGoalWeight() {
         return goalWeight;
     }
     public goalType getGoalType(){
         return GoalType;
     }
-
     public double getGoalNutritionalAmount(){
         return goalNutritionalAmount;
     }

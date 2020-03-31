@@ -23,7 +23,7 @@ public class MyGoals {
     }
 
     public void initialize() {
-
+        listView.getItems().addAll(Account.getInstance().getGoals().toString());
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {
