@@ -10,14 +10,11 @@ public class Diet {
         mealType() {
         }
     }
-
-
     private mealType mealtype;
     private FoodType foods;
     private DrinkType drinks;
     private int portionSize; //will this be used?
     private int caloricIntake; //will this be used?
-
 
     public Diet() {
         this.foods = foods;
@@ -66,8 +63,6 @@ public class Diet {
 
     public void setCaloricIntake(int caloricIntake) {
         this.caloricIntake = caloricIntake;
-        foods.getFood().setCalories(caloricIntake);
-        drinks.getDrink().setCalories(caloricIntake);
 
     }
 
