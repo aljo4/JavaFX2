@@ -110,11 +110,13 @@ public class Goals {
 
     public String toString() {
         return
-                "Account Object Name : " + Account.getInstance().getEmail() + " Goals {" + "Goal Type = " + GoalType + "  ,  "
+                "Account Object Name : " + Account.getInstance().getEmail() + "   Goal Type = " + GoalType + "  ,  "
                         + "Current Weight = " + currentWeight + "kg  ,  "
                         + "Goal Weight = " + goalWeight + "kg  ,  "
                         + "Start Date = " + startDate + "  ,  "
                         + "End Date = " + endDate + "  ,  "
                         + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
+
+
 }

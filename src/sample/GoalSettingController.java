@@ -37,7 +37,10 @@ public class GoalSettingController implements Serializable {
     @FXML
     private DatePicker datePicker;
 
-    public GoalSettingController(){
+    @FXML
+    private JFXButton gotoMyGoals;
+
+    public GoalSettingController() {
 
     }
 
@@ -116,7 +119,7 @@ public class GoalSettingController implements Serializable {
         }
     }
 
-    public void gotoMyGoals(ActionEvent actionEvent) throws IOException {
+    public void gotoMyGoals(ActionEvent actionEvent) throws Exception {
         Parent myGoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
         Scene signUpViewScene = new Scene(myGoalsParent);
 
