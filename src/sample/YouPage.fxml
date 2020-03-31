@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -90,88 +88,6 @@
     <bottom>
         <HBox prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
     </bottom>
-    <center>
-        <GridPane alignment="CENTER_RIGHT" minWidth="400.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
-            </rowConstraints>
-            <children>
-                <HBox alignment="CENTER" maxWidth="400.0" style="-fx-background-radius: 2em;" styleClass="midpanes" GridPane.columnIndex="1">
-                    <GridPane.margin>
-                        <Insets bottom="15.0" left="15.0" right="20.0" top="20.0" />
-                    </GridPane.margin>
-                    <children>
-                        <VBox alignment="CENTER" prefHeight="123.0" prefWidth="200.0">
-                            <children>
-                                <Region prefHeight="0.0" prefWidth="165.0" VBox.vgrow="ALWAYS" />
-                                <Label prefHeight="32.0" prefWidth="144.0" text="Goal Progress" textFill="WHITE">
-                                    <font>
-                                        <Font name="Leelawadee UI Bold" size="22.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </Label>
-                                <Region prefHeight="0.0" prefWidth="165.0" VBox.vgrow="ALWAYS" />
-                                <ProgressIndicator maxHeight="156.0" maxWidth="173.0" prefHeight="156.0" prefWidth="165.0" progress="0.8" styleClass="prind" />
-                                <Region prefHeight="0.0" prefWidth="165.0" VBox.vgrow="ALWAYS" />
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" maxWidth="400.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-radius: 2em;" styleClass="midpanes">
-                    <GridPane.margin>
-                        <Insets bottom="15.0" left="20.0" right="15.0" top="20.0" />
-                    </GridPane.margin>
-                </HBox>
-                <HBox maxWidth="400.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-radius: 2em;" styleClass="midpanes" GridPane.rowIndex="1">
-                    <GridPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="15.0" top="15.0" />
-                    </GridPane.margin>
-                    <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="121.0" prefWidth="165.0" styleClass="cprgbar" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Region prefHeight="0.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
-                                <Label text="Calories In" textFill="WHITE">
-                                    <font>
-                                        <Font name="Leelawadee UI Bold" size="28.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets bottom="1.0" />
-                                    </VBox.margin>
-                                </Label>
-                                <Region prefHeight="3.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
-                                <Label text="0" textFill="#33cc00" VBox.vgrow="ALWAYS">
-                                    <font>
-                                        <Font name="Marlett" size="50.0" />
-                                    </font>
-                                </Label>
-                                <Region prefHeight="14.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
-                                <JFXProgressBar opacity="0.0" prefHeight="6.0" prefWidth="135.0" />
-                                <Region prefHeight="13.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-                <HBox maxWidth="400.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-radius: 2em;" styleClass="midpanes" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <GridPane.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="15.0" />
-                    </GridPane.margin>
-                </HBox>
-            </children>
-            <BorderPane.margin>
-                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-            </BorderPane.margin>
-            <padding>
-                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-            </padding>
-        </GridPane>
-    </center>
     <right>
         <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
@@ -201,4 +117,20 @@
             </children>
         </VBox>
     </right>
+   <center>
+      <JFXTabPane BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Timeline">
+              <content>
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Stats">
+              <content>
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </center>
 </BorderPane>
