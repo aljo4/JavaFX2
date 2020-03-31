@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="100.0">
+         <children>
+            <Label text="Label">
+               <HBox.margin>
+                  <Insets right="3.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" text="Label">
+               <HBox.margin>
+                  <Insets left="3.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="-184.64918518066406" endY="5.2253403737267945E-6" startX="-100.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Breakfast" />
+                  <Label text="Lunch" />
+                  <Label text="Dinner" />
+                  <Label text="Snack(s)" />
+                  <Label text="Total" />
+               </children>
+               <HBox.margin>
+                  <Insets left="4.0" />
+               </HBox.margin>
+            </VBox>
+            <Line endX="-99.3737564086914" endY="90.62620544433594" startX="-98.74752807617188" startY="181.2523956298828">
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Line>
+            <VBox prefHeight="93.0" prefWidth="83.0">
+               <children>
+                  <Label text="0" />
+                  <Label text="0" />
+                  <Label text="0" />
+                  <Label text="0" />
+                  <Label text="0" />
+               </children>
+               <HBox.margin>
+                  <Insets left="2.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
