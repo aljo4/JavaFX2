@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../resources/signupcss.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GoalSettingController">
     <children>
     <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="77.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -51,8 +50,15 @@
                 <Image url="@../resources/icons8-no-smoking-50.png"/>
             </image>
         </ImageView>
-        <JFXButton fx:id="confirm" layoutX="31.0" layoutY="346.0" onAction="#continueBut" prefHeight="39.0"
+        <JFXButton fx:id="confirm" layoutX="154.0" layoutY="346.0" onAction="#continueBut" prefHeight="39.0"
                    prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Continue"
+                   textFill="BLACK">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="gotoMyGoals" layoutX="10.0" layoutY="346.0" onAction="#gotoMyGoals" prefHeight="39.0"
+                   prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="My Goals"
                    textFill="BLACK">
             <font>
                 <Font name="System Bold" size="15.0"/>
