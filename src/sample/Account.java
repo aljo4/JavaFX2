@@ -111,6 +111,10 @@ public class Account implements Serializable {
         return goals;
     }
 
+    public Goals getGoalsAtIndex(int i){
+        return goals.get(i);
+    }
+
     public Diet getDiet() {
         return diet;
     }
@@ -226,7 +230,7 @@ public class Account implements Serializable {
                 "," + weight +
                 "," + idealWeight +
                 "," + gender.genderType +
-                "," + anAccount.getGoals();
+                "," + goals.toString();
     }
 
 //nested static class called AccountLists. This stores accounts objects in arraylists in a file
@@ -262,6 +266,24 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
+
+    public void saveGoalToFile(Goals goal) {//parameter for Goal?
+        try {
+            File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Goals.txt");
+            if (!filename.exists()) {
+                filename.createNewFile();
+            }
+            FileWriter fw = new FileWriter(filename, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i=0; i< Account.getInstance().getGoals().size(); i++){
+                bw.write(goal.toString());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
