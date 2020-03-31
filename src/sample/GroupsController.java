@@ -1,6 +1,7 @@
 package sample;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -12,6 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
@@ -28,6 +32,11 @@ public class GroupsController {
     @FXML JFXButton backToSocial;
     @FXML JFXButton leaveGroup2;
     @FXML Label grouppasswordforowner;
+    @FXML JFXButton toHomePage;
+    @FXML JFXButton toGoalsPage;
+    @FXML JFXButton toDietPage;
+    @FXML JFXButton toActivityPage;
+    @FXML JFXButton toYouPage;
 
     @FXML
     public void initialize(){
@@ -52,7 +61,7 @@ public class GroupsController {
         try {
             LoginController.getCurrentAccount().getGroups().remove(currentGroup);
         }
-        catch (Exception doesnotexist){
+        catch (Exception doesNotExist){
             System.out.println("not a member of this group");
         }
         Parent signUpParent = FXMLLoader.load(getClass().getResource("SocialPage.fxml"));
@@ -66,6 +75,71 @@ public class GroupsController {
     public void deleteGroup(ActionEvent ae){
         if (currentGroup.groupOwner==LoginController.getCurrentAccount().getUsername()){
             //delete off of group array list
+        }
+    }
+
+    public void toHomePage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+
+
+    public void toGoalsPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toYouPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toDietPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toActivityPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("ActivityPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void logOutButton (ActionEvent ae)throws Exception{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent, 600, 400);
+            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.setResizable(false);
+            window.show();
         }
     }
 

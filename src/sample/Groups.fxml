@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,19 +21,19 @@
                 <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
                     <children>
                         <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                        <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="toHomePage" minHeight="80.0" minWidth="80.0" onAction="#toHomePage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                             </VBox.margin>
                         </JFXButton>
                         <Region prefHeight="0.0" prefWidth="100.0" />
-                        <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="toYouPage" minHeight="80.0" minWidth="80.0" onAction="#toYouPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                             </VBox.margin>
                         </JFXButton>
                         <Region prefHeight="0.0" prefWidth="100.0" />
-                        <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="toGoalsPage" minHeight="80.0" minWidth="80.0" onAction="#toGoalsPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                             </VBox.margin>
@@ -62,22 +63,26 @@
                 <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgR">
                     <children>
                         <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                        <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <JFXButton cancelButton="true" disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Social">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="currentPageButton" />
+                        <String fx:value="sidebuts" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                        <Region prefHeight="0.0" prefWidth="100.0" />
+                        <JFXButton fx:id="toDietPage" minHeight="80.0" minWidth="80.0" onAction="#toDietPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Diet" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                             </VBox.margin>
                         </JFXButton>
                         <Region prefHeight="0.0" prefWidth="100.0" />
-                        <JFXButton cancelButton="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: lightgreen; -fx-border-color: white; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Social" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                        </JFXButton>
-                        <Region prefHeight="0.0" prefWidth="100.0" />
-                        <JFXButton minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="toActivityPage" minHeight="80.0" minWidth="80.0" onAction="#toActivityPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Activity" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
                             </VBox.margin>
@@ -127,12 +132,18 @@
                                  <VBox.margin>
                                     <Insets bottom="5.0" top="5.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
                               </JFXButton>
                               <Region prefHeight="0.0" prefWidth="122.0" VBox.vgrow="ALWAYS" />
                               <JFXButton prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: green;" text="Invite new member" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets bottom="5.0" top="5.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
                               </JFXButton>
                               <Region prefHeight="0.0" prefWidth="122.0" VBox.vgrow="ALWAYS" />
                               <JFXButton fx:id="backToSocial" onAction="#backToSocial" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: green;" text="Back to groups">
