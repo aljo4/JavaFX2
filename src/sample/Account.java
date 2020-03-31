@@ -267,7 +267,7 @@ public class Account implements Serializable {
             }
         }
 
-    public void saveGoalToFile(Goals goal) {//parameter for Goal?
+    public void saveGoalToFile(Goals goal) {
         try {
             File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Goals.txt");
             if (!filename.exists()) {
