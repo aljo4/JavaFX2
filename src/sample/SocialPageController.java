@@ -1,15 +1,30 @@
 package sample;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.Stack;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXListView;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
+
+import javax.swing.*;
 
 public class SocialPageController {
 
@@ -18,11 +33,16 @@ public class SocialPageController {
     @FXML JFXButton leaveGroup1;
     @FXML JFXButton createGroup;
     @FXML JFXButton joinGroup;
+    @FXML JFXButton toHomePage;
+    @FXML JFXButton toGoalsPage;
+    @FXML JFXButton toDietPage;
+    @FXML JFXButton toActivityPage;
+    @FXML JFXButton toYouPage;
 
 
     //groupsList.getItems().addAll(LoginController.currentAccount.groupList); //when login is working tis will use the
     //for now just fill with test data
-    Account a = new Account("FullName", "Email.com","userN","pass1");
+    /*Account a = new Account("FullName", "Email.com","userN","pass1");
     Account b = new Account("FullName2", "Email.com2","userN2","pass2");
     Account c = new Account("FullName3", "Email.com3","userN3","pass3");
 
@@ -31,23 +51,15 @@ public class SocialPageController {
     Group gB = new Group(b,"group2","b");
     Group gC = new Group(c,"group3","c");
     Group gD = new Group(a,"group4","d");
-    Group gE = new Group(b,"group5","e");
+    Group gE = new Group(b,"group5","e");*/
 
 
 
     @FXML
-    public void initialize()throws Exception{
-
-        if (Account.getInstance() != null) {
-            if (Account.getInstance().getGroupList().size() > 0)
-                groupsList.getItems().addAll(Account.getInstance().getGroupList());
-        }
-//        else
-//            groupsList.getItems().addAll(gA,gB,gC,gD,gE);//as i do not have complete account yet
-//        groupsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        LoginController.getCurrentAccount() = new Account("FullName", "email@ma.com",
-//                "Nfull", "pass1" );
-
+    public void initialize()throws Exception {
+        //get the list of strings from current account
+        //read these from the file
+        //populate the listview with the matching objects
     }
 
     public void selectGroup(ActionEvent ae)throws Exception{
@@ -70,12 +82,12 @@ public class SocialPageController {
 
         if (groupsList.getSelectionModel().getSelectedItems().size()>0){
             Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            if (Account.getInstance().getUsername()!=selectedGroup.groupOwner){
+            if (LoginController.getCurrentAccount().getUsername()!=selectedGroup.groupOwner){
                 groupsList.getItems().remove(selectedGroup);
-                if(selectedGroup.groupAdmins.contains(Account.getInstance().getUsername()))
-                    selectedGroup.groupAdmins.remove(Account.getInstance().getUsername());
-                Account.getInstance().getGroupList().remove(selectedGroup);
-                selectedGroup.groupMembers.remove(Account.getInstance().getUsername());
+                if(selectedGroup.groupAdmins.contains(LoginController.getCurrentAccount().getUsername()))
+                    selectedGroup.groupAdmins.remove(LoginController.getCurrentAccount().getUsername());
+                LoginController.getCurrentAccount().getGroups().remove(selectedGroup);
+                selectedGroup.groupMembers.remove(LoginController.getCurrentAccount().getUsername());
             }
         }
     }
@@ -104,5 +116,69 @@ public class SocialPageController {
         w.showAndWait();
     }
 
+    public void toHomePage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+
+
+    public void toGoalsPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toYouPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toDietPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void toActivityPage(ActionEvent ae)throws Exception{
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("ActivityPage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+        Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
+    }
+
+    public void logOutButton (ActionEvent ae)throws Exception{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent, 600, 400);
+            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.setResizable(false);
+            window.show();
+        }
+    }
 
 }
