@@ -116,7 +116,7 @@ public class GoalSettingController implements Serializable {
         }
     }
 
-    public void gotoMyGoals(ActionEvent actionEvent) throws Exception {
+    public void gotoMyGoals(ActionEvent actionEvent) throws IOException {
         Parent myGoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
         Scene signUpViewScene = new Scene(myGoalsParent);
 
