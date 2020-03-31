@@ -16,7 +16,7 @@ public class TypeOfDiet{
         Zone(1500,"no processed grains, no potatoes, no egg yolks, no organ meets, no soda"),
         IntermittentFasting(600,"eating full meals every other day");
 
-
+        //TODO: display diet on homepage
 
         private int calories;
 
