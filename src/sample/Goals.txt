@@ -1,0 +1,2 @@
+Goals {Goal Type = Weight Gain  ,  Current Weight = 66.0kg  ,  Goal Weight = 75.0kg  ,  Start Date = 2020-03-31  ,  End Date = 2020-04-15  ,  Nutritional goal = 0.0}
+Account Object Name: Bob@Mitchell.comGoals {Goal Type = Weight Gain  ,  Current Weight = 75.0kg  ,  Goal Weight = 88.0kg  ,  Start Date = 2020-03-31  ,  End Date = 2020-04-15  ,  Nutritional goal = 0.0}

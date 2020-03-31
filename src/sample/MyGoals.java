@@ -16,14 +16,17 @@ public class MyGoals {
     @FXML
     private ListView<String> listView;
     @FXML
-    private JFXButton goBack;
+    private JFXButton goBackbut;
 
-    MyGoals() {
+    public MyGoals() {
 
     }
 
     public void initialize() {
-        listView.getItems().addAll(Account.getInstance().getGoals().toString());
+        for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
+            listView.getItems().add(Account.getInstance().getGoals().get(i).toString());
+        }
+
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {

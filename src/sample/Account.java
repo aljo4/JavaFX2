@@ -1,5 +1,6 @@
 package sample;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
@@ -11,6 +12,8 @@ public class Account implements Serializable {
     private String surname;
     private String fullname;
     private ArrayList<Goals> goals;
+    private Meal meal;
+    private ArrayList<Meal> meals;
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
@@ -43,13 +46,14 @@ public class Account implements Serializable {
         this.surname = surname;
         this.fullname = fullname;
         goals = new ArrayList<Goals>();
-        this.diet = diet;
+        meal = meal;
         this.height = height;
         this.weight = weight;
         this.idealWeight = idealWeight;
         groupList = new ArrayList<String>();
         friends = new ArrayList();
         this.gender = gender;
+        meals = new ArrayList<Meal>();
     }
 
     public static Account getInstance() {
@@ -115,8 +119,8 @@ public class Account implements Serializable {
         return goals.get(i);
     }
 
-    public TypeOfDiet getTypeOfDiet() {
-        return diet;
+    public Meal getMeal() {
+        return meal;
     }
 
     public double getHeight() {
@@ -135,6 +139,14 @@ public class Account implements Serializable {
         return friends;
     }
 
+    public ArrayList<Meal> getMeals() {
+        return meals;
+    }
+
+    public TypeOfDiet getDiet() {
+        return diet;
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -146,6 +158,9 @@ public class Account implements Serializable {
     public void setGoals(ArrayList<Goals> goals) {
         this.goals = goals;
     }
+
+    public void setMeal(Meal meal) {
+        this.meal = meal;}
 
     public void setTypeOfDiet(TypeOfDiet diet) {
         this.diet = diet;
@@ -229,7 +244,7 @@ public class Account implements Serializable {
                 "," + height +
                 "," + weight +
                 "," + idealWeight +
-                "," + diet +
+                "," + diet+
                 "," + gender.genderType +
                 "," + goals.toString();
     }
