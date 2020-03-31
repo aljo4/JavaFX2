@@ -19,7 +19,6 @@ public class TypeOfDiet{
         //TODO: display diet on homepage
 
         private int calories;
-
         private String description;
 
 
@@ -44,37 +43,16 @@ public class TypeOfDiet{
             this.description = description;
         }
     }
-    private Diets diet;
+
+    Diets chosenDiet;
+
 
     public TypeOfDiet(Diets diet){
-        this.diet= diet;
+        this.chosenDiet= diet;
     }
 
-    public TypeOfDiet.Diets getDiet() {
-        return diet;
+    public Diets getDiet() {
+        return chosenDiet;
     }
-
-    public void setDiet(TypeOfDiet.Diets diet) {
-        this.diet = diet;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
