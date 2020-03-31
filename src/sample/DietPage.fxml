@@ -185,13 +185,13 @@
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
                   <Region prefHeight="44.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-                  <JFXButton prefHeight="44.0" prefWidth="145.0" styleClass="change-diet-button" text="Change Diet">
+                  <JFXButton prefHeight="44.0" prefWidth="145.0" styleClass="change-meal-button" text="Change Diet">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </JFXButton>
                   <Region maxWidth="100.0" prefHeight="44.0" prefWidth="37.0" HBox.hgrow="ALWAYS" />
-                  <JFXButton styleClass="change-diet-button" text="Eat Meal">
+                  <JFXButton styleClass="change-meal-button" text="Eat Meal">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
