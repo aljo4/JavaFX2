@@ -4,8 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -69,7 +74,7 @@ public class initialHealthOverviewController implements Initializable, Serializa
         //fill the combobox
     }
 
-    public void proceedButton(ActionEvent actionEvent) {
+    public void proceedButton(ActionEvent actionEvent) throws IOException {
         Account anAccount = null;
         anAccount = Account.getInstance();
         System.out.println(anAccount.getEmail());
@@ -80,11 +85,22 @@ public class initialHealthOverviewController implements Initializable, Serializa
             Account.getInstance().setGender(Account.Gender.MALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
             Account.getInstance().getAccountLists().saveToFile();
-            //TODO: saving to file goes here
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent);
+
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
         } else if (female.isSelected()){
             Account.getInstance().setGender(Account.Gender.FEMALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
             Account.getInstance().getAccountLists().saveToFile();
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene signUpViewScene = new Scene(signUpParent);
+
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.show();
         }
 
     }

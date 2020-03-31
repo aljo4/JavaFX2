@@ -109,6 +109,8 @@ public class GoalSettingController implements Serializable {
 
             Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
+            window.setResizable(true);
+            window.setMaximized(true);
             window.show();
 
         }

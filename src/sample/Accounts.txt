@@ -10,3 +10,6 @@ Clark Kent,kent@dailyplanet.com,Krypton,superman,null,null
 Health User1,tracker@health.com,health savvy,fitness,null,null
 Health User1,tracker@health.com,health savvy,fitness,null,null
 Steve Rogers,captain@america.com,Captain America,steve,null,null
+Loki Odinson,Loki@Asgard.com,loki,asgard,null,null
+Bob Mitchell,Bob@Mitchell.com,Bobby Mitch,mitchell,null,null,66.0,74.0,170.0,Male
+Ichigo Kurosaki,Ichigo@soulsociety.com,Zangetsu,bleach,67.0,72.0,170.0,Male,[]

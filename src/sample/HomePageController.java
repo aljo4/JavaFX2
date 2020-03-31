@@ -51,7 +51,7 @@ public class HomePageController {
 
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("Goals.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
