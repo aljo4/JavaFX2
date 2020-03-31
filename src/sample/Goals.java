@@ -57,6 +57,37 @@ public class Goals {
         return isCompleted;
     }
 
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public static void setInitialWeight(double initialWeight) {
+        Goals.initialWeight = initialWeight;
+    }
+
+    public void setGoalWeight(double goalWeight) {
+        this.goalWeight = goalWeight;
+    }
+
+    public void setGoalNutritionalAmount(double goalNutritionalAmount) {
+        this.goalNutritionalAmount = goalNutritionalAmount;
+    }
+
+    public void setGoalType(goalType goalType) {
+        GoalType = goalType;
+    }
+
+    public double getCurrentWeight() {
+        return currentWeight;
+    }
+
+    public void setCurrentWeight(double currentWeight) {
+        this.currentWeight = currentWeight;
+    }
 
     //Getters
     public double getInitialWeight() {
@@ -82,19 +113,6 @@ public class Goals {
         return goalNutritionalAmount;
     }
 
-    //Setters
-    public void setInitialWeight(){this.initialWeight = initialWeight;}
-
-    public void setEndDate() {
-        this.endDate = endDate;
-    }
-    public void setStartDate() {
-        this.startDate = startDate;
-    }
-    public void setGoalWeight(){this.goalWeight = goalWeight;}
-    public void setGoalType(){this.GoalType = GoalType;}
-    public void setGoalNutritionalAmount(){this.goalNutritionalAmount = goalNutritionalAmount;}
-
     //Progression calculator
     public static double goalPercentage(double initialWeight, double goalWeight) {
         return initialWeight * 100 / goalWeight;
@@ -102,7 +120,7 @@ public class Goals {
 
     public String toString() {
         return
-                "Goals {" + "Goal Type = " + GoalType + "  ,  "
+                "Account Object Name : " + Account.getInstance().getEmail() + " Goals {" + "Goal Type = " + GoalType + "  ,  "
                         + "Current Weight = " + currentWeight + "kg  ,  "
                         + "Goal Weight = " + goalWeight + "kg  ,  "
                         + "Start Date = " + startDate + "  ,  "
