@@ -26,7 +26,7 @@ public class Goals {
     private double goalNutritionalAmount;
     private goalType GoalType;
     private double currentWeight;
-
+    private boolean isComplete;
 
     //Constructors
     public Goals(){}
@@ -49,12 +49,10 @@ public class Goals {
     }
 
     //Method
-    public static boolean goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
-        boolean isCompleted = false;
+    public void goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
         if (currentWeight == goalWeight && LocalDate.now().isBefore(endDate)) {
-            isCompleted = true;
+            isComplete = true;
         }
-        return isCompleted;
     }
 
     public void setStartDate(LocalDate startDate) {
