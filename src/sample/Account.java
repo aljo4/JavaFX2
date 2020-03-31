@@ -43,7 +43,7 @@ public class Account implements Serializable {
         this.surname = surname;
         this.fullname = fullname;
         goals = new ArrayList<Goals>();
-        diet = diet;
+        this.diet = diet;
         this.height = height;
         this.weight = weight;
         this.idealWeight = idealWeight;
@@ -229,6 +229,7 @@ public class Account implements Serializable {
                 "," + height +
                 "," + weight +
                 "," + idealWeight +
+                "," + diet +
                 "," + gender.genderType +
                 "," + goals.toString();
     }

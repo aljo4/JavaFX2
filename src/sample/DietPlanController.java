@@ -65,9 +65,8 @@ public class DietPlanController<JFXTextField> {
             alert.showAndWait();
         }
             else {
-               TypeOfDiet SelectedDiet= (TypeOfDiet) DietType.getSelectionModel().getSelectedItem();
-               Account.getInstance().setTypeOfDiet(SelectedDiet);
-                System.out.println(Account.getInstance());
+               Account.getInstance().setTypeOfDiet(new TypeOfDiet((TypeOfDiet.Diets)DietType.getValue()));
+                System.out.println(Account.getInstance().getTypeOfDiet());
             Parent DietParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
             Scene signUpViewScene = new Scene(DietParent);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
