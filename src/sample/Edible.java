@@ -52,4 +52,14 @@ public class Edible {
         this.fName = fName;
     }
 
+    @Override
+    public String toString() {
+        return "Edible{" +
+                "fType=" + fType +
+                ", fName='" + fName + '\'' +
+                ", calCount=" + calCount +
+                ", existingFoods=" + existingFoods +
+                ", existingDrinks=" + existingDrinks +
+                '}';
+    }
 }
