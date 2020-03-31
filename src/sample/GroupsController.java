@@ -43,7 +43,7 @@ public class GroupsController {
         System.out.println(currentGroup.groupMembers);
         groupMembersList.getItems().addAll(currentGroup.groupMembers);
         groupName.setText(currentGroup.groupName);
-        if (LoginController.getCurrentAccount().getUsername()==currentGroup.groupOwner){
+        if (Account.getInstance().getUsername()==currentGroup.groupOwner){
             grouppasswordforowner.setText("Password is: "+currentGroup.groupPass);
         }
     }
@@ -59,7 +59,7 @@ public class GroupsController {
 
     public void leaveGroup2(ActionEvent ae) throws Exception{
         try {
-            LoginController.getCurrentAccount().getGroups().remove(currentGroup);
+            Account.getInstance().getGroupList().remove(currentGroup);
         }
         catch (Exception doesNotExist){
             System.out.println("not a member of this group");
@@ -73,7 +73,7 @@ public class GroupsController {
     }
 
     public void deleteGroup(ActionEvent ae){
-        if (currentGroup.groupOwner==LoginController.getCurrentAccount().getUsername()){
+        if (currentGroup.groupOwner==Account.getInstance().getUsername()){
             //delete off of group array list
         }
     }
