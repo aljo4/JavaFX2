@@ -23,32 +23,32 @@ import java.util.Date;
 import java.util.*;
 
 
+
+
 public class mealsController implements Initializable {
+         FoodType aFood = new FoodType();
+
         @FXML
         private ChoiceBox<Diet.mealType> mealtype;
         ObservableList<Diet.mealType> mealTypeChoice = FXCollections.observableArrayList(Diet.mealType.values());
-        @FXML private ComboBox<FoodType.Foods> food;
-        ObservableList<FoodType.Foods> foodChoice = FXCollections.observableArrayList(FoodType.Foods.values());
+
+        @FXML private ComboBox<String> foods = new ComboBox<String>(FXCollections.observableArrayList(aFood.getFoods()));
+
         @FXML
-        private ComboBox<DrinkType.Drinks> drink;
-        ObservableList<DrinkType.Drinks> drinkChoice = FXCollections.observableArrayList(DrinkType.Drinks.values());
+        private ComboBox<DrinkType> drink;
+//        ObservableList<DrinkType> drinkChoice = FXCollections.observableList(drink.getItems());
 
 
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-            FoodType.Foods aFood;
-            food.setItems(foodChoice);
-            food.setPromptText("Other");
-            food.setEditable(true);
-            food.valueProperty().addListener(new ChangeListener<FoodType.Foods>() {
-                @Override
-                public void changed(ObservableValue<? extends FoodType.Foods> observableValue, FoodType.Foods foods, FoodType.Foods t1) {
+            //foods.getItems().addAll(aFood.getFoods())
 
-                }
-            });
-            drink.setItems(drinkChoice);
+           // drink.setItems(drinkChoice);
             mealtype.setItems(mealTypeChoice);
+            //foodChoice.addAll(aFood.getFoods());
+            foods.getItems().addAll(aFood.getFoods());
+
         }
 
 
