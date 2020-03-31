@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.*;
 
@@ -13,14 +14,15 @@ import java.util.*;
 
 
 public class mealsController implements Initializable {
-         FoodType aFood = new FoodType();
 
+        FoodType aFood = new FoodType();
         @FXML
         private ChoiceBox<Meal.mealType> mealtype;
         ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
 
-        @FXML private ComboBox<String> foods = new ComboBox<String>(FXCollections.observableArrayList(aFood.getFoods()));
-       // ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods())
+    @FXML private ComboBox<String> foods;
+    private ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods());
+
         @FXML
         private ComboBox<DrinkType> drink;
 //        ObservableList<DrinkType> drinkChoice = FXCollections.observableList(drink.getItems());
@@ -30,13 +32,15 @@ public class mealsController implements Initializable {
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             //foods.getItems().addAll(aFood.getFoods())
-
+            listFoods.
            // drink.setItems(drinkChoice);
             mealtype.setItems(mealTypeChoice);
             //foodChoice.addAll(aFood.getFoods());
             foods.getItems().addAll(aFood.getFoods());
 
         }
+
+
 
 
     }
