@@ -1,67 +1,47 @@
 package sample;
 
+import java.util.ArrayList;
+
 public class FoodType {
-    public enum Foods {
-        LEGUMES(0),
-        NUTS(0),
-        SEEDS(0),
-        BREADS(0),
-        DAIRYPRODUCTS(0),
-        EGGS(0),
-        CHICKEN(0),
-        BEEF(0),
-        LAMB(0),
-        LIVER(0),
-        PORK(0),
-        CEREALS(0),
-        SEAFOODS(0),
-        SOUPS(0),
-        PIES(0),
-        STEWS(0),
-        PASTAS(0),
-        RICE(0);
+    private static ArrayList<String> Foods;
 
-        private int calories;
-
-        Foods(int calories) {
-            this.calories = calories;
-        }
-
-        public int getCalories() {
-            return calories;
-        }
-
-        public void setCalories(int calories) {
-            this.calories = calories;
-        }
-    }
-
-    private Foods food;
-
-    public Foods getFood() {
-        return food;
-    }
-
-    public void setFood(Foods food) {
-        this.food = food;
-    }
-
-    public FoodType(Foods food) {
-        this.food = food;
+    public FoodType() {
+        Foods = new ArrayList<String>(18);
+        Foods.add("Legumes");
+        Foods.add("Nuts");
+        Foods.add("Seeds");
+        Foods.add("Breads");
+        Foods.add("Dairy Products");
+        Foods.add("Eggs");
+        Foods.add("Chicken");
+        Foods.add("Beef");
+        Foods.add("Lamb");
+        Foods.add("Liver");
+        Foods.add("Pork");
+        Foods.add("Cereals");
+        Foods.add("Seafoods");
+        Foods.add("Soups");
+        Foods.add("Pies");
+        Foods.add("Stews");
+        Foods.add("Pastas");
+        Foods.add("Rice");
     }
 
 
+    public ArrayList<String> getFoods() {
+        return Foods;
+    }
 
-    public void displayCaloriesForFood() {
+    public void setFoods(ArrayList<String> foods) {
+        Foods = foods;
+    }
 
-    }//returns the ordinal value of enum
+    public void addToFoods(String food){
+        Foods.add(food);
+    }
 
-
-    public static void main(String[] args) {
-        System.out.println("hello");
-        FoodType aFood = new FoodType(Foods.SEAFOODS);
-        aFood.getFood().SEAFOODS.setCalories(43);//you don't even have to call seafoods here it has already been assigned
-        System.out.println(aFood.getFood().SEAFOODS.getCalories());
-
+    @Override
+    public String toString() {
+        return "Food: " + Foods.toString();
     }
 }
