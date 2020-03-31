@@ -103,7 +103,7 @@ public class GoalSettingController implements Serializable {
         else {
             goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
-
+            Account.getInstance().getAccountLists().saveGoalToFile(goal);
             Parent GoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
             Scene signUpViewScene = new Scene(GoalsParent);
 
