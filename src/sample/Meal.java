@@ -2,7 +2,7 @@ package sample;
 
 
 
-public class Diet {
+public class Meal {
     public enum mealType{
         BREAKFAST,
         LUNCH,
@@ -16,7 +16,7 @@ public class Diet {
     private int portionSize; //will this be used?
     private int caloricIntake; //will this be used?
 
-    public Diet() {
+    public Meal() {
         this.foods = foods;
         this.drinks = drinks;
         this.portionSize = portionSize;
