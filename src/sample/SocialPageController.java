@@ -82,12 +82,12 @@ public class SocialPageController {
 
         if (groupsList.getSelectionModel().getSelectedItems().size()>0){
             Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            if (LoginController.getCurrentAccount().getUsername()!=selectedGroup.groupOwner){
+            if (Account.getInstance().getUsername()!=selectedGroup.groupOwner){
                 groupsList.getItems().remove(selectedGroup);
-                if(selectedGroup.groupAdmins.contains(LoginController.getCurrentAccount().getUsername()))
-                    selectedGroup.groupAdmins.remove(LoginController.getCurrentAccount().getUsername());
-                LoginController.getCurrentAccount().getGroups().remove(selectedGroup);
-                selectedGroup.groupMembers.remove(LoginController.getCurrentAccount().getUsername());
+                if(selectedGroup.groupAdmins.contains(Account.getInstance().getUsername()))
+                    selectedGroup.groupAdmins.remove(Account.getInstance().getUsername());
+                Account.getInstance().getGroupList().remove(selectedGroup);
+                selectedGroup.groupMembers.remove(Account.getInstance().getUsername());
             }
         }
     }
