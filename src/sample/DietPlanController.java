@@ -2,10 +2,15 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,6 +39,7 @@ public class DietPlanController<JFXTextField> {
 
     @FXML
     public void initialize() {
+
         DietType.getItems().add("Paleo");
         DietType.getItems().add("Vegan");
         DietType.getItems().add("Low-Carb");
@@ -49,11 +55,35 @@ public class DietPlanController<JFXTextField> {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
 
-                setDisable(empty || date.compareTo(today) < 0 );
+                setDisable(empty || date.compareTo(today) < 0);
             }
         });
+
+    }
+
+    public void toDietPage(ActionEvent ae) throws Exception {
+        if (DietName.getText().trim().isEmpty() || DietType.getSelectionModel().isEmpty()
+                || FinishDate.getChronology().equals(null) || CaloriesLimit.getText().trim().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Empty fields, please try again");
+            alert.showAndWait();
+        }
+            else {
+               TypeOfDiet SelectedDiet= (TypeOfDiet) DietType.getSelectionModel().getSelectedItem();
+               Account.getInstance().setTypeOfDiet(SelectedDiet);
+                System.out.println(Account.getInstance());
+            Parent DietParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+            Scene signUpViewScene = new Scene(DietParent);
+            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+            window.setScene(signUpViewScene);
+            window.setResizable(true);
+            window.setMaximized(true);
+            window.show();}
+
         }
     }
+
 
 
 

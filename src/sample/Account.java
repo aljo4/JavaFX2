@@ -11,8 +11,7 @@ public class Account implements Serializable {
     private String surname;
     private String fullname;
     private ArrayList<Goals> goals;
-    private TypeOfDiet typeOfDiet;
-    private Diet diet; //user can only have one diet at a time
+    private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
     private double idealWeight;
@@ -51,7 +50,6 @@ public class Account implements Serializable {
         groupList = new ArrayList<String>();
         friends = new ArrayList();
         this.gender = gender;
-        this.typeOfDiet = typeOfDiet;
     }
 
     public static Account getInstance() {
@@ -117,7 +115,7 @@ public class Account implements Serializable {
         return goals.get(i);
     }
 
-    public Diet getDiet() {
+    public TypeOfDiet getTypeOfDiet() {
         return diet;
     }
 
@@ -137,14 +135,6 @@ public class Account implements Serializable {
         return friends;
     }
 
-    public TypeOfDiet getTypeOfDiet() {
-        return typeOfDiet;
-    }
-
-    public void setTypeOfDiet(TypeOfDiet typeOfDiet) {
-        this.typeOfDiet = typeOfDiet;
-    }
-
     public Gender getGender() {
         return gender;
     }
@@ -157,7 +147,7 @@ public class Account implements Serializable {
         this.goals = goals;
     }
 
-    public void setDiet(Diet diet) {
+    public void setTypeOfDiet(TypeOfDiet diet) {
         this.diet = diet;
     }
 

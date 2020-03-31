@@ -13,7 +13,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51#127a51;" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="SaveDiet" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" text="Save Diet Plan" />
+            <Button fx:id="SaveDiet" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" onAction="#toDietPage" text="Save Diet Plan" />
             <TextField fx:id="CaloriesLimit" layoutX="204.0" layoutY="187.0" />
             <Label layoutX="120.0" layoutY="67.0" text="Diet Name">
                <font>
