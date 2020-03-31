@@ -2,6 +2,8 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,7 @@ public class DietPlanController<JFXTextField> {
     private TextField DietName;
     @FXML
     private ChoiceBox DietType;
+    ObservableList<TypeOfDiet.Diets>ChoiceOfDiet = FXCollections.observableArrayList(TypeOfDiet.Diets.values());
     @FXML
     private DatePicker FinishDate;
     @FXML
@@ -40,15 +43,7 @@ public class DietPlanController<JFXTextField> {
     @FXML
     public void initialize() {
 
-        DietType.getItems().add("Paleo");
-        DietType.getItems().add("Vegan");
-        DietType.getItems().add("Low-Carb");
-        DietType.getItems().add("Dukan");
-        DietType.getItems().add("Ultra Low Fat");
-        DietType.getItems().add("Atkins");
-        DietType.getItems().add("HCG");
-        DietType.getItems().add("Zone");
-        DietType.getItems().add("Intermittent Fasting");
+        DietType.setItems(ChoiceOfDiet);
 
         FinishDate.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
@@ -70,9 +65,8 @@ public class DietPlanController<JFXTextField> {
             alert.showAndWait();
         }
             else {
-               TypeOfDiet SelectedDiet= (TypeOfDiet) DietType.getSelectionModel().getSelectedItem();
-               Account.getInstance().setTypeOfDiet(SelectedDiet);
-                System.out.println(Account.getInstance());
+               Account.getInstance().setTypeOfDiet(new TypeOfDiet((TypeOfDiet.Diets)DietType.getValue()));
+                System.out.println(Account.getInstance().getTypeOfDiet());
             Parent DietParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
             Scene signUpViewScene = new Scene(DietParent);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
