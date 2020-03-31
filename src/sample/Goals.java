@@ -26,7 +26,7 @@ public class Goals {
     private double goalNutritionalAmount;
     private goalType GoalType;
     private double currentWeight;
-
+    private boolean isComplete;
 
     //Constructors
     public Goals(){}
@@ -49,12 +49,10 @@ public class Goals {
     }
 
     //Method
-    public static boolean goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
-        boolean isCompleted = false;
+    public void goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
         if (currentWeight == goalWeight && LocalDate.now().isBefore(endDate)) {
-            isCompleted = true;
+            isComplete = true;
         }
-        return isCompleted;
     }
 
     //Setters
@@ -110,11 +108,13 @@ public class Goals {
 
     public String toString() {
         return
-                "Account Object Name : " + Account.getInstance().getEmail() + " Goals {" + "Goal Type = " + GoalType + "  ,  "
+                "Account Object Name : " + Account.getInstance().getEmail() + "   Goal Type = " + GoalType + "  ,  "
                         + "Current Weight = " + currentWeight + "kg  ,  "
                         + "Goal Weight = " + goalWeight + "kg  ,  "
                         + "Start Date = " + startDate + "  ,  "
                         + "End Date = " + endDate + "  ,  "
                         + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
+
+
 }

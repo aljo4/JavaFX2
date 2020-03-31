@@ -52,7 +52,8 @@
             </font>
         </Label>
         <ListView fx:id="listView" layoutX="112.0" layoutY="44.0" prefHeight="329.0" prefWidth="348.0"/>
-        <JFXButton fx:id="confirm" layoutX="7.0" layoutY="7.0" onAction="#goBackbut" prefHeight="31.0" prefWidth="204.0"
+        <JFXButton fx:id="goBackbut" layoutX="7.0" layoutY="7.0" onAction="#goBackbut" prefHeight="31.0"
+                   prefWidth="204.0"
                    styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Go back to Homepage"
                    textFill="BLACK">
             <font>
