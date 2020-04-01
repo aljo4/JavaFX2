@@ -17,6 +17,7 @@ import java.util.*;
 public class mealsController implements Initializable {
 
         FoodType aFood = new FoodType();
+        DrinkType aDrink = new DrinkType();
         @FXML
         private ChoiceBox<Meal.mealType> mealtype;
         ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
@@ -24,7 +25,7 @@ public class mealsController implements Initializable {
    // private ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods());
 
         @FXML
-        private ComboBox<DrinkType> drink;
+        private ComboBox<String> drink;
 //        ObservableList<DrinkType> drinkChoice = FXCollections.observableList(drink.getItems());
 
 
@@ -42,13 +43,17 @@ public class mealsController implements Initializable {
             mealtype.setItems(mealTypeChoice);
             //foodChoice.addAll(aFood.getFoods());
             foods.getItems().addAll(aFood.getFoods());
+            drink.getItems().addAll(aDrink.getDrinks());
 
         }
 
 
 
-
+    public void saveDiet(javafx.event.ActionEvent actionEvent) {
+            Edible eat = new Edible();
+            eat.setfName(foods.getSelectionModel().getSelectedItem());
     }
+}
 
 
 
