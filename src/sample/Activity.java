@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Activity {
 
-    private Activities activities;
-    private LocalDate day;
+    private Activities activitiesEnum;
+    private LocalDate dayCreated;
 
     public enum Activities {
         RUNNING("Running", 0, 0),
@@ -70,23 +70,23 @@ public class Activity {
     }
 
     public Activity(Activities activities, LocalDate day) {
-        this.activities = activities;
-        this.day = LocalDate.now();
+        this.activitiesEnum = activities;
+        this.dayCreated = LocalDate.now();
     }
 
-    public Activities getActivities() {
-        return activities;
+    public Activities getActivitiesEnum() {
+        return activitiesEnum;
     }
 
-    public void setActivities(Activities activities) {
-        this.activities = activities;
+    public void setActivitiesEnum(Activities activities) {
+        this.activitiesEnum = activities;
     }
 
-    public LocalDate getDay() {
-        return day;
+    public LocalDate getDayCreated() {
+        return dayCreated;
     }
 
-    public void setDay(LocalDate day) {
-        this.day = day;
+    public void setDayCreated(LocalDate dayCreated) {
+        this.dayCreated = dayCreated;
     }
 }
