@@ -78,9 +78,9 @@ public class initialHealthOverviewController implements Initializable, Serializa
         Account anAccount = null;
         anAccount = Account.getInstance();
         System.out.println(anAccount.getEmail());
-        anAccount.setIdealWeight(Double.parseDouble(height.getText()));
-        Account.getInstance().setHeight(Double.parseDouble(weight.getText()));
-        Account.getInstance().setWeight(Double.parseDouble(idealWeight.getText()));
+        anAccount.setIdealWeight(Double.parseDouble(idealWeight.getText()));
+        Account.getInstance().setHeight(Double.parseDouble(height.getText()));
+        Account.getInstance().setWeight(Double.parseDouble(weight.getText()));
         if (male.isSelected()) {
             Account.getInstance().setGender(Account.Gender.MALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
