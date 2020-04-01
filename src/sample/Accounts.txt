@@ -13,3 +13,8 @@ Steve Rogers,captain@america.com,Captain America,steve,null,null
 Loki Odinson,Loki@Asgard.com,loki,asgard,null,null
 Bob Mitchell,Bob@Mitchell.com,Bobby Mitch,mitchell,null,null,66.0,74.0,170.0,Male
 Ichigo Kurosaki,Ichigo@soulsociety.com,Zangetsu,bleach,67.0,72.0,170.0,Male,[]
+Reed Richards,Richards@fantasticfour.com,Mr Fantastic,Reed,70.0,72.0,173.0,null,Male,[],[]
+Maddy Smith,maddySmith@testemail.com,maddy,smith,134.0,59.0,64.0,null,Female,[],[]
+Maddy Smith,maddySmith@testemail.com,maddy,smith,134.0,59.0,64.0,null,Female,[],[]
+Tom Brady,tomBrady@emailtest.com,tommy,brady,169.0,66.0,72.0,0.0,null,Male,[],[]
+Matt Damon,damon@actors.com,matt ,damon,177.0,66.0,77.0,0.0,null,Male,[],[]
