@@ -37,6 +37,7 @@ public class NewGroupPopController {
             if (validPass && isAvailable){
                 notify2.setText("Success");
                 Group newGroup = new Group(Account.getInstance(), groupName, groupPass);
+
                 Group.addGroup(newGroup);
                 Account.getInstance().getGroupList().add(groupName);
             }

@@ -206,7 +206,7 @@ public class YouPageController {
                                     if (m != null) onlynull = false;
                             }
 
-                            System.out.println(item.getValue2());
+                            System.out.println(item.getValue1());
                             if (!onlynull) {
                                 int b = 0, l = 0, d = 0, s = 0, t = 0;
                                 for (Meal m : item.getValue2()) {

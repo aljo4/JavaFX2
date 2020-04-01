@@ -8,6 +8,8 @@ import java.util.Stack;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,7 @@ public class SocialPageController {
 
     //groupsList.getItems().addAll(LoginController.currentAccount.groupList); //when login is working tis will use the
     //for now just fill with test data
-    /*Account a = new Account("FullName", "Email.com","userN","pass1");
+    Account a = new Account("FullName", "Email.com","userN","pass1");
     Account b = new Account("FullName2", "Email.com2","userN2","pass2");
     Account c = new Account("FullName3", "Email.com3","userN3","pass3");
 
@@ -51,12 +53,16 @@ public class SocialPageController {
     Group gB = new Group(b,"group2","b");
     Group gC = new Group(c,"group3","c");
     Group gD = new Group(a,"group4","d");
-    Group gE = new Group(b,"group5","e");*/
+    Group gE = new Group(b,"group5","e");
 
 
 
     @FXML
     public void initialize()throws Exception {
+        ArrayList<Group> gr = new ArrayList<>();
+        gr.add(gA);gr.add(gB);gr.add(gC);gr.add(gD);gr.add(gE);
+        ObservableList<Group> olg = FXCollections.observableArrayList(gr);
+        groupsList.setItems(olg);
         //get the list of strings from current account
         //read these from the file
         //populate the listview with the matching objects
@@ -71,7 +77,8 @@ public class SocialPageController {
             Scene signUpViewScene = new Scene(signUpParent);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
-            window.setResizable(false);
+            window.setResizable(true);
+            window.setMaximized(true);
             window.show();
         }
         else

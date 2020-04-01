@@ -53,7 +53,7 @@ public class GroupsController {
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
-        window.setResizable(false);
+        window.setResizable(true);
         window.show();
     }
 

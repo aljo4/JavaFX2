@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class DietPageController {
     @FXML JFXButton toSocialPage;
     @FXML JFXButton toActivityPage;
     @FXML JFXButton toYouPage;
+    @FXML MenuButton logout;
 
 
     @FXML
@@ -88,5 +90,6 @@ public class DietPageController {
             window.setResizable(false);
             window.show();
         }
+
     }
 }

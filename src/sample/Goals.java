@@ -100,6 +100,9 @@ public class Goals {
     public double getGoalNutritionalAmount(){
         return goalNutritionalAmount;
     }
+    public boolean getIsComplete(){
+        return isComplete;
+    }
 
     //Progression calculator
     public static double goalPercentage(double initialWeight, double goalWeight) {
