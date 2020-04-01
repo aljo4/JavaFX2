@@ -20,7 +20,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Health Tracker");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(true);

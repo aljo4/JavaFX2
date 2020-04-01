@@ -103,6 +103,19 @@ public class initialHealthOverviewController implements Initializable, Serializa
             window.show();
         }
 
+
+    }
+
+    public void calculateBMI(ActionEvent actionEvent) {
+        int h = Integer.parseInt(height.getText()); //in cm
+        int w = Integer.parseInt(weight.getText()); //kilos
+        //bmi = Kg/m^2
+        h = h / 100; //for metres
+        h = h ^ 2; //find square of height
+        double bmi = w / h;
+        Account.getInstance().setBmi(bmi);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,"This is your BMI: " + bmi);
+        alert.showAndWait();
     }
 }
 
