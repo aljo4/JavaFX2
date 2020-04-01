@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mealsController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51;" VBox.vgrow="ALWAYS">
@@ -47,7 +48,7 @@
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <ComboBox fx:id="food" layoutX="186.0" layoutY="104.0" prefWidth="150.0" />
+             <ComboBox fx:id="foods" layoutX="186.0" layoutY="104.0" prefWidth="150.0"/>
             <ComboBox fx:id="drink" layoutX="186.0" layoutY="147.0" prefWidth="150.0" />
             <ChoiceBox fx:id="mealtype" layoutX="186.0" layoutY="192.0" prefWidth="150.0" />
             <Label layoutX="117.0" layoutY="195.0" text="Meal Type ">

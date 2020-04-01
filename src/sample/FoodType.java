@@ -3,10 +3,10 @@ package sample;
 import java.util.ArrayList;
 
 public class FoodType {
-    private static ArrayList<Edible> Foods;
+    private static ArrayList<String> Foods;
 
     public FoodType() {
-        Foods = new ArrayList<Edible>(18);
+        Foods = new ArrayList<String>(18);
         Foods.add("Legumes");
         Foods.add("Nuts");
         Foods.add("Seeds");
