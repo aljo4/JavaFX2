@@ -14,11 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Pair;
+import java.util.*;
+import org.javatuples.Quartet;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -30,22 +33,19 @@ import java.util.Optional;
 
 public class YouPageController {
 
-    @FXML JFXListView goalsTimeline;
-    @FXML JFXListView MealTimeline;
-    @FXML JFXListView ActivityTimeline;
+    @FXML JFXListView Timeline;
     @FXML JFXButton toHomePage;
     @FXML JFXButton toGoalsPage;
     @FXML JFXButton toDietPage;
     @FXML JFXButton toActivityPage;
     @FXML JFXButton toSocialPage;
-    ObservableList<ArrayList<Meal>> mealpop = FXCollections.observableArrayList();
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         //test data
-        Edible e1 = new Edible(Edible.foodType.FOOD, "chicken", 200 );
-        Edible e2 = new Edible(Edible.foodType.FOOD, "potato", 150 );
-        Edible e3 = new Edible(Edible.foodType.DRINK, "Banana Milkshake", 180 );
+        Edible e1 = new Edible(Edible.foodType.FOOD, "chicken", 200);
+        Edible e2 = new Edible(Edible.foodType.FOOD, "potato", 150);
+        Edible e3 = new Edible(Edible.foodType.DRINK, "Banana Milkshake", 180);
         ArrayList<Edible> es = new ArrayList<>();
         es.add(e1);
         es.add(e3);
@@ -58,138 +58,192 @@ public class YouPageController {
 
         Account a = Account.getInstance();
 
-        ArrayList<LocalDate> timeLineDates= new ArrayList<>();
+        ArrayList<LocalDate> timeLineDates = new ArrayList<>();
         LocalDate firstDateOnLine = LocalDate.now().minusDays(11);
-        ArrayList<ArrayList<Meal>> mealsList = new ArrayList<>();
         ArrayList<Meal> temp = new ArrayList<>();
-        for (int i = 0; i <= 21; i++){
+        for (int i = 0; i <= 21; i++) {
             timeLineDates.add(firstDateOnLine.plusDays(i));
             temp.clear();
-            for(Meal m: a.getMeals()){
-                if (m.getMealDate().compareTo(timeLineDates.get(i))== 0){
+            for (Meal m : a.getMeals()) {
+                if (m.getMealDate().compareTo(timeLineDates.get(i)) == 0) {
                     temp.add(m);
                 }
             }
-            mealsList.add(temp);
-            if(temp.size()>0)System.out.println(temp.get(0));
+
         }
 
-        // tying to make a arraylist of pairs
-        ArrayList<Pair<LocalDate, ArrayList<Meal>>> pairList = new ArrayList<>();
-        ArrayList<Meal> tempForPairs = new ArrayList<>();
-        for (LocalDate d: timeLineDates){
-            tempForPairs.clear();
-            if (a.getMeals().size()>0){
-                for(Meal m: a.getMeals()) {
-                    if (m.getMealDate().compareTo(d) == 0) {
-                        tempForPairs.add(m);
-                    }
-                    else tempForPairs.add(null);
+        // tying to make a arraylist of quartets
+        ArrayList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> QuadList = new ArrayList<>();
+        ArrayList<Goals> goalsTemp = new ArrayList<>();
+        ArrayList<Meal> mealTemp = new ArrayList<>();
+        ArrayList<Activities> activitiesTemp = new ArrayList<>();
+
+        for (LocalDate d : timeLineDates) {
+            goalsTemp.clear();
+            mealTemp.clear();
+            activitiesTemp.clear();
+            if (a.getGoals().size() > 0) {
+                for (Goals g : a.getGoals()) {
+                    if (g.getEndDate().compareTo(d) == 0) {
+                        goalsTemp.add(g);
+                    } else goalsTemp.add(null);
                 }
             }
-            pairList.add(new Pair(d, new ArrayList<>(tempForPairs)));
+            if (a.getMeals().size() > 0) {
+                for (Meal m : a.getMeals()) {
+                    if (m.getMealDate().compareTo(d) == 0) {
+                        mealTemp.add(m);
+                    } else mealTemp.add(null);
+                }
+            }
+            //need Activities to be a class
+//            if (a.getExercises().size()>0){
+//                for(Activities ac: a.getExercises()) {
+//                    if (ac.g(d) == 0) {
+//                        activitiesTemp.add(ac);
+//                    }
+//                    else activitiesTemp.add(null);
+//                }
+//            }
+            QuadList.add(new Quartet(d, new ArrayList<Goals>(goalsTemp), new ArrayList<>(mealTemp),
+                    new ArrayList<Activities>(/*activitiesTemp*/)));
         }
-        System.out.println(pairList);
-        System.out.println(pairList.get(0));
-        System.out.println(pairList.get(0).getKey());
-        ObservableList<Pair<LocalDate, ArrayList<Meal>>> ol = FXCollections.observableArrayList(pairList);
-        MealTimeline.setItems(ol);
-       System.out.println( MealTimeline.getMaxHeight());
-        MealTimeline.setCellFactory(new Callback<JFXListView<Pair<LocalDate, ArrayList<Meal>>>, ListCell<Pair<LocalDate, ArrayList<Meal>>>>() {
-                                        @Override
-                                        public JFXListCell<Pair<LocalDate, ArrayList<Meal>>> call(JFXListView<Pair<LocalDate, ArrayList<Meal>>> p) {
-                                            final JFXListCell<Pair<LocalDate, ArrayList<Meal>>> cell = new JFXListCell<Pair<LocalDate, ArrayList<Meal>>>() {
-                                                @FXML
-                                                VBox base;
 
-                                                @FXML
-                                                Label dayLabel;
-                                                @FXML Label dateLabel;
+        ObservableList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> ol;
+        ol = FXCollections.observableArrayList(QuadList);
+        System.out.println(QuadList);
+        Timeline.setItems(ol);
+        Timeline.setCellFactory(new Callback<JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>,
+                ListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>>() {
+            @Override
+            public JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>
+            call(JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> p) {
+                final JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> cell
+                        = new JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>() {
+                    @FXML
+                    StackPane theStack;
+                    @FXML
+                    VBox mainV;
+                    @FXML
+                    VBox topV;
+                    @FXML
+                    VBox midV;
+                    @FXML
+                    VBox botV;
 
-                                                @FXML Label bCalLabel;
+                    @FXML
+                    Label dayLabel;
+                    @FXML
+                    Label dateLabel;
 
-                                                @FXML Label lCalLabel;
 
-                                                @FXML Label dCalLabel;
+                    @FXML
+                    Label goalType;
+                    @FXML
+                    Label goalStart;
 
-                                                @FXML Label sCalLabel;
+                    @FXML
+                    Label goalGoal;
 
-                                                @FXML Label tCalLabel;
+                    @FXML
+                    Label goalStatus;
+                    @FXML
+                    Label bCalLabel;
 
-                                                @FXML
-                                                private GridPane gridPane;
+                    @FXML
+                    Label lCalLabel;
 
-                                                private FXMLLoader mLLoader;
-                                                @Override
-                                                public void updateItem (Pair<LocalDate, ArrayList<Meal>> item, boolean empty){
-                                                    super.updateItem(item, empty);
+                    @FXML
+                    Label dCalLabel;
 
-                                                    if(empty || item == null) {
+                    @FXML
+                    Label sCalLabel;
 
-                                                        setText(null);
-                                                        setGraphic(null);
+                    @FXML
+                    Label tCalLabel;
 
-                                                    }else {
-                                                        if (mLLoader == null) {
-                                                            mLLoader = new FXMLLoader(getClass().getResource("MealListView.fxml"));
-                                                            mLLoader.setController(this);
+                    @FXML
+                    Label actTotal;
 
-                                                            try {
-                                                                mLLoader.load();
-                                                            } catch (IOException e) {
-                                                                e.printStackTrace();
-                                                            }
+                    @FXML
+                    Label burntCals;
 
-                                                        }
 
-                                                        String today = item.getKey().getDayOfWeek().toString();
-                                                        today = today.substring(0,1) + today.substring(1).toLowerCase();
-                                                        dayLabel.setText(today);
-                                                        dateLabel.setText(item.getKey().format(DateTimeFormatter.ofPattern("dd/MM")));
-                                                        boolean onlynull = true;
-                                                        if(item.getValue() != null)
-                                                        {
-                                                            for(Meal m : item.getValue())
-                                                                if(m != null) onlynull = false;
-                                                        }
+                    @FXML
+                    private GridPane gridPane;
 
-                                                        System.out.println(item.getValue());
-                                                        if (!onlynull) {
-                                                            int b = 0, l = 0, d = 0, s = 0, t = 0;
-                                                            for (Meal m : item.getValue()) {
-                                                                if (m.getMealtype() == Meal.mealType.BREAKFAST) {
-                                                                    bCalLabel.setText(String.valueOf(m.getCaloricIntake()));
-                                                                    b += m.getCaloricIntake();
-                                                                }
-                                                                if (m.getMealtype() == Meal.mealType.LUNCH) {
-                                                                    lCalLabel.setText((String.valueOf(m.getCaloricIntake())));
-                                                                    l += m.getCaloricIntake();
-                                                                }
-                                                                if (m.getMealtype() == Meal.mealType.DINNER) {
-                                                                    dCalLabel.setText((String.valueOf(m.getCaloricIntake())));
-                                                                    d += m.getCaloricIntake();
-                                                                }
-                                                                if (m.getMealtype() == Meal.mealType.SNACK) {
-                                                                    s += m.getCaloricIntake();
-                                                                }
+                    private FXMLLoader mLLoader;
 
-                                                            }
-                                                            sCalLabel.setText(String.valueOf(s));
-                                                            tCalLabel.setText(String.valueOf(b + l + d + s));
+                    @Override
+                    public void updateItem(Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>> item, boolean empty) {
+                        super.updateItem(item, empty);
 
-                                                        }
-                                                        setText(null);
-                                                        setGraphic(base);
-                                                    }
-                                                }
-                                            };
-                                            return cell;
-                                        }
-                                    });
-                // MealTimeline.setMouseTransparent( true );
-                MealTimeline.setFocusTraversable(false);
+                        if (empty || item == null) {
+
+                            setText(null);
+                            setGraphic(null);
+
+                        } else {
+                            if (mLLoader == null) {
+                                mLLoader = new FXMLLoader(getClass().getResource("MealListView.fxml"));
+                                mLLoader.setController(this);
+
+                                try {
+                                    mLLoader.load();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                            String today = item.getValue0().getDayOfWeek().toString();
+                            today = today.substring(0, 1) + today.substring(1).toLowerCase();
+                            dayLabel.setText(today);
+                            dateLabel.setText(item.getValue0().format(DateTimeFormatter.ofPattern("dd/MM")));
+                            boolean onlynull = true;
+                            if (item.getValue2() != null) {
+                                for (Meal m : item.getValue2())
+                                    if (m != null) onlynull = false;
+                            }
+
+                            System.out.println(item.getValue2());
+                            if (!onlynull) {
+                                int b = 0, l = 0, d = 0, s = 0, t = 0;
+                                for (Meal m : item.getValue2()) {
+                                    if (m.getMealtype() == Meal.mealType.BREAKFAST) {
+                                        bCalLabel.setText(String.valueOf(m.getCaloricIntake()));
+                                        b += m.getCaloricIntake();
+                                    }
+                                    if (m.getMealtype() == Meal.mealType.LUNCH) {
+                                        lCalLabel.setText((String.valueOf(m.getCaloricIntake())));
+                                        l += m.getCaloricIntake();
+                                    }
+                                    if (m.getMealtype() == Meal.mealType.DINNER) {
+                                        dCalLabel.setText((String.valueOf(m.getCaloricIntake())));
+                                        d += m.getCaloricIntake();
+                                    }
+                                    if (m.getMealtype() == Meal.mealType.SNACK) {
+                                        s += m.getCaloricIntake();
+                                    }
+
+                                }
+                                sCalLabel.setText(String.valueOf(s));
+                                tCalLabel.setText(String.valueOf(b + l + d + s));
+
+                            }
+                            setText(null);
+                            setGraphic(theStack);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+        // MealTimeline.setMouseTransparent( true );
+        Timeline.setFocusTraversable(false);
+        Timeline.getSelectionModel().select(11);
+        Timeline.scrollTo(12);
     }
-
 
     public void toHomePage(ActionEvent ae)throws Exception{
         Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));

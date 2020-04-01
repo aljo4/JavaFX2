@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-public class MealListViewCells extends JFXListCell<Pair<LocalDate, ArrayList<Meal>>> {
+public class TimelineViewCells extends JFXListCell<Pair<LocalDate, ArrayList<Meal>>> {
 
 
     @FXML VBox base;
