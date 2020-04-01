@@ -6,40 +6,54 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.*;
 
 
 
 
-public class mealsController implements Initializable {
-         FoodType aFood = new FoodType();
 
+public class mealsController implements Initializable {
+
+        FoodType aFood = new FoodType();
+        DrinkType aDrink = new DrinkType();
         @FXML
         private ChoiceBox<Meal.mealType> mealtype;
         ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
+    @FXML private ComboBox<String> foods;
+   // private ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods());
 
-        @FXML private ComboBox<String> foods = new ComboBox<String>(FXCollections.observableArrayList(aFood.getFoods()));
-       // ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods())
         @FXML
-        private ComboBox<DrinkType> drink;
+        private ComboBox<String> drink;
 //        ObservableList<DrinkType> drinkChoice = FXCollections.observableList(drink.getItems());
 
 
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+            //  String[] array = aFood.getFoods().toArray(new String[aFood.getFoods().size()]);
+            // for(int i = 0; i < aFood.getFoods().size(); i++){
+            //    array[i] = aFood.getFoods().get(i);
+            //     foods.getItems().add(array[i]);
+            //}
             //foods.getItems().addAll(aFood.getFoods())
-
-           // drink.setItems(drinkChoice);
+            //  listFoods.
+            // drink.setItems(drinkChoice);
             mealtype.setItems(mealTypeChoice);
             //foodChoice.addAll(aFood.getFoods());
             foods.getItems().addAll(aFood.getFoods());
+            drink.getItems().addAll(aDrink.getDrinks());
 
         }
 
 
+
+    public void saveDiet(javafx.event.ActionEvent actionEvent) {
+            Edible eat = new Edible();
+            eat.setfName(foods.getSelectionModel().getSelectedItem());
     }
+}
 
 
 

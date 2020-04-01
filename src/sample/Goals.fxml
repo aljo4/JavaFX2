@@ -6,17 +6,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../resources/signupcss.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GoalSettingController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../resources/signupcss.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.GoalSettingController">
     <children>
-    <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="77.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png" />
-        </image>
-    </ImageView>
-    <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="168.0" text="Set your Goals!!!">
-        <font>
-            <Font name="System Bold" size="17.0" />
-        </font>
+        <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="77.0" layoutY="6.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png"/>
+            </image>
+        </ImageView>
+        <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="168.0" text="Set your Goals!!!">
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
     </Label>
         <Label layoutX="29.0" layoutY="116.0" text="Current Weight" />
         <Label layoutX="29.0" layoutY="170.0" text="Target Weight" />
