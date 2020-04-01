@@ -40,6 +40,9 @@ public class GoalSettingController implements Serializable {
     @FXML
     private JFXButton gotoMyGoals;
 
+    @FXML
+    private JFXButton goBackbut;
+
     public GoalSettingController() {
 
     }
@@ -107,7 +110,7 @@ public class GoalSettingController implements Serializable {
             goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
-            Parent GoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+            Parent GoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
             Scene signUpViewScene = new Scene(GoalsParent);
 
             Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
@@ -129,5 +132,15 @@ public class GoalSettingController implements Serializable {
         window.setMaximized(true);
         window.show();
 
+    }
+
+    public void goBackbut(ActionEvent aE) throws IOException {
+        Parent myGoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+        Scene signUpViewScene = new Scene(myGoalsParent);
+        Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();
     }
 }

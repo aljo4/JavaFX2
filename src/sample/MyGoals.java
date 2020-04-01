@@ -10,7 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class MyGoals {
     @FXML
@@ -22,10 +27,16 @@ public class MyGoals {
 
     }
 
-    public void initialize() {
-        for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-            listView.getItems().add(Account.getInstance().getGoals().get(i).toString());
+
+    public void initialize() throws FileNotFoundException {
+        Scanner s = new Scanner(new File("C:\\Users\\TOGS\\Desktop\\Goals.txt"));
+        ArrayList<String> list = new ArrayList<String>();
+        while (s.hasNext()) {
+            list.add(s.nextLine());
         }
+        s.close();
+        listView.getItems().addAll(list);
+
 
     }
 
