@@ -73,10 +73,10 @@ public class YouPageController {
         }
 
         // tying to make a arraylist of quartets
-        ArrayList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> QuadList = new ArrayList<>();
+        ArrayList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>> QuadList = new ArrayList<>();
         ArrayList<Goals> goalsTemp = new ArrayList<>();
         ArrayList<Meal> mealTemp = new ArrayList<>();
-        ArrayList<Activities> activitiesTemp = new ArrayList<>();
+        ArrayList<Activity.Activities> activitiesTemp = new ArrayList<>();
 
         for (LocalDate d : timeLineDates) {
             goalsTemp.clear();
@@ -106,20 +106,20 @@ public class YouPageController {
 //                }
 //            }
             QuadList.add(new Quartet(d, new ArrayList<Goals>(goalsTemp), new ArrayList<>(mealTemp),
-                    new ArrayList<Activities>(/*activitiesTemp*/)));
+                    new ArrayList<Activity.Activities>(/*activitiesTemp*/)));
         }
 
-        ObservableList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> ol;
+        ObservableList<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>> ol;
         ol = FXCollections.observableArrayList(QuadList);
         System.out.println(QuadList);
         Timeline.setItems(ol);
-        Timeline.setCellFactory(new Callback<JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>,
-                ListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>>() {
+        Timeline.setCellFactory(new Callback<JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>>,
+                ListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>>>() {
             @Override
-            public JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>
-            call(JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> p) {
-                final JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>> cell
-                        = new JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>>>() {
+            public JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>>
+            call(JFXListView<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>> p) {
+                final JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>> cell
+                        = new JFXListCell<Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>>>() {
                     @FXML
                     StackPane theStack;
                     @FXML
@@ -175,7 +175,7 @@ public class YouPageController {
                     private FXMLLoader mLLoader;
 
                     @Override
-                    public void updateItem(Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activities>> item, boolean empty) {
+                    public void updateItem(Quartet<LocalDate, ArrayList<Goals>, ArrayList<Meal>, ArrayList<Activity.Activities>> item, boolean empty) {
                         super.updateItem(item, empty);
 
                         if (empty || item == null) {
