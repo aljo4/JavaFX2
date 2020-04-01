@@ -127,7 +127,6 @@ public class Account implements Serializable {
 
 
     //UserDetails class with weight height profile pic etc
-
     public String getUsername() {
         return username;
     }
@@ -172,7 +171,7 @@ public class Account implements Serializable {
         return meals;
     }
 
-    public TypeOfDiet getDiet() {
+    public TypeOfDiet getTypeOfDiet() {
         return diet;
     }
 

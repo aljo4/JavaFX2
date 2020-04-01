@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -10,14 +11,13 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.YouPageController">
     <left>
         <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
             <BorderPane.margin>
@@ -27,26 +27,23 @@
                 <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
                     <children>
                         <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                        <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="toHomePage" minHeight="80.0" minWidth="80.0" onAction="#toHomePage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                             </VBox.margin>
-                            <styleClass>
-                                <String fx:value="currentPageButton" />
-                                <String fx:value="sidebuts" />
-                            </styleClass>
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
                         </JFXButton>
                         <Region prefHeight="0.0" prefWidth="100.0" />
-                        <JFXButton fx:id="toYouPage" minHeight="80.0" minWidth="80.0" onAction="#toYouPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
                             </VBox.margin>
+                     <styleClass>
+                        <String fx:value="sidebuts" />
+                        <String fx:value="currentPageButton" />
+                     </styleClass>
                         </JFXButton>
                         <Region prefHeight="0.0" prefWidth="100.0" />
                         <JFXButton fx:id="toGoalsPage" minHeight="80.0" minWidth="80.0" onAction="#toGoalsPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -118,11 +115,59 @@
         </VBox>
     </right>
    <center>
-      <JFXTabPane BorderPane.alignment="CENTER">
+      <JFXTabPane styleClass="darker" BorderPane.alignment="CENTER">
          <tabs>
             <Tab text="Timeline">
               <content>
-                <VBox minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <VBox>
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="63.0" rotate="-90.0" text="Goals" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Region maxWidth="25.0" prefHeight="91.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                              <JFXListView fx:id="goalsTimeline" maxHeight="150.0" orientation="HORIZONTAL" prefHeight="110.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" right="4.0" top="4.0" />
+                                 </HBox.margin>
+                              </JFXListView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="63.0" rotate="-90.0" text="Meals" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Region maxWidth="25.0" prefHeight="100.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                              <JFXListView fx:id="MealTimeline" maxHeight="150.0" orientation="HORIZONTAL" prefHeight="110.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" right="4.0" top="2.0" />
+                                 </HBox.margin>
+                              </JFXListView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="63.0" rotate="-90.0" text="Activities" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Region maxWidth="25.0" prefHeight="100.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                              <JFXListView fx:id="ActivityTimeline" maxHeight="150.0" orientation="HORIZONTAL" prefHeight="110.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="4.0" right="4.0" top="2.0" />
+                                 </HBox.margin>
+                              </JFXListView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
               </content>
             </Tab>
             <Tab text="Stats">
@@ -131,6 +176,9 @@
               </content>
             </Tab>
          </tabs>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
       </JFXTabPane>
    </center>
 </BorderPane>

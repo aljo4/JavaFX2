@@ -116,5 +116,10 @@ public class Goals {
                         + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
 
+    public String stringForTimeline(){
+        return "Target Date: "+ endDate +"\n"
+                +"Starting Weight: " + initialWeight + "\n"
+                +"Target Weight: "+ goalWeight + "\n";
+    }
 
 }
