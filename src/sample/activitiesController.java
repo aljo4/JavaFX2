@@ -49,6 +49,6 @@ public class activitiesController implements Initializable {
         Account.getInstance().getActivities().setRepetitions(Integer.parseInt(reps.getText()));
         Account.getInstance().getExercises().add(Account.getInstance().getActivities());
         Account.getInstance().getAccountLists().saveActivityToFile(Account.getInstance().getActivities());
-    
+
     }
 }
