@@ -72,5 +72,14 @@ public class Meal {
 
     public void calculateDailyCaloricIntake(){}
 
-
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "mealtype=" + mealtype +
+                ", foods=" + foods +
+                ", drinks=" + drinks +
+                ", portionSize=" + portionSize +
+                ", caloricIntake=" + caloricIntake +
+                '}';
+    }
 }
