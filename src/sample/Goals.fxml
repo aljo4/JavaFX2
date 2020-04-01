@@ -72,5 +72,13 @@
         <DatePicker fx:id="datePicker" layoutX="24.0" layoutY="255.0"/>
         <Label layoutX="166.0" layoutY="151.0" text="kg"/>
         <Label layoutX="166.0" layoutY="204.0" text="kg"/>
+        <JFXButton fx:id="goBackbut" layoutX="7.0" layoutY="7.0" onAction="#goBackbut" prefHeight="31.0"
+                   prefWidth="204.0"
+                   styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Go back to Homepage"
+                   textFill="BLACK">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </JFXButton>
     </children>
 </AnchorPane>
