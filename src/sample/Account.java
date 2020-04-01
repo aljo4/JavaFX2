@@ -13,6 +13,8 @@ public class Account implements Serializable {
     private String fullname;
     private ArrayList<Goals> goals;
     private Meal meal;
+    private ArrayList<Activities> exercises;
+    private Activities activities;
     private ArrayList<Meal> meals;
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
@@ -46,7 +48,7 @@ public class Account implements Serializable {
         this.surname = surname;
         this.fullname = fullname;
         goals = new ArrayList<Goals>();
-        meal = meal;
+        this.meal = meal;
         this.height = height;
         this.weight = weight;
         this.idealWeight = idealWeight;
@@ -54,6 +56,8 @@ public class Account implements Serializable {
         friends = new ArrayList();
         this.gender = gender;
         meals = new ArrayList<Meal>();
+        exercises = new ArrayList<Activities>();
+        this.activities =activities;
     }
 
     public static Account getInstance() {
@@ -70,12 +74,37 @@ public class Account implements Serializable {
     }
 
 
+    public Activities getActivities() {
+        return activities;
+    }
+
+
+    public void setActivities(Activities activities) {
+        this.activities = activities;
+    }
+
     public Account(String fullname, String email, String username, String password) {
         this();
         this.fullname = fullname;
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+    public ArrayList<Activities> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(ArrayList<Activities> exercises) {
+        this.exercises = exercises;
+    }
+
+    public void setMeals(ArrayList<Meal> meals) {
+        this.meals = meals;
+    }
+
+    public void setDiet(TypeOfDiet diet) {
+        this.diet = diet;
     }
 
     public Account(String email) {
@@ -246,7 +275,8 @@ public class Account implements Serializable {
                 "," + idealWeight +
                 "," + diet+
                 "," + gender.genderType +
-                "," + goals.toString();
+                "," + goals.toString()+
+                "," + exercises;
     }
 
 //nested static class called AccountLists. This stores accounts objects in arraylists in a file
@@ -300,6 +330,43 @@ public class Account implements Serializable {
             e.printStackTrace();
         }
     }
+    public void saveActivityToFile(Activities activities) {
+        try {
+            File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Activities.txt");
+            if (!filename.exists()) {
+                filename.createNewFile();
+            }
+            FileWriter fw = new FileWriter(filename, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i=0; i< Account.getInstance().getExercises().size(); i++){
+                bw.write(activities.toStringtoFile());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveMeal(Meal meal) {
+        try {
+            File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt");
+            if (!filename.exists()) {
+                filename.createNewFile();
+            }
+            FileWriter fw = new FileWriter(filename, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i=0; i< Account.getInstance().getMeals().size(); i++){
+                bw.write(meal.toString());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
