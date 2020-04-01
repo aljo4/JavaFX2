@@ -15,8 +15,6 @@ public class Edible {
     private foodType fType;
     private String fName;
     private int calCount;
-    private FoodType food;
-    private DrinkType drink;
 
 
     public Edible(){
