@@ -1,6 +1,5 @@
 package sample;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
@@ -13,8 +12,8 @@ public class Account implements Serializable {
     private String fullname;
     private ArrayList<Goals> goals;
     private Meal meal;
-    private ArrayList<Activities> exercises;
-    private Activities activities;
+    private ArrayList<Activity.Activities> exercises;
+    private Activity.Activities activities;
     private ArrayList<Meal> meals;
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
@@ -56,7 +55,7 @@ public class Account implements Serializable {
         friends = new ArrayList();
         this.gender = gender;
         meals = new ArrayList<Meal>();
-        exercises = new ArrayList<Activities>();
+        exercises = new ArrayList<Activity.Activities>();
         this.activities =activities;
     }
 
@@ -74,14 +73,7 @@ public class Account implements Serializable {
     }
 
 
-    public Activities getActivities() {
-        return activities;
-    }
 
-
-    public void setActivities(Activities activities) {
-        this.activities = activities;
-    }
 
     public Account(String fullname, String email, String username, String password) {
         this();
@@ -91,12 +83,24 @@ public class Account implements Serializable {
         this.password = password;
     }
 
-    public ArrayList<Activities> getExercises() {
+    public ArrayList<Activity.Activities> getExercises() {
         return exercises;
     }
 
-    public void setExercises(ArrayList<Activities> exercises) {
+    public void setExercises(ArrayList<Activity.Activities> exercises) {
         this.exercises = exercises;
+    }
+
+    public Activity.Activities getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Activity.Activities activities) {
+        this.activities = activities;
+    }
+
+    public TypeOfDiet getDiet() {
+        return diet;
     }
 
     public void setMeals(ArrayList<Meal> meals) {
@@ -329,7 +333,7 @@ public class Account implements Serializable {
             e.printStackTrace();
         }
     }
-    public void saveActivityToFile(Activities activities) {
+    public void saveActivityToFile(Activity activities) {
         try {
             File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Activities.txt");
             if (!filename.exists()) {
@@ -338,7 +342,7 @@ public class Account implements Serializable {
             FileWriter fw = new FileWriter(filename, true);
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i=0; i< Account.getInstance().getExercises().size(); i++){
-                bw.write(activities.toStringtoFile());
+                bw.write(activities.getActivitiesEnum().toStringtoFile());
                 bw.newLine();
             }
             bw.close();
