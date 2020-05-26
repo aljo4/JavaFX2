@@ -29,15 +29,11 @@ public class MyGoals {
 
 
     public void initialize() throws FileNotFoundException {
-        Scanner s = new Scanner(new File("C:\\Users\\TOGS\\Desktop\\Goals.txt"));
         ArrayList<String> list = new ArrayList<String>();
-        while (s.hasNext()) {
-            list.add(s.nextLine());
+        for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
+            list.add(Account.getInstance().getGoals().get(i).toString());
         }
-        s.close();
         listView.getItems().addAll(list);
-
-
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {

@@ -13,10 +13,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
-
 
 
 public class GoalSettingController implements Serializable {
@@ -24,9 +24,6 @@ public class GoalSettingController implements Serializable {
     //Fields
     @FXML
     private JFXButton confirm;
-
-    @FXML
-    private JFXTextField CurrentWeight;
 
     @FXML
     private JFXTextField TargetWeight;
@@ -69,10 +66,10 @@ public class GoalSettingController implements Serializable {
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
 
-        if (CurrentWeight.getText().isEmpty() || TargetWeight.getText().isEmpty()) {
+        if (TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setContentText("Please input Current weight or Target Weight.");
+            alert.setContentText("Please input Target Weight.");
             alert.showAndWait();
         } else if (CB.getSelectionModel().getSelectedItem() == Goals.goalType.DEFAULT) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -85,29 +82,28 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Target date that is not today!");
             alert.showAndWait();
-        } else if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+        } else if ((Account.getInstance().getWeight() == Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can make your target weight lower. Recommendation: 5-10kg lower"));
             alert.showAndWait();
-        } else if (CurrentWeight.getText().equals(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !CurrentWeight.getText().isEmpty() && !TargetWeight.getText().isEmpty()) {
+        } else if (Account.getInstance().getWeight() == Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
             alert.showAndWait();
-        } else if (Integer.parseInt(CurrentWeight.getText()) > Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
+        } else if ((Account.getInstance().getWeight() > Integer.parseInt(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be higher than Target weight!");
             alert.showAndWait();
-        } else if (Integer.parseInt(CurrentWeight.getText()) < Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
+        } else if ((Account.getInstance().getWeight()) < Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
-        }
-        else {
-            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Double.parseDouble(CurrentWeight.getText()), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
+        } else {
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
             Parent GoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));

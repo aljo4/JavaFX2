@@ -1,4 +1,5 @@
 package sample;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -31,17 +32,20 @@ public class Account implements Serializable {
         OTHER("Other");
 
         private final String genderType;
-        Gender(String genderType){
+
+        Gender(String genderType) {
             this.genderType = genderType;
         }
-    };
+    }
+
+    ;
     private Gender gender; //instance variable of type enum Gender
 //---------------end of gender enum class ------------------
 
     private static Account anAccount;
 
     private Account() {
-        this.username= username;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -57,18 +61,18 @@ public class Account implements Serializable {
         this.gender = gender;
         meals = new ArrayList<Meal>();
         exercises = new ArrayList<Activity.Activities>();
-        this.activities =activities;
+        this.activities = activities;
         this.bmi = bmi;
     }
 
     public static Account getInstance() {
-        if(anAccount == null){
+        if (anAccount == null) {
             anAccount = new Account();
         }
         return anAccount;
     }
 
-    public Account(String email, String password){
+    public Account(String email, String password) {
         this();
         this.email = email;
         this.password = password;
@@ -127,12 +131,10 @@ public class Account implements Serializable {
     //FitnessRegime fitnessRegime;
 
 
-
-
-
     public ArrayList<String> getGroupList() {
         return groupList;
     }
+
     public AccountLists getAccountLists() {
         return accountLists;
     }
@@ -155,7 +157,7 @@ public class Account implements Serializable {
         return goals;
     }
 
-    public Goals getGoalsAtIndex(int i){
+    public Goals getGoalsAtIndex(int i) {
         return goals.get(i);
     }
 
@@ -200,7 +202,8 @@ public class Account implements Serializable {
     }
 
     public void setMeal(Meal meal) {
-        this.meal = meal;}
+        this.meal = meal;
+    }
 
     public void setTypeOfDiet(TypeOfDiet diet) {
         this.diet = diet;
@@ -277,21 +280,21 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return  fullname +
-                 ","+  email +
-               ","+  username +
-             ","+  password +
+        return fullname +
+                "," + email +
+                "," + username +
+                "," + password +
                 "," + height +
                 "," + weight +
                 "," + idealWeight +
                 "," + bmi +
-                "," + diet+
+                "," + diet +
                 "," + gender.genderType +
-                "," + goals.toString()+
+                "," + goals.toString() +
                 "," + exercises;
     }
 
-//nested static class called AccountLists. This stores accounts objects in arraylists in a file
+    //nested static class called AccountLists. This stores accounts objects in arraylists in a file
     public static class AccountLists {
         private ArrayList<Account> accounts;
 
@@ -309,7 +312,7 @@ public class Account implements Serializable {
 
         public void saveToFile() {
             try {
-                File filename = new File("Accounts.txt");
+                File filename = new File("sample/Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -325,66 +328,66 @@ public class Account implements Serializable {
             }
         }
 
-    public void saveGoalToFile(Goals goal) {
-        try {
-            File filename = new File("sample.Goals.txt");
-            if (!filename.exists()) {
-                filename.createNewFile();
+        public void saveGoalToFile(Goals goal) {
+            try {
+                File filename = new File("sample/Goals.txt");
+                if (!filename.exists()) {
+                    filename.createNewFile();
+                }
+                FileWriter fw = new FileWriter(filename, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
+                    bw.write(goal.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            FileWriter fw = new FileWriter(filename, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (int i=0; i< Account.getInstance().getGoals().size(); i++){
-                bw.write(goal.toString());
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
-    public void saveActivityToFile(Activity activities) {
-        try {
-            File filename = new File("sample/Activities.txt");
-            if (!filename.exists()) {
-                filename.createNewFile();
-            }
-            FileWriter fw = new FileWriter(filename, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (int i=0; i< Account.getInstance().getExercises().size(); i++){
-                bw.write(activities.getActivitiesEnum().toStringtoFile());
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void saveMeal(Meal meal) {
-        try {
-            File filename = new File("sample/Meals.txt");
-            if (!filename.exists()) {
-                filename.createNewFile();
+        public void saveActivityToFile(Activity activities) {
+            try {
+                File filename = new File("sample/Activities.txt");
+                if (!filename.exists()) {
+                    filename.createNewFile();
+                }
+                FileWriter fw = new FileWriter(filename, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < Account.getInstance().getExercises().size(); i++) {
+                    bw.write(activities.getActivitiesEnum().toStringtoFile());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            FileWriter fw = new FileWriter(filename, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (int i=0; i< Account.getInstance().getMeals().size(); i++){
-                bw.write(meal.toString());
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
 
+        public void saveMeal(Meal meal) {
+            try {
+                File filename = new File("sample/Meals.txt");
+                if (!filename.exists()) {
+                    filename.createNewFile();
+                }
+                FileWriter fw = new FileWriter(filename, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < Account.getInstance().getMeals().size(); i++) {
+                    bw.write(meal.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("src/sample/Accounts.txt"));
+                br = new BufferedReader(new FileReader("sample/Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -392,7 +395,7 @@ public class Account implements Serializable {
                 String st;
                 while ((st = br.readLine()) != null) {
                     String[] splitted = st.split(",");
-                   // System.out.println(splitted[1]);
+                    // System.out.println(splitted[1]);
                     if (email.equals(splitted[1]) && password.equals(splitted[3])) {
                         existingUser = true;
                         break;
@@ -405,19 +408,20 @@ public class Account implements Serializable {
             }
             return existingUser;
         }
+
         public void checkUserExists() {
 
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("src/sample/Accounts.txt"));
+                br = new BufferedReader(new FileReader("sample/Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             if (br != null)
                 for (int i = 0; i < accounts.size(); i++)
-                        System.out.println(accounts.get(i));
-                    }
+                    System.out.println(accounts.get(i));
         }
-
     }
+
+}
 
