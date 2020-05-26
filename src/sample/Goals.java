@@ -1,6 +1,7 @@
 package sample;
 
 import java.time.LocalDate;
+
 public class Goals {
 
     public enum goalType {
@@ -21,7 +22,7 @@ public class Goals {
     //Fields
     private LocalDate startDate;
     private LocalDate endDate;
-    private static double initialWeight;
+    private static double initialWeight = Account.getInstance().getWeight();
     private double goalWeight;
     private double goalNutritionalAmount;
     private goalType GoalType;
@@ -29,7 +30,8 @@ public class Goals {
     private boolean isComplete;
 
     //Constructors
-    public Goals(){}
+    public Goals() {
+    }
 
     public Goals(goalType GoalType, double currentWeight, double goalWeight, LocalDate startDate, LocalDate endDate) {
         this.GoalType = GoalType;
@@ -49,34 +51,43 @@ public class Goals {
     }
 
     //Method
-    public void goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
-        if (currentWeight == goalWeight && LocalDate.now().isBefore(endDate)) {
+    public Boolean goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
+        if (currentWeight >= goalWeight && LocalDate.now().isBefore(endDate)) {
             isComplete = true;
+            setInitialWeight(currentWeight);
         }
+        return true;
     }
 
     //Setters
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
+
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
     public static void setInitialWeight(double initialWeight) {
         Goals.initialWeight = initialWeight;
     }
+
     public void setGoalWeight(double goalWeight) {
         this.goalWeight = goalWeight;
     }
+
     public void setGoalNutritionalAmount(double goalNutritionalAmount) {
         this.goalNutritionalAmount = goalNutritionalAmount;
     }
+
     public void setGoalType(goalType goalType) {
         GoalType = goalType;
     }
+
     public double getCurrentWeight() {
         return currentWeight;
     }
+
     public void setCurrentWeight(double currentWeight) {
         this.currentWeight = currentWeight;
     }
@@ -85,29 +96,39 @@ public class Goals {
     public double getInitialWeight() {
         return initialWeight;
     }
+
     public LocalDate getStartDate() {
         return startDate;
     }
+
     public LocalDate getEndDate() {
         return endDate;
     }
+
     public double getGoalWeight() {
         return goalWeight;
     }
-    public goalType getGoalType(){
+
+    public goalType getGoalType() {
         return GoalType;
     }
-    public double getGoalNutritionalAmount(){
+
+    public double getGoalNutritionalAmount() {
         return goalNutritionalAmount;
     }
-    public boolean getIsComplete(){
+
+    public boolean getIsComplete() {
         return isComplete;
     }
 
     //Progression calculator
-    public static double goalPercentage(double initialWeight, double goalWeight) {
-        return initialWeight * 100 / goalWeight;
-    }
+//    public  double goalPercentage(double currentWeight, double goalWeight) {
+//        double limit;
+//        double tracker;
+//        limit = goalWeight - initialWeight;
+//        tracker = goalWeight - currentWeight;
+//        double percentage = tracker
+//    }
 
     public String toString() {
         return
@@ -119,10 +140,10 @@ public class Goals {
                         + "Nutritional goal = " + goalNutritionalAmount + "}";
     }
 
-    public String stringForTimeline(){
-        return "Target Date: "+ endDate +"\n"
-                +"Starting Weight: " + initialWeight + "\n"
-                +"Target Weight: "+ goalWeight + "\n";
+    public String stringForTimeline() {
+        return "Target Date: " + endDate + "\n"
+                + "Starting Weight: " + initialWeight + "\n"
+                + "Target Weight: " + goalWeight + "\n";
     }
 
 }

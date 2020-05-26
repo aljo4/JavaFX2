@@ -1,14 +1,8 @@
 package sample;
-import java.lang.reflect.Array;
-import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Stack;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,13 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.jfoenix.controls.JFXListView;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-
-import javax.swing.*;
 
 public class HomePageController {
 
@@ -72,7 +60,7 @@ public class HomePageController {
 
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("Goals.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

@@ -108,7 +108,8 @@ public class SignUpController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Passwords are not the same! Try again");
             alert.showAndWait();
-        } if (fullname.getText().trim().isEmpty() || email.getText().trim().isEmpty() || username.getText().trim().isEmpty()) {
+        }
+        if (fullname.getText().trim().isEmpty() || email.getText().trim().isEmpty() || username.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Empty fields, please try again");
@@ -129,26 +130,26 @@ public class SignUpController implements Serializable {
                 }
             }
 
-                    if (addUser) {
-                        account.setFullname(fullname.getText());
-                        account.setEmail(email.getText());
-                        account.setUsername(username.getText());
-                        account.setPassword(password.getText());
+            if (addUser) {
+                account.setFullname(fullname.getText());
+                account.setEmail(email.getText());
+                account.setUsername(username.getText());
+                account.setPassword(password.getText());
 //                        account.getAccountLists().addtolist(account);
 //                        account.getAccountLists().saveToFile();
 
 
-                        Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
-                        Scene signUpViewScene = new Scene(signUpParent);
+                Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
+                Scene signUpViewScene = new Scene(signUpParent);
 
-                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        window.setScene(signUpViewScene);
-                        window.show();
-                    }
-
-                }
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(signUpViewScene);
+                window.show();
             }
+
         }
+    }
+}
 
 
 
