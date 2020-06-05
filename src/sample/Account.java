@@ -312,7 +312,7 @@ public class Account implements Serializable {
 
         public void saveToFile() {
             try {
-                File filename = new File("sample/Accounts.txt");
+                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -387,7 +387,7 @@ public class Account implements Serializable {
             boolean existingUser = false;
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("sample/Accounts.txt"));
+                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -395,7 +395,7 @@ public class Account implements Serializable {
                 String st;
                 while ((st = br.readLine()) != null) {
                     String[] splitted = st.split(",");
-                    // System.out.println(splitted[1]);
+                    //System.out.println(splitted[1]);
                     if (email.equals(splitted[1]) && password.equals(splitted[3])) {
                         existingUser = true;
                         break;
@@ -413,7 +413,7 @@ public class Account implements Serializable {
 
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("sample/Accounts.txt"));
+                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
