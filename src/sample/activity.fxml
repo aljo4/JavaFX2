@@ -15,24 +15,18 @@
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #127a51;">
          <children>
-            <Button fx:id="activityButton" layoutX="487.0" layoutY="339.0" mnemonicParsing="false" onAction="#saveActivity" text="Save Activity" />
-            <TextField fx:id="duration" layoutX="279.0" layoutY="105.0" promptText="Duration in Seconds" />
-            <Label layoutX="46.0" layoutY="107.0" text="Activity">
+            <AnchorPane opacity="0.72" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepagebackground.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="46.0" layoutY="107.0" text="Activity" textFill="#f7f7f7">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="279.0" layoutY="23.0" prefHeight="17.0" prefWidth="113.0" text="Activities" textAlignment="CENTER">
+            <Label layoutX="279.0" layoutY="23.0" prefHeight="17.0" prefWidth="113.0" text="Activities" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <ComboBox fx:id="activity" layoutX="110.0" layoutY="105.0" prefWidth="150.0" promptText="Type of Activity" />
-            <ImageView fitHeight="216.0" fitWidth="269.0" layoutX="11.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="517.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icons8-exercise-50.png" />
@@ -40,6 +34,13 @@
             </ImageView>
             <TextField fx:id="reps" layoutX="436.0" layoutY="104.0" prefHeight="27.0" prefWidth="150.0" promptText="Repetitions" />
             <DatePicker fx:id="activityDate" layoutX="400.0" layoutY="175.0" />
+            <TextField fx:id="duration" layoutX="279.0" layoutY="105.0" promptText="Duration in Seconds" />
+            <ImageView fitHeight="216.0" fitWidth="269.0" layoutX="11.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="activityButton" layoutX="487.0" layoutY="339.0" mnemonicParsing="false" onAction="#saveActivity" text="Save Activity" textFill="#545b3a" />
          </children>
       </AnchorPane>
    </children>

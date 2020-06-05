@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -12,24 +13,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mealsController">
+<VBox prefHeight="400.0" prefWidth="640.0" styleClass="hpbg" stylesheets="@../resources/homepagebackground.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mealsController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51;" VBox.vgrow="ALWAYS">
+    <AnchorPane blendMode="SRC_ATOP" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51;" styleClass="hpbg" stylesheets="@../resources/homepagebackground.css" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="SaveDiet" layoutX="448.0" layoutY="192.0" mnemonicParsing="false" onAction="#saveDiet" text="Save Diet" />
             <TextField fx:id="foodCalories" layoutX="365.0" layoutY="104.0" promptText="Calories" />
-            <Label layoutX="133.0" layoutY="107.0" text="Food">
+            <Label layoutX="133.0" layoutY="107.0" styleClass="darker" text="Food" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="132.0" layoutY="149.0" text="Drink">
+            <Label layoutX="132.0" layoutY="149.0" styleClass="darker" text="Drink" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="drinkCalories" layoutX="365.0" layoutY="146.0" promptText="Calories" />
-            <Label layoutX="279.0" layoutY="23.0" prefHeight="17.0" prefWidth="113.0" text="Meal Input" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="243.0" layoutY="23.0" prefHeight="27.0" prefWidth="149.0" styleClass="darker" text="Meal Input" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -42,7 +43,7 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <Label layoutX="244.0" layoutY="468.0" prefHeight="37.0" prefWidth="169.0" text="Calories over the week ">
+            <Label layoutX="244.0" layoutY="468.0" prefHeight="37.0" prefWidth="169.0" styleClass="darker" text="Calories over the week " textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
@@ -50,12 +51,15 @@
              <ComboBox fx:id="foods" layoutX="186.0" layoutY="104.0" prefWidth="150.0" />
             <ComboBox fx:id="drink" layoutX="186.0" layoutY="147.0" prefWidth="150.0" />
             <ChoiceBox fx:id="mealtype" layoutX="186.0" layoutY="192.0" prefWidth="150.0" />
-            <Label layoutX="117.0" layoutY="195.0" text="Meal Type ">
+            <Label layoutX="117.0" layoutY="195.0" styleClass="darker" text="Meal Type " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
          </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="7.0" right="7.0" top="6.0" />
+         </opaqueInsets>
     </AnchorPane>
   </children>
 </VBox>

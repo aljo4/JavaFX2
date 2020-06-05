@@ -1,0 +1,2 @@
+Anakin Skywalker,anakin@starwars.com,Darth Vader,Anakin,177.0,66.0,73.0,0.0,null,Male,[],[]
+Anakin Skywalker,anakin@starwars.com,Darth Vader,Anakin,177.0,66.0,73.0,0.0,null,Male,[],[]
