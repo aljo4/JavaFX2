@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -14,11 +15,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
+   @FXML private JFXButton forgotpwdButton;
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
-
-
-
 
     public void validateLogin(ActionEvent ae) throws IOException {
         if (Account.AccountLists.checkUserExists(email.getText(), password.getText())) {
@@ -43,8 +42,6 @@ public class LoginController {
         }
     }
 
-
-
     public void toSignUp(ActionEvent ae) throws Exception{
         Parent signUpParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
@@ -54,4 +51,9 @@ public class LoginController {
         window.show();
     }
 
+    public void showPassword(ActionEvent actionEvent) throws IOException {
+       String password= Account.getInstance().getAccountLists().forgottenPassword(email.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "PASSWORD " + password);
+        alert.showAndWait();
+    }
 }
