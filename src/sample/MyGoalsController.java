@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class MyGoals {
+public class MyGoalsController {
     @FXML
     private ListView<String> listView;
     @FXML
     private JFXButton goBackbut;
 
-    public MyGoals() {
+    public MyGoalsController() {
 
     }
 

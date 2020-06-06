@@ -59,14 +59,14 @@ public class GoalSettingController implements Serializable {
                 }
 
         );
-
+        TargetWeight.setStyle("-fx-text-inner-color: Black;");
     }
 
     //Action after the continue button is clicked
     public void continueBut(ActionEvent aE) throws IOException {
         Goals goal;
 
-        if (TargetWeight.getText().isEmpty()) {
+        if (TargetWeight.getText().isEmpty() || TargetWeight.getText().equals("Please insert weight")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please input Target Weight.");
@@ -92,12 +92,12 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
             alert.showAndWait();
-        } else if ((Account.getInstance().getWeight() > Integer.parseInt(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
+        } else if ((Account.getInstance().getWeight() > Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be higher than Target weight!");
             alert.showAndWait();
-        } else if ((Account.getInstance().getWeight()) < Integer.parseInt(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
+        } else if ((Account.getInstance().getWeight()) < Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be lower than Target weight!");
@@ -106,6 +106,7 @@ public class GoalSettingController implements Serializable {
             goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
+            Account.getInstance().getAccountLists().saveToFile();
             Parent GoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
             Scene signUpViewScene = new Scene(GoalsParent);
 

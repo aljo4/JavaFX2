@@ -52,8 +52,8 @@ public class LoginController {
     }
 
     public void showPassword(ActionEvent actionEvent) throws IOException {
-       String password= Account.getInstance().getAccountLists().forgottenPassword(email.getText());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "PASSWORD " + password);
+       String password = Account.getInstance().getAccountLists().forgottenPassword(email.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "PASSWORD: " + password);
         alert.showAndWait();
     }
 }
