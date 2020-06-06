@@ -310,7 +310,7 @@ public class Account implements Serializable {
             return accounts;
         }
 
-        public void saveToFile() {
+        public void saveToFile() { //if you are saving to file and it doesn't
             try {
                 File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
                 if (!filename.exists()) {
@@ -382,6 +382,11 @@ public class Account implements Serializable {
             }
         }
 
+        public static void forgotPassword(Account account){
+            System.out.println(account.getPassword());
+        }
+
+
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
@@ -407,6 +412,30 @@ public class Account implements Serializable {
 //                        System.out.println(accounts.get(i).getEmail());
             }
             return existingUser;
+        }
+        public static String forgottenPassword(String email) throws IOException {
+            BufferedReader br = null;
+            String password ="";
+            try{
+                br = new BufferedReader((new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt")));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if(br !=null){
+                String st;
+                while ((st = br.readLine()) != null){
+                    String[] splitted = st.split(",");
+                    if(email.equals(splitted[1])){
+                        System.out.println(splitted[3]);
+                        password = splitted[3];
+                        return password;
+
+
+                    }
+                }
+            }
+          return password;
+
         }
 
         public void checkUserExists() {
