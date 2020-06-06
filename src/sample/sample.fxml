@@ -44,7 +44,7 @@
             </ImageView>
             <JFXCheckBox checkedColor="#33bad6" layoutX="208.0" layoutY="279.0" styleClass="rememberme" stylesheets="@../resources/loginpagecss.css" text="Remember me?" textFill="#cccecb" unCheckedColor="#fafafa" />
             <JFXButton layoutX="334.0" layoutY="275.0" onAction="#validateLogin" prefHeight="25.0" prefWidth="55.0" styleClass="loginbutton" stylesheets="@../resources/loginpagecss.css" text="Login" textFill="WHITE" />
-         <JFXButton layoutX="238.0" layoutY="340.0" styleClass="forgotpassbutton" stylesheets="@../resources/loginpagecss.css" text="Forgotten password?" textFill="#cccecb" />
+         <JFXButton fx:id="forgotpwdButton" layoutX="238.0" layoutY="340.0" onAction="#showPassword" styleClass="forgotpassbutton" stylesheets="@../resources/loginpagecss.css" text="Forgotten password?" textFill="#cccecb" />
          <JFXButton layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="109.0" text="Group 19 project" textFill="#cccecb" />
             <JFXTextField fx:id="email" focusColor="WHITE" layoutX="183.0" layoutY="175.0" prefHeight="25.0" prefWidth="231.0" promptText="Email" style="-fx-prompt-text-fill: #cccecb;" unFocusColor="WHITE">
                <font>
