@@ -111,14 +111,21 @@ public class SignUpController implements Serializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Passwords are not the same! Try again");
-            alert.showAndWait();
+            alert.close();
         }
         if (fullname.getText().trim().isEmpty() || email.getText().trim().isEmpty() || username.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Empty fields, please try again");
             alert.showAndWait();
-        } else {
+        }
+//        }else if (emailCheck(email.getText()) == false){
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error Dialog");
+//            alert.setContentText("Email format wrong. Make sure you put in the '@' sign!");
+//            alert.showAndWait();
+//        }
+        else {
             account.setFullname(fullname.getText());
             account.setEmail(email.getText());
             account.setUsername(username.getText());
