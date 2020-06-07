@@ -121,7 +121,7 @@ public class initialHealthOverviewController implements Initializable, Serializa
     }
 
     public void returnHome(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
