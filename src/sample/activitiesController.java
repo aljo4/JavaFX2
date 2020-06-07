@@ -23,10 +23,13 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class activitiesController implements Initializable {
+    public Button activityButton;
+
     public activitiesController() {
 
     }
-
+    @FXML
+    private JFXButton HomePage;
     @FXML
     private DatePicker activityDate;
     @FXML
@@ -80,5 +83,14 @@ public class activitiesController implements Initializable {
 ////        Account.getInstance().getExercises().add(Account.getInstance().getActivities().getActivitiesEnum());
 ////        Account.getInstance().getAccountLists().saveActivityToFile(Account.getInstance().getActivities());
 
+    }
+
+    public void homeButton(ActionEvent actionEvent) throws IOException {
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.show();
     }
 }
