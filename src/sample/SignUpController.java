@@ -50,7 +50,11 @@ public class SignUpController implements Serializable {
 
     @FXML
     private void initialize() {
-
+        fullname.setStyle("-fx-text-inner-color: White;");
+        email.setStyle("-fx-text-inner-color: White;");
+        username.setStyle("-fx-text-inner-color: White;");
+        password.setStyle("-fx-text-inner-color: White;");
+        confirmPass.setStyle("-fx-text-inner-color: White;");
     }
 
     public void toLogIn(ActionEvent ae) throws Exception {

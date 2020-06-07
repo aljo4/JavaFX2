@@ -15,21 +15,31 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-   @FXML private JFXButton forgotpwdButton;
-    @FXML private JFXTextField email;
-    @FXML private JFXPasswordField password;
+    @FXML
+    private JFXButton forgotpwdButton;
+    @FXML
+    private JFXTextField email;
+    @FXML
+    private JFXPasswordField password;
+
+    public void initialize() {
+        email.setStyle("-fx-text-inner-color: White;");
+        password.setStyle("-fx-text-inner-color: White;");
+
+    }
 
     public void validateLogin(ActionEvent ae) throws IOException {
         if (Account.AccountLists.checkUserExists(email.getText(), password.getText())) {
             Account account = Account.getInstance();
-            account.setEmail(email.getText()); account.setPassword(password.getText());
+            account.setEmail(email.getText());
+            account.setPassword(password.getText());
             System.out.println(account.getEmail());
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Welcome");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome");
             alert.showAndWait();
             Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene signUpViewScene = new Scene(signUpParent);
 
-            Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
+            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
             window.setResizable(true);
             window.setMaximized(true);

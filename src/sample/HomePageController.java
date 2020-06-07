@@ -1,4 +1,5 @@
 package sample;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -112,12 +113,29 @@ public class HomePageController {
         }
     }
 
-    public void updateWeight(ActionEvent ae){
+    public void updateWeight(ActionEvent ae) throws IOException {
         Account a = Account.getInstance();
-        int i = Integer.valueOf(newWeight.getText());
+        double i = Double.parseDouble(newWeight.getText());
         //a.pastweights.add i + localdate.now
         a.setWeight(i);
+        BufferedReader br = null;
+//        try{
+//            br = new BufferedReader((new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt")));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        if(br !=null) {
+//            String st;
+//            while ((st = br.readLine()) != null) {
+//                String[] splitted = st.split(",");
+//                if (Account.getInstance().getEmail().equals(splitted[1])) {
+//                    Double.parseDouble(splitted[6])) = Account.getInstance().getWeight();
+//                }
+//            }
+//        }
     }
+
+
 //    public void makeMan(){
 //
 //        Edible e1 = new Edible(Edible.foodType.FOOD, "chicken", 200);
