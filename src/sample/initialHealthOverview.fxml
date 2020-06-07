@@ -13,7 +13,10 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #127a51;" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.initialHealthOverviewController">
    <children>
-      <AnchorPane opacity="0.49" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepagebackground.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutY="-3.0" opacity="0.49" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../resources/homepagebackground.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+         <children>
+            <Button fx:id="cancelButton" layoutX="495.0" layoutY="24.0" mnemonicParsing="false" onAction="#returnHome" prefHeight="17.0" prefWidth="81.0" text="Cancel" />
+         </children></AnchorPane>
       <JFXTextField fx:id="height" focusColor="WHITE" layoutX="122.0" layoutY="64.0" unFocusColor="WHITE" />
       <JFXButton fx:id="proceedbutton" layoutX="244.0" layoutY="340.0" onAction="#proceedButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="Proceed" textFill="WHITE">
          <font>
