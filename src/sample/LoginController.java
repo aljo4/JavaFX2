@@ -10,9 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginController {
     @FXML
@@ -35,15 +38,20 @@ public class LoginController {
             account.setPassword(password.getText());
             System.out.println(account.getEmail());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome");
-            alert.showAndWait();
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene signUpViewScene = new Scene(signUpParent);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Scene signUpViewScene = new Scene(signUpParent);
 
-            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.setResizable(true);
-            window.setMaximized(true);
-            window.show();
+                Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+                window.setScene(signUpViewScene);
+                window.setResizable(true);
+                window.setMaximized(true);
+                window.show();
+            }else{
+                alert.close();
+            }
+
 
         }
         else{
