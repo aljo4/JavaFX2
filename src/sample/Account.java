@@ -382,11 +382,6 @@ public class Account implements Serializable {
             }
         }
 
-        public static void forgotPassword(Account account){
-            System.out.println(account.getPassword());
-        }
-
-
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
