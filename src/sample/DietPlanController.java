@@ -26,8 +26,9 @@ import java.util.Date;
 
 public class DietPlanController<JFXTextField> {
 
-    //all fields on page
 
+    //all fields on page
+    @FXML private Button homeButton;
     @FXML
     private TextField DietName;
     @FXML
@@ -76,7 +77,18 @@ public class DietPlanController<JFXTextField> {
             window.show();}
 
         }
+
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        Parent DietParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene signUpViewScene = new Scene(DietParent);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(true);
+        window.setMaximized(true);
+        window.show();}
+
     }
+
 
 
 
