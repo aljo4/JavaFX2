@@ -34,6 +34,8 @@ public class initialHealthOverviewController implements Initializable, Serializa
     @FXML
     private RadioButton female;
     @FXML
+    private Button cancelButton;
+    @FXML
     private JFXButton ectmorph;
     @FXML
     private JFXButton endomorph;
@@ -116,6 +118,15 @@ public class initialHealthOverviewController implements Initializable, Serializa
         Account.getInstance().setBmi(bmi);
         Alert alert = new Alert(Alert.AlertType.INFORMATION,"This is your BMI: " + bmi);
         alert.showAndWait();
+    }
+
+    public void returnHome(ActionEvent actionEvent) throws IOException {
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.show();
     }
 }
 
