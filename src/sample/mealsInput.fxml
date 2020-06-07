@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -61,5 +62,10 @@
             <Insets bottom="5.0" left="7.0" right="7.0" top="6.0" />
          </opaqueInsets>
     </AnchorPane>
+      <JFXButton fx:id="HomePage" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="HomePage" textFill="BLACK">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
   </children>
 </VBox>
