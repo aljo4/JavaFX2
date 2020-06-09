@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class DietPageController {
@@ -40,7 +41,7 @@ public class DietPageController {
     }
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -91,5 +92,23 @@ public class DietPageController {
             window.show();
         }
 
+    }
+
+    public void toDietSelection(ActionEvent actionEvent) throws IOException {
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("dietcreatepage.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent, 600, 400);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(false);
+        window.show();
+    }
+
+    public void toEatPage(ActionEvent actionEvent) throws IOException {
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("mealsInput.fxml"));
+        Scene signUpViewScene = new Scene(signUpParent, 640, 600);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(signUpViewScene);
+        window.setResizable(false);
+        window.show();
     }
 }

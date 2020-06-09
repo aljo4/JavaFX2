@@ -18,15 +18,15 @@ import java.net.URL;
 import java.util.*;
 
 
-
-
-
 public class mealsController implements Initializable {
 
-        FoodType aFood = new FoodType();
+    @FXML private TextField foodCalories;
+    @FXML private TextField drinkCalories;
+
+    FoodType aFood = new FoodType();
         DrinkType aDrink = new DrinkType();
         @FXML
-        private ChoiceBox<Meal.mealType> mealtype;
+        private ChoiceBox<Meal.mealType> mealtype; //for breakfast, lunch, dinner, etc
         ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
     @FXML private ComboBox<String> foods;
    // private ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods());
@@ -59,8 +59,23 @@ public class mealsController implements Initializable {
 
 
     public void saveDiet(javafx.event.ActionEvent actionEvent) {
-            Edible eat = new Edible();
-            eat.setfName(foods.getSelectionModel().getSelectedItem());
+        Edible eat = new Edible();
+        eat.setDrink(drink.getSelectionModel().getSelectedItem());
+        eat.setDrinkCalCount(Integer.parseInt(drinkCalories.getText()));
+        eat.setFood(foods.getSelectionModel().getSelectedItem());
+        eat.setFoodCalCount(Integer.parseInt(foodCalories.getText()));
+
+
+        Meal aMeal = new Meal(mealtype.getSelectionModel().getSelectedItem(),eat);
+
+        Account.getInstance().setMeal(aMeal);
+        Account.getInstance().getMeal().setCaloricIntake(Integer.parseInt(drinkCalories.getText())+ Integer.parseInt(foodCalories.getText()));
+        System.out.println(aMeal.toStringForMeals());
+        Account.getInstance().getMeal().getFood().add(aMeal);
+        System.out.println(Account.getInstance().getMeal().getFood().size());
+
+        Account.getInstance().getAccountLists().saveMeal(aMeal);
+
     }
 
     public void homeButton(ActionEvent actionEvent) throws IOException {

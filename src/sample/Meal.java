@@ -14,30 +14,32 @@ public class Meal {
         mealType() {
         }
     }
-    private mealType mealtype;
-    private ArrayList<Edible> food;
-    private int caloricIntake; //will this be used?
-    private LocalDate mealDate;
+    private mealType mealtype; //every meal object will have an enum
+    private ArrayList<Meal> food; //arraylist of edible which that class has enum to specify whether food or drink
+    private int caloricIntake; //combine calorie for meal
+    private LocalDate mealDate; //when you ate
+    private Edible eat;
 
     public Meal() {
-        this.food = food;
+        food = new ArrayList<>();
         this.caloricIntake = caloricIntake;
         this.mealtype = mealtype;
     }
 
-    public Meal(mealType mealtype, ArrayList<Edible> food){
+    public Meal(mealType mealtype, Edible eat){
         this.mealtype = mealtype;
-        this.food = food;
+        food = new ArrayList<>();
         this.mealDate = LocalDate.now();
-        int cals = 0;
-        for (Edible e:food){
-            cals+=e.getCalCount();
-        }
-        this.caloricIntake = cals;
+        this.eat = eat;
+//        int cals = 0;
+//        for (Edible e:food){
+//            cals+=e.getDrinkCalCount()+e.getFoodCalCount();
+//        }
+//        this.caloricIntake = cals;
     }
 
 
-    public ArrayList<Edible> getFood() {
+    public ArrayList<Meal> getFood() {
         return food;
     }
 
@@ -61,7 +63,7 @@ public class Meal {
         this.caloricIntake = caloricIntake;
     }
 
-    public void setFood(ArrayList<Edible> food) {
+    public void setFood(ArrayList<Meal> food) {
         this.food = food;
     }
 
@@ -72,15 +74,32 @@ public class Meal {
     public void calculateCaloriesLeftForDay(){
     }
 
-    public void calculateDailyCaloricIntake(){
+    public Edible getEat() {
+        return eat;
     }
 
-    @Override
-    public String toString() {
-        return "some text here";
+    public void setEat(Edible eat) {
+        this.eat = eat;
+    }
+
+    public void calculateDailyCaloricIntake(){
+    }
+    public void addToMeals(Meal meal){
+        food.add(meal);
+    }
+
+    public Meal(mealType mealtype, ArrayList<Meal> food, int caloricIntake, LocalDate mealDate) {
+        this.mealtype = mealtype;
+        this.food = food;
+        this.caloricIntake = caloricIntake;
+        this.mealDate = mealDate;
     }
 
     public String toStringForMeals(){
-        return "Type of Meal: " + mealtype + "\n"+ "Total Calories: " + caloricIntake;
+        return eat +
+                " Type of Meal: " + mealtype + "\n"+ "Total Calories: " + caloricIntake;
     }
+
+
+
 }

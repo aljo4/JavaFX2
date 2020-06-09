@@ -57,15 +57,15 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
+            <JFXButton fx:id="HomePage" layoutX="14.0" layoutY="31.0" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="HomePage" textFill="BLACK">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
          </children>
          <opaqueInsets>
             <Insets bottom="5.0" left="7.0" right="7.0" top="6.0" />
          </opaqueInsets>
     </AnchorPane>
-      <JFXButton fx:id="HomePage" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../resources/signupcss.css" text="HomePage" textFill="BLACK">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXButton>
   </children>
 </VBox>

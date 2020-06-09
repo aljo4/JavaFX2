@@ -15,7 +15,7 @@ public class Account implements Serializable {
     private Meal meal;
     private ArrayList<Activity.Activities> exercises;
     private Activity.Activities activities;
-    private ArrayList<Meal> meals;
+    private ArrayList<Meal> meals; //TODO: This may have to be deleted!
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
@@ -366,14 +366,14 @@ public class Account implements Serializable {
 
         public void saveMeal(Meal meal) {
             try {
-                File filename = new File("sample/Meals.txt");
+                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getMeals().size(); i++) {
-                    bw.write(meal.toString());
+                for (int i = 0; i < Account.getInstance().getMeal().getFood().size(); i++) {
+                    bw.write(meal.toStringForMeals());
                     bw.newLine();
                 }
                 bw.close();

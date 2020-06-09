@@ -43,15 +43,15 @@ public class YouPageController {
     @FXML
     public void initialize() {
         //test data
-        Edible e1 = new Edible(Edible.foodType.FOOD, "chicken", 200);
-        Edible e2 = new Edible(Edible.foodType.FOOD, "potato", 150);
-        Edible e3 = new Edible(Edible.foodType.DRINK, "Banana Milkshake", 180);
+        Edible e1 = new Edible("fanta", 200,"mash potatoes", 600);
+        Edible e2 = new Edible("water", 50, "potato", 150);
+        Edible e3 = new Edible("Coffee", 100 ,"Banana Milkshake", 180);
         ArrayList<Edible> es = new ArrayList<>();
         es.add(e1);
         es.add(e3);
         es.add(e2);
-        Meal aMeal = new Meal(Meal.mealType.LUNCH, es);
-        Account.getInstance().getMeals().add(aMeal);
+        //Meal aMeal = new Meal(Meal.mealType.LUNCH, es);
+        //Account.getInstance().getMeals().add(aMeal);
         //end of adding test object
         ArrayList<String> goalsList = new ArrayList<>();
         ArrayList<String> activitiesList = new ArrayList<>();

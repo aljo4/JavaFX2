@@ -53,7 +53,7 @@ public class activitiesController implements Initializable {
                 }
 
         );
-        activity.setItems(exerciseChoice);
+        activity.setItems(exerciseChoice); //the Observable list like array is used to add to the comboBox activity
     }
 
 

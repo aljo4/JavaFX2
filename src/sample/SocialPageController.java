@@ -166,7 +166,7 @@ public class SocialPageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("ActivityPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

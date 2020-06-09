@@ -35,6 +35,8 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception{
         Account.getInstance().getAccountLists().saveToFile();
+  //      Account.getInstance().getAccountLists().saveMeal();
+//        Account.getInstance().getAccountLists().
 
     }
 

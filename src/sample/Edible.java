@@ -2,66 +2,70 @@ package sample;
 
 import java.util.ArrayList;
 
-public class Edible {
-
-    public enum foodType{
-        FOOD,
-        DRINK;
-
-        foodType() {
-        }
-    }
-
-    private foodType fType;
-    private String fName;
-    private int calCount;
-
+public class Edible<FoodType,DrinkType> {
+    private String Drink;
+    private int drinkCalCount;
+    private String Food;
+    private int foodCalCount;
 
     public Edible(){
-        this.fName = "null";
-        this.calCount = 0;
+        this.Drink = "null";
+        this.Food = "null";
+        this.drinkCalCount =0;
+        this.foodCalCount = 0;
     }
 
-    public Edible(foodType fType, String fName, int calCount){
-        this.fType = fType;
-        this.fName = fName;
-        this.calCount = calCount;
+    public Edible(String drink, int drinkCalCount, String food, int foodCalCount) {
+        Drink = drink;
+        this.drinkCalCount = drinkCalCount;
+        Food = food;
+        this.foodCalCount = foodCalCount;
     }
 
-    public foodType getfType() {
-        return fType;
+
+    public String getDrink() {
+        return Drink;
     }
 
-    public int getCalCount() {
-        return calCount;
+    public void setDrink(String drink) {
+        Drink = drink;
     }
 
-    public String getfName() {
-        return fName;
+    public int getDrinkCalCount() {
+        return drinkCalCount;
     }
 
-    public void setfType(foodType fType) {
-        this.fType = fType;
+    public void setDrinkCalCount(int drinkCalCount) {
+        this.drinkCalCount = drinkCalCount;
     }
 
-    public void setCalCount(int calCount) {
-        this.calCount = calCount;
+    public String getFood() {
+        return Food;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setFood(String food) {
+        Food = food;
+    }
+
+    public int getFoodCalCount() {
+        return foodCalCount;
+    }
+
+    public void setFoodCalCount(int foodCalCount) {
+        this.foodCalCount = foodCalCount;
     }
 
     @Override
     public String toString() {
         return "Edible{" +
-                "fType=" + fType +
-                ", fName='" + fName + '\'' +
-                ", calCount=" + calCount +
+                "Drink = '" + Drink + '\'' +
+                ", Drink Calories = " + drinkCalCount +
+                ", Food = '" + Food + '\'' +
+                ", Food Calories = " + foodCalCount +
                 '}';
     }
 
     public String foodForTimeline(){
-        return fName + ", calories = " + calCount +"\n";
+        return Food + ", calories = " + foodCalCount +"\n";
     }
 }
