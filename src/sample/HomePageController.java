@@ -38,11 +38,11 @@ public class HomePageController {
 //            newTarget.setText(String.valueOf(a.getGoals().get(a.getGoals().size()).getGoalWeight()));
 //        }
         int calin = 0;
-        for (Meal m:a.getMeals()) {
-            if(m.getMealDate().compareTo(LocalDate.now())==0){
-                calin += m.getCaloricIntake();
-            }
-        }
+//        for (Meal m:a.getMeal().getFood()) { //TODO: this does not work ?!
+//            if(m.getMealDate().compareTo(LocalDate.now())==0){
+//                calin += m.getCaloricIntake();
+//            }
+//        }
         calInToday.setText(String.valueOf(calin));
         //when activites is done do calburnToday
 

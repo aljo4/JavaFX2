@@ -4,3 +4,5 @@ Edible{Drink = 'Juices', Drink Calories = 100, Food = 'Lamb', Food Calories = 24
 Total Calories: 2557
 Edible{Drink = 'Soft Drinks', Drink Calories = 7773, Food = 'Beef', Food Calories = 3556} Type of Meal: DINNER
 Total Calories: 11329
+Edible{Drink = 'Coffee', Drink Calories = 142, Food = 'Stews', Food Calories = 2344} Type of Meal: DINNER
+Total Calories: 2486

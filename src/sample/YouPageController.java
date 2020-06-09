@@ -64,7 +64,7 @@ public class YouPageController {
         for (int i = 0; i <= 21; i++) {
             timeLineDates.add(firstDateOnLine.plusDays(i));
             temp.clear();
-            for (Meal m : a.getMeals()) {
+            for (Meal m : a.getMeal().getFood()) {
                 if (m.getMealDate().compareTo(timeLineDates.get(i)) == 0) {
                     temp.add(m);
                 }
@@ -89,8 +89,8 @@ public class YouPageController {
                     } else goalsTemp.add(null);
                 }
             }
-            if (a.getMeals().size() > 0) {
-                for (Meal m : a.getMeals()) {
+            if (a.getMeal().getFood().size() > 0) {
+                for (Meal m : a.getMeal().getFood()) {
                     if (m.getMealDate().compareTo(d) == 0) {
                         mealTemp.add(m);
                     } else mealTemp.add(null);
