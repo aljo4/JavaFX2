@@ -57,13 +57,10 @@ public class Edible<FoodType,DrinkType> {
 
     @Override
     public String toString() {
-        return "Edible{" +
-                "Drink = '" + Drink + '\'' +
-                ", Drink Calories = " + drinkCalCount +
-                ", Food = '" + Food + '\'' +
-                ", Food Calories = " + foodCalCount +
-                '}';
+        return Drink + "," + drinkCalCount + "," +Food + "," +  foodCalCount;
     }
+
+
 
     public String foodForTimeline(){
         return Food + ", calories = " + foodCalCount +"\n";

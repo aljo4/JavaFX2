@@ -1,8 +1,7 @@
-Edible{Drink = 'Soft Drinks', Drink Calories = 123, Food = 'Eggs', Food Calories = 2346} Type of Meal: LUNCH
-Total Calories: 2469
-Edible{Drink = 'Juices', Drink Calories = 100, Food = 'Lamb', Food Calories = 2457} Type of Meal: DINNER
-Total Calories: 2557
-Edible{Drink = 'Soft Drinks', Drink Calories = 7773, Food = 'Beef', Food Calories = 3556} Type of Meal: DINNER
-Total Calories: 11329
-Edible{Drink = 'Coffee', Drink Calories = 142, Food = 'Stews', Food Calories = 2344} Type of Meal: DINNER
-Total Calories: 2486
+Coffee,400,Lamb,1700,BREAKFAST,2100
+Soft Drinks,340,Beef,2000,DINNER,2340
+Water,550,Pies,1700,BREAKFAST,2250
+Alcohol,302,Chicken,2000,DINNER,2302
+Alcohol,302,Chicken,2000,DINNER,2302
+Alcohol,302,Chicken,2000,DINNER,2302
+Juices,1000,Nuts,680,SNACK,1680

@@ -13,22 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.util.Pair;
-import java.util.*;
 import org.javatuples.Quartet;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Optional;
 
 public class YouPageController {
@@ -64,7 +58,7 @@ public class YouPageController {
         for (int i = 0; i <= 21; i++) {
             timeLineDates.add(firstDateOnLine.plusDays(i));
             temp.clear();
-            for (Meal m : a.getMeal().getFood()) {
+            for (Meal m : a.getMeal().getListOfFoods()) {
                 if (m.getMealDate().compareTo(timeLineDates.get(i)) == 0) {
                     temp.add(m);
                 }
@@ -89,8 +83,8 @@ public class YouPageController {
                     } else goalsTemp.add(null);
                 }
             }
-            if (a.getMeal().getFood().size() > 0) {
-                for (Meal m : a.getMeal().getFood()) {
+            if (a.getMeal().getListOfFoods().size() > 0) {
+                for (Meal m : a.getMeal().getListOfFoods()) {
                     if (m.getMealDate().compareTo(d) == 0) {
                         mealTemp.add(m);
                     } else mealTemp.add(null);

@@ -25,7 +25,8 @@ public class LoginController {
     @FXML
     private JFXPasswordField password;
 
-    public void initialize() {
+    public void initialize() throws IOException {
+        Account.getInstance().getAccountLists().readMeals();
         email.setStyle("-fx-text-inner-color: White;");
         password.setStyle("-fx-text-inner-color: White;");
 

@@ -3,7 +3,6 @@ package sample;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Meal {
     public enum mealType{
@@ -15,20 +14,15 @@ public class Meal {
         }
     }
     private mealType mealtype; //every meal object will have an enum
-    private ArrayList<Meal> food; //arraylist of edible which that class has enum to specify whether food or drink
+    private ArrayList<Meal> listOfFoods; //arraylist of edible which that class has enum to specify whether food or drink
     private int caloricIntake; //combine calorie for meal
     private LocalDate mealDate; //when you ate
     private Edible eat;
 
-    public Meal() {
-        food = new ArrayList<>();
-        this.caloricIntake = caloricIntake;
-        this.mealtype = mealtype;
-    }
 
     public Meal(mealType mealtype, Edible eat){
         this.mealtype = mealtype;
-        food = new ArrayList<>();
+        listOfFoods = new ArrayList<>(43);
         this.mealDate = LocalDate.now();
         this.eat = eat;
 //        int cals = 0;
@@ -38,9 +32,16 @@ public class Meal {
 //        this.caloricIntake = cals;
     }
 
+    public Meal() {
+        this.mealtype = mealtype;
+        listOfFoods = new ArrayList<>();
+        this.mealDate = LocalDate.now();
+        this.eat = eat;
 
-    public ArrayList<Meal> getFood() {
-        return food;
+    }
+
+    public ArrayList<Meal> getListOfFoods() {
+        return listOfFoods;
     }
 
     public LocalDate getMealDate() {
@@ -63,8 +64,8 @@ public class Meal {
         this.caloricIntake = caloricIntake;
     }
 
-    public void setFood(ArrayList<Meal> food) {
-        this.food = food;
+    public void setListOfFoods(ArrayList<Meal> listOfFoods) {
+        this.listOfFoods = listOfFoods;
     }
 
     public void setMealDate(LocalDate mealDate) {
@@ -85,21 +86,19 @@ public class Meal {
     public void calculateDailyCaloricIntake(){
     }
     public void addToMeals(Meal meal){
-        food.add(meal);
+        listOfFoods.add(meal);
     }
 
-    public Meal(mealType mealtype, ArrayList<Meal> food, int caloricIntake, LocalDate mealDate) {
+    public Meal(mealType mealtype, ArrayList<Meal> listOfFoods, int caloricIntake, LocalDate mealDate) {
         this.mealtype = mealtype;
-        this.food = food;
+        this.listOfFoods = listOfFoods;
         this.caloricIntake = caloricIntake;
         this.mealDate = mealDate;
     }
 
     public String toStringForMeals(){
-        return eat +
-                " Type of Meal: " + mealtype + "\n"+ "Total Calories: " + caloricIntake;
+        return eat + "," + mealtype + "," + caloricIntake;
     }
-
 
 
 }

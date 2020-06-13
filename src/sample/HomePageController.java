@@ -33,6 +33,7 @@ public class HomePageController {
     @FXML
     public void initialize()throws Exception{
        Account a = Account.getInstance();
+        //a.getAccountLists().readMeals();
 //            currentWeight.setText(String.valueOf(a.getWeight()));
 //        if (a.getGoals().size()>0) {
 //            newTarget.setText(String.valueOf(a.getGoals().get(a.getGoals().size()).getGoalWeight()));

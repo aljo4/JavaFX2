@@ -71,10 +71,11 @@ public class mealsController implements Initializable {
         Account.getInstance().setMeal(aMeal);
         Account.getInstance().getMeal().setCaloricIntake(Integer.parseInt(drinkCalories.getText())+ Integer.parseInt(foodCalories.getText()));
         System.out.println(aMeal.toStringForMeals());
-        Account.getInstance().getMeal().getFood().add(aMeal);
-        System.out.println(Account.getInstance().getMeal().getFood().size());
+        Account.getInstance().getMeal().addToMeals(aMeal);
 
         Account.getInstance().getAccountLists().saveMeal(aMeal);
+        System.out.println(Account.getInstance().getMeal().getListOfFoods().size());
+
 
     }
 
