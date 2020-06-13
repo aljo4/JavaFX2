@@ -46,7 +46,7 @@ public class HomePageController {
 //        }
         calInToday.setText(String.valueOf(calin));
         //when activites is done do calburnToday
-
+        newWeight.setStyle("-fx-text-inner-color: White;");
     }
 
     public void toSocialPage(ActionEvent ae)throws Exception{

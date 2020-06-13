@@ -2,6 +2,7 @@ package sample;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Account implements Serializable {
     //instance variables below
@@ -312,7 +313,7 @@ public class Account implements Serializable {
 
         public void saveToFile() { //make sure to change the path when using this
             try {
-                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
+                File filename = new File("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -330,7 +331,7 @@ public class Account implements Serializable {
 
         public void saveGoalToFile(Goals goal) {
             try {
-                File filename = new File("sample/Goals.txt");
+                File filename = new File("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Goals.txt " + Account.getInstance().toString());
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -383,47 +384,54 @@ public class Account implements Serializable {
         }
 
         public void readMeals() throws IOException {
-            BufferedReader br = null;
-            try{
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt"));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            if(br!= null) {
-                Meal meal;
-                Edible eat;
-                String drink, food;
-                int drinkCal, foodCal;
-                String st;
-                while ((st = br.readLine()) != null) {
-                    String[] splitted = st.split(",");
-                    eat = new Edible(splitted[0], Integer.parseInt(splitted[1]), splitted[2], Integer.parseInt(splitted[3]));
-                    meal = new Meal(Meal.mealType.valueOf(splitted[4]),eat);
-                    meal.addToMeals(meal);
-                    for (Meal m : meal.getListOfFoods()){
-                        System.out.println(m.toStringForMeals());
-                        System.out.println(meal.getListOfFoods().size());
-
-                    }
+//            BufferedReader br = null;
+            Meal meal = null;
+            Edible eat;
+            String drink, food;
+            int drinkCal, foodCal;
+            String st;
+            Scanner scanner = new Scanner(new File("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\src\\sample\\Meals.txt"));
+            while (scanner.hasNextLine()) {
+                st = scanner.nextLine();
+                String[] splitted = st.split(",");
+                eat = new Edible(splitted[0], Integer.parseInt(splitted[1]), splitted[2], Integer.parseInt(splitted[3]));
+                meal = new Meal(Meal.mealType.valueOf(splitted[4]), eat);
+                meal.addToMeals(meal);
+                for (int i = 0; i < meal.getListOfFoods().size(); i++) {
+                    System.out.println(meal.getListOfFoods().get(i).toStringForMeals());
                 }
+            }
+//            try{ br = new BufferedReader(new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\src\\sample\\Meals.txt"));
+//
+//                while ((st = br.readLine()) != null) {
+//                    String[] splitted = st.split(",");
+//                    eat = new Edible(splitted[0], Integer.parseInt(splitted[1]), splitted[2], Integer.parseInt(splitted[3]));
+//                    meal = new Meal(Meal.mealType.valueOf(splitted[4]),eat);
+//                    meal.addToMeals(meal);
+//                }
+//            }
+//            catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//            finally{
+//                br.close();
+//            }
 
+        }
 
 
 //                for(Meal meals: meal.getListOfFoods()){
 //                    System.out.println(meals.toStringForMeals());
 //                }
 
-            }
-
-        }
-
 
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -431,7 +439,7 @@ public class Account implements Serializable {
                 String st;
                 while ((st = br.readLine()) != null) {
                     String[] splitted = st.split(",");
-                    //System.out.println(splitted[1]);
+                    // System.out.println(splitted[1]);
                     if (email.equals(splitted[1]) && password.equals(splitted[3])) {
                         existingUser = true;
                         break;
@@ -444,19 +452,20 @@ public class Account implements Serializable {
             }
             return existingUser;
         }
+
         public static String forgottenPassword(String email) throws IOException {
             BufferedReader br = null;
-            String password ="";
-            try{
-                br = new BufferedReader((new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt")));
+            String password = "";
+            try {
+                br = new BufferedReader((new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt")));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            if(br !=null){
+            if (br != null) {
                 String st;
-                while ((st = br.readLine()) != null){
+                while ((st = br.readLine()) != null) {
                     String[] splitted = st.split(",");
-                    if(email.equals(splitted[1])){
+                    if (email.equals(splitted[1])) {
                         System.out.println(splitted[3]);
                         password = splitted[3];
                         return password;
@@ -465,7 +474,7 @@ public class Account implements Serializable {
                     }
                 }
             }
-          return password;
+            return password;
 
         }
 
@@ -473,7 +482,7 @@ public class Account implements Serializable {
 
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -482,6 +491,7 @@ public class Account implements Serializable {
                     System.out.println(accounts.get(i));
         }
     }
-
 }
+
+
 
