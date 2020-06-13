@@ -383,36 +383,39 @@ public class Account implements Serializable {
         }
 
         public void readMeals() throws IOException {
-
             BufferedReader br = null;
             try{
                 br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            Meal meal = new Meal();
-            Edible eat = new Edible();
-            if(br!= null){
+
+            if(br!= null) {
+                Meal meal;
+                Edible eat;
+                String drink, food;
+                int drinkCal, foodCal;
                 String st;
+                while ((st = br.readLine()) != null) {
+                    String[] splitted = st.split(",");
+                    eat = new Edible(splitted[0], Integer.parseInt(splitted[1]), splitted[2], Integer.parseInt(splitted[3]));
+                    meal = new Meal(Meal.mealType.valueOf(splitted[4]),eat);
+                    meal.addToMeals(meal);
+                    for (Meal m : meal.getListOfFoods()){
+                        System.out.println(m.toStringForMeals());
+                        System.out.println(meal.getListOfFoods().size());
 
-                while((st= br.readLine())!= null){
-
-                    String[]splitted = st.split(",");
-                    eat.setDrink(splitted[0]);
-                    eat.setDrinkCalCount(Integer.parseInt(splitted[1]));
-                    eat.setFood(splitted[2]);
-                    eat.setFoodCalCount(Integer.parseInt(splitted[3]));
-                    meal.setMealtype(Meal.mealType.valueOf(splitted[4]));
-                    meal.setEat(eat);
-                    meal.getListOfFoods().add(meal);
-                    System.out.println(meal.getListOfFoods().size());
-                    for(Meal meals: meal.getListOfFoods()){
-                        System.out.println(meals.toStringForMeals());
                     }
                 }
 
 
+
+//                for(Meal meals: meal.getListOfFoods()){
+//                    System.out.println(meals.toStringForMeals());
+//                }
+
             }
+
         }
 
 
