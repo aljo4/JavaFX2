@@ -35,7 +35,8 @@ public class YouPageController {
     @FXML JFXButton toSocialPage;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
+        Account a = Account.getInstance();
         //test data
         Edible e1 = new Edible("fanta", 200,"mash potatoes", 600);
         Edible e2 = new Edible("water", 50, "potato", 150);
@@ -50,17 +51,18 @@ public class YouPageController {
         ArrayList<String> goalsList = new ArrayList<>();
         ArrayList<String> activitiesList = new ArrayList<>();
 
-        Account a = Account.getInstance();
 
         ArrayList<LocalDate> timeLineDates = new ArrayList<>();
         LocalDate firstDateOnLine = LocalDate.now().minusDays(11);
-        ArrayList<Meal> temp = new ArrayList<>();
+        a.getAccountLists().readMeals();
+        System.out.println(a.getMeal().getListOfFoods().size());
+        System.out.println("hello");
         for (int i = 0; i <= 21; i++) {
             timeLineDates.add(firstDateOnLine.plusDays(i));
-            temp.clear();
+            a.getMeal().getListOfFoods().clear();
             for (Meal m : a.getMeal().getListOfFoods()) {
                 if (m.getMealDate().compareTo(timeLineDates.get(i)) == 0) {
-                    temp.add(m);
+                    a.getMeal().getListOfFoods().add(m);
                 }
             }
 
@@ -74,7 +76,7 @@ public class YouPageController {
 
         for (LocalDate d : timeLineDates) {
             goalsTemp.clear();
-            mealTemp.clear();
+            a.getMeal().getListOfFoods().clear();
             activitiesTemp.clear();
             if (a.getGoals().size() > 0) {
                 for (Goals g : a.getGoals()) {
@@ -84,10 +86,10 @@ public class YouPageController {
                 }
             }
             if (a.getMeal().getListOfFoods().size() > 0) {
-                for (Meal m : a.getMeal().getListOfFoods()) {
+                for (Meal m : a.getMeal().getListOfFoods()) {//TODO: create date data
                     if (m.getMealDate().compareTo(d) == 0) {
-                        mealTemp.add(m);
-                    } else mealTemp.add(null);
+                        a.getMeal().getListOfFoods().add(m);
+                    } else a.getMeal().getListOfFoods().add(null);
                 }
             }
             //need Activities to be a class

@@ -1,6 +1,7 @@
 package sample;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
@@ -15,7 +16,6 @@ public class Account implements Serializable {
     private Meal meal;
     private ArrayList<Activity.Activities> exercises;
     private Activity.Activities activities;
-    private ArrayList<Meal> meals; //TODO: This may have to be deleted!
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
@@ -59,7 +59,6 @@ public class Account implements Serializable {
         groupList = new ArrayList<String>();
         friends = new ArrayList();
         this.gender = gender;
-        meals = new ArrayList<Meal>();
         exercises = new ArrayList<Activity.Activities>();
         this.activities = activities;
         this.bmi = bmi;
@@ -115,9 +114,6 @@ public class Account implements Serializable {
         return diet;
     }
 
-    public void setMeals(ArrayList<Meal> meals) {
-        this.meals = meals;
-    }
 
     public void setDiet(TypeOfDiet diet) {
         this.diet = diet;
@@ -181,9 +177,7 @@ public class Account implements Serializable {
         return friends;
     }
 
-    public ArrayList<Meal> getMeals() {
-        return meals;
-    }
+
 
     public TypeOfDiet getTypeOfDiet() {
         return diet;
@@ -382,41 +376,45 @@ public class Account implements Serializable {
             }
         }
 
-        public void readMeals() throws IOException {
+        public ArrayList<Meal> readMeals() throws IOException {
             BufferedReader br = null;
             try{
                 br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            ArrayList<Meal> meals = new ArrayList<>();
 
             if(br!= null) {
                 Meal meal;
                 Edible eat;
-                String drink, food;
+                String drink, food, mealType;
                 int drinkCal, foodCal;
                 String st;
-                while ((st = br.readLine()) != null) {
-                    String[] splitted = st.split(",");
-                    eat = new Edible(splitted[0], Integer.parseInt(splitted[1]), splitted[2], Integer.parseInt(splitted[3]));
-                    meal = new Meal(Meal.mealType.valueOf(splitted[4]),eat);
-                    meal.addToMeals(meal);
-                    for (Meal m : meal.getListOfFoods()){
-                        System.out.println(m.toStringForMeals());
-                        System.out.println(meal.getListOfFoods().size());
 
-                    }
+                try {
+                    while ((st = br.readLine()) != null) {
+                        String[] splitted = st.split(",");
+                       drink = splitted[0];
+                       drinkCal = Integer.parseInt(splitted[1]);
+                       food = splitted[2];
+                       foodCal = Integer.parseInt(splitted[3]);
+                       mealType= splitted[4];
+                       eat = new Edible(drink,drinkCal,food,foodCal);
+                       meal = new Meal(Meal.mealType.valueOf(mealType),eat);
+                       Account.getInstance().setMeal(meal);
+                       meals.add(meal);
+                       Account.getInstance().getMeal().setListOfFoods(meals);
+
+ }
+                }catch(NumberFormatException ex){
+
                 }
-
-
-
-//                for(Meal meals: meal.getListOfFoods()){
-//                    System.out.println(meals.toStringForMeals());
-//                }
-
             }
+            return meals;
 
         }
+
 
 
         public static boolean checkUserExists(String email, String password) throws IOException {
