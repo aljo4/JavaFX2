@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+import sample.Model.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

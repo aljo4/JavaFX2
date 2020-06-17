@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: lightgreen; -fx-border-color: green; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NewGroupPopController">
+   <children>
+      <JFXTextField fx:id="newGroupName" layoutX="83.0" layoutY="34.0" promptText=" Group Name" />
+      <JFXPasswordField fx:id="newGroupPass" layoutX="83.0" layoutY="74.0" promptText=" Group Password" />
+      <JFXButton fx:id="submitGroup" layoutX="166.0" layoutY="124.0" onAction="#createGroupButton" style="-fx-background-color: lightblue; -fx-border-color: green;" text="Submit" />
+      <JFXButton fx:id="cancelNewGroup" layoutX="83.0" layoutY="124.0" onAction="#closePop" style="-fx-background-color: lightblue; -fx-border-color: green;" text="Cancel" />
+      <Label layoutX="5.0" layoutY="4.0" text="Create New Group" underline="true" />
+      <Label fx:id="notify2" layoutX="136.0" layoutY="169.0" />
+   </children>
+</AnchorPane>

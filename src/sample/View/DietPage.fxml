@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DietPageController">
+   <left>
+      <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
+               <children>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="toHomePage" minHeight="80.0" minWidth="80.0" onAction="#toHomePage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toYouPage" minHeight="80.0" minWidth="80.0" onAction="#toYouPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toGoalsPage" minHeight="80.0" minWidth="80.0" onAction="#toGoalsPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="59.0" prefWidth="211.0" />
+            <Label style="-fx-background-color: black;" text="HealthSavvy" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="28.0" />
+               </font>
+            </Label>
+            <Region prefHeight="59.0" prefWidth="141.0" />
+            <MenuButton mnemonicParsing="false" style="-fx-background-color: clear;">
+               <items>
+                  <MenuItem fx:id="manageAccountButton" mnemonicParsing="false" text="Manage Account" />
+                  <MenuItem fx:id="logOut" mnemonicParsing="false" text="Log Out" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icons8-name-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgR">
+               <children>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="toSocialPage" minHeight="80.0" minWidth="80.0" onAction="#toSocialPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Social" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Diet" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="sidebuts" />
+                        <String fx:value="currentPageButton" />
+                     </styleClass>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toActivityPage" minHeight="80.0" minWidth="80.0" onAction="#toActivityPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Activity" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="darker" BorderPane.alignment="CENTER">
+         <children>
+            <Region maxHeight="119.0" prefHeight="15.0" prefWidth="369.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="368.0">
+               <children>
+                  <VBox HBox.hgrow="NEVER">
+                     <children>
+                        <Label minWidth="167.0" prefHeight="45.0" prefWidth="167.0" text="Current Diet" textFill="WHITE">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label minWidth="199.0" prefHeight="45.0" prefWidth="199.0" text="Calories Today" textFill="WHITE">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Region maxWidth="100.0" prefHeight="91.0" prefWidth="48.0" HBox.hgrow="ALWAYS" />
+                  <VBox HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label alignment="TOP_CENTER" minWidth="108.0" prefHeight="45.0" prefWidth="108.0" text="No Diet" textFill="WHITE" underline="true">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <Label text="X" textFill="WHITE">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="4.0" />
+                                 </padding>
+                              </Label>
+                              <Label prefHeight="45.0" prefWidth="31.0" text=" / " textFill="WHITE">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Y" textFill="WHITE">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Region prefHeight="10.0" prefWidth="369.0" VBox.vgrow="NEVER" />
+            <JFXProgressBar maxWidth="500.0" minHeight="-Infinity" prefHeight="5.0" prefWidth="362.0" progress="0.47" VBox.vgrow="NEVER" />
+            <Region prefHeight="3.0" prefWidth="369.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <Region prefHeight="44.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="changeDietButton" onAction="#toDietSelection" prefHeight="44.0" prefWidth="145.0" styleClass="change-meal-button" text="Change Diet" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <Region maxWidth="100.0" prefHeight="44.0" prefWidth="37.0" HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="eatMealButton" onAction="#toEatPage" styleClass="change-meal-button" text="Eat Meal" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <Region prefHeight="44.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Region prefHeight="0.0" prefWidth="369.0" VBox.vgrow="ALWAYS" />
+            <BarChart maxHeight="500.0" maxWidth="800.0" prefHeight="210.0" prefWidth="369.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 2em;">
+              <xAxis>
+                <CategoryAxis label="Recent Meals" prefHeight="20.0" prefWidth="312.0" side="BOTTOM" tickLabelFill="WHITE" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="Calories" prefHeight="102.0" prefWidth="54.0" side="LEFT" upperBound="1000.0" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </BarChart>
+            <Region maxHeight="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

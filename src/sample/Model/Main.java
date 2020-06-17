@@ -1,4 +1,4 @@
-package sample;
+package sample.Model;
 
 import com.sun.jdi.PrimitiveValue;
 import javafx.application.Application;
@@ -8,6 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import sample.Model.*;
+import sample.Controller.*;
+
+
 
 public class Main extends Application {
     private ObservableList<Account> accountData = FXCollections.observableArrayList();
