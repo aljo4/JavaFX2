@@ -58,7 +58,7 @@ public class SignUpController implements Serializable {
     }
 
     public void toLogIn(ActionEvent ae) throws Exception {
-        Parent logInParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent logInParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene logInViewScene = new Scene(logInParent);
 
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
@@ -150,7 +150,7 @@ public class SignUpController implements Serializable {
 //                        account.getAccountLists().saveToFile();
 
 
-                Parent signUpParent = FXMLLoader.load(getClass().getResource("initialHealthOverview.fxml"));
+                Parent signUpParent = FXMLLoader.load(getClass().getResource("InitialHealthOverview.fxml"));
                 Scene signUpViewScene = new Scene(signUpParent);
 
                 Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

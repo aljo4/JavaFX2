@@ -125,7 +125,7 @@ public class GoalSettingController implements Serializable {
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
             Account.getInstance().getAccountLists().saveToFile();
-            Parent GoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
+            Parent GoalsParent = FXMLLoader.load(getClass().getResource("MyGoals.fxml"));
             Scene signUpViewScene = new Scene(GoalsParent);
 
             Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
@@ -138,7 +138,7 @@ public class GoalSettingController implements Serializable {
     }
 
     public void gotoMyGoals(ActionEvent actionEvent) throws Exception {
-        Parent myGoalsParent = FXMLLoader.load(getClass().getResource("myGoals.fxml"));
+        Parent myGoalsParent = FXMLLoader.load(getClass().getResource("MyGoals.fxml"));
         Scene signUpViewScene = new Scene(myGoalsParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

@@ -101,7 +101,7 @@ public class SocialPageController {
 
     public void CreateGroup(ActionEvent ae) throws Exception{
         System.out.println("create group");
-        Parent p = FXMLLoader.load(getClass().getResource("newGroupPop.fxml"));
+        Parent p = FXMLLoader.load(getClass().getResource("NewGroupPop.fxml"));
         Stage w = new Stage();
         w.initModality(Modality.APPLICATION_MODAL);
         //w = (Stage) ((Node) ae.getSource()).getScene().getWindow();
@@ -113,7 +113,7 @@ public class SocialPageController {
     }
 
     public void joinGroup(ActionEvent ae)throws Exception{
-        Parent p = FXMLLoader.load(getClass().getResource("joinGroupPop.fxml"));
+        Parent p = FXMLLoader.load(getClass().getResource("JoinGroupPop.fxml"));
         Stage w = new Stage();
         w.initModality(Modality.APPLICATION_MODAL);
         w.setTitle("Join Group");
@@ -166,7 +166,7 @@ public class SocialPageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("activity.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("Activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -179,7 +179,7 @@ public class SocialPageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);

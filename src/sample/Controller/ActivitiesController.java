@@ -23,10 +23,10 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
-public class activitiesController implements Initializable {
+public class ActivitiesController implements Initializable {
     public Button activityButton;
 
-    public activitiesController() {
+    public ActivitiesController() {
 
     }
     @FXML

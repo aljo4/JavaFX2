@@ -93,7 +93,7 @@ public class HomePageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("activity.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("Activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -106,7 +106,7 @@ public class HomePageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);

@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.*;
 
 
-public class mealsController implements Initializable {
+public class MealsController implements Initializable {
 
     @FXML private TextField foodCalories;
     @FXML private TextField drinkCalories;

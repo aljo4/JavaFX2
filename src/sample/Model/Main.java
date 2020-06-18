@@ -24,7 +24,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample/View/sample.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource("sample/View/Login.fxml"));
         primaryStage.setTitle("Health Tracker");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(true);

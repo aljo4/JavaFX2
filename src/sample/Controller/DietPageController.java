@@ -84,7 +84,7 @@ public class DietPageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
@@ -95,7 +95,7 @@ public class DietPageController {
     }
 
     public void toDietSelection(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("dietcreatepage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietCreatePage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent, 600, 400);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -104,7 +104,7 @@ public class DietPageController {
     }
 
     public void toEatPage(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("mealsInput.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("MealsInput.fxml"));
         Scene signUpViewScene = new Scene(signUpParent, 640, 600);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
