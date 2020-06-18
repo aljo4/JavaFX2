@@ -8,9 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import sample.Model.*;
 import sample.Controller.*;
 
+import java.util.Objects;
 
 
 public class Main extends Application {
@@ -24,7 +24,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample/View/sample.fxml")));
         primaryStage.setTitle("Health Tracker");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(true);

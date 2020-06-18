@@ -62,7 +62,7 @@ public class LoginController {
     }
 
     public void toSignUp(ActionEvent ae) throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("View/signup.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
 
         Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
