@@ -37,7 +37,7 @@ public class MyGoalsController {
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {
-        Parent myGoalsParent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+        Parent myGoalsParent = FXMLLoader.load(getClass().getResource("../View/Homepage.fxml"));
         Scene signUpViewScene = new Scene(myGoalsParent);
         Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

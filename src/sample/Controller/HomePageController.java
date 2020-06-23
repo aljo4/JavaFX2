@@ -51,7 +51,7 @@ public class HomePageController {
     }
 
     public void toSocialPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("SocialPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/SocialPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -63,7 +63,7 @@ public class HomePageController {
 
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsSetting.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -73,7 +73,7 @@ public class HomePageController {
     }
 
     public void toYouPage(ActionEvent ae)throws Exception {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/YouPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -83,7 +83,7 @@ public class HomePageController {
     }
 
     public void toDietPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/DietPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -93,7 +93,7 @@ public class HomePageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("Activity.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -106,7 +106,7 @@ public class HomePageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);

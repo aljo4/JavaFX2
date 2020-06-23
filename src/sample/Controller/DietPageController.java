@@ -31,7 +31,7 @@ public class DietPageController {
     }
 
     public void toHomePage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -41,7 +41,7 @@ public class DietPageController {
     }
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsSetting.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -51,7 +51,7 @@ public class DietPageController {
     }
 
     public void toYouPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/YouPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -61,7 +61,7 @@ public class DietPageController {
     }
 
     public void toSocialPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("SocialPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/SocialPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -71,7 +71,7 @@ public class DietPageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("ActivityPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/ActivityPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -84,7 +84,7 @@ public class DietPageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
@@ -95,7 +95,7 @@ public class DietPageController {
     }
 
     public void toDietSelection(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietCreatePage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/DietCreatePage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent, 600, 400);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -104,7 +104,7 @@ public class DietPageController {
     }
 
     public void toEatPage(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("MealsInput.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/MealsInput.fxml"));
         Scene signUpViewScene = new Scene(signUpParent, 640, 600);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

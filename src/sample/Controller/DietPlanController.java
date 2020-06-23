@@ -68,7 +68,7 @@ public class DietPlanController<JFXTextField> {
             else {
                Account.getInstance().setTypeOfDiet(new TypeOfDiet((TypeOfDiet.Diets)DietType.getValue()));
                 System.out.println(Account.getInstance().getTypeOfDiet());
-            Parent DietParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+            Parent DietParent = FXMLLoader.load(getClass().getResource("../View/DietPage.fxml"));
             Scene signUpViewScene = new Scene(DietParent);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
@@ -79,7 +79,7 @@ public class DietPlanController<JFXTextField> {
         }
 
     public void goHome(ActionEvent actionEvent) throws IOException {
-        Parent DietParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent DietParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
         Scene signUpViewScene = new Scene(DietParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

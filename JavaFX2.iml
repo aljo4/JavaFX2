@@ -19,5 +19,6 @@
         <jarDirectory url="file://$USER_HOME$/Desktop/javatuples-1.2.jar" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javatuples-1.2" level="project" />
   </component>
 </module>

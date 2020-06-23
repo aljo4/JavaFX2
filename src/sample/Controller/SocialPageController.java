@@ -73,7 +73,7 @@ public class SocialPageController {
             Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
             System.out.println(selectedGroup);
             GroupsController.currentGroup = selectedGroup;
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("Groups.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Groups.fxml"));
             Scene signUpViewScene = new Scene(signUpParent);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);
@@ -101,7 +101,7 @@ public class SocialPageController {
 
     public void CreateGroup(ActionEvent ae) throws Exception{
         System.out.println("create group");
-        Parent p = FXMLLoader.load(getClass().getResource("NewGroupPop.fxml"));
+        Parent p = FXMLLoader.load(getClass().getResource("../View/NewGroupPop.fxml"));
         Stage w = new Stage();
         w.initModality(Modality.APPLICATION_MODAL);
         //w = (Stage) ((Node) ae.getSource()).getScene().getWindow();
@@ -113,7 +113,7 @@ public class SocialPageController {
     }
 
     public void joinGroup(ActionEvent ae)throws Exception{
-        Parent p = FXMLLoader.load(getClass().getResource("JoinGroupPop.fxml"));
+        Parent p = FXMLLoader.load(getClass().getResource("../View/JoinGroupPop.fxml"));
         Stage w = new Stage();
         w.initModality(Modality.APPLICATION_MODAL);
         w.setTitle("Join Group");
@@ -124,7 +124,7 @@ public class SocialPageController {
     }
 
     public void toHomePage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -136,7 +136,7 @@ public class SocialPageController {
 
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("GoalsPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -146,7 +146,7 @@ public class SocialPageController {
     }
 
     public void toYouPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("YouPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/YouPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -156,7 +156,7 @@ public class SocialPageController {
     }
 
     public void toDietPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("DietPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/DietPage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -166,7 +166,7 @@ public class SocialPageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("Activity.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
@@ -179,7 +179,7 @@ public class SocialPageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
             Scene signUpViewScene = new Scene(signUpParent, 600, 400);
             Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             window.setScene(signUpViewScene);

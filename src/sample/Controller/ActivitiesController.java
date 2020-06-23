@@ -87,7 +87,7 @@ public class ActivitiesController implements Initializable {
     }
 
     public void homeButton(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

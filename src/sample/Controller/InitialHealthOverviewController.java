@@ -87,7 +87,7 @@ public class InitialHealthOverviewController implements Initializable, Serializa
             Account.getInstance().setGender(Account.Gender.MALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
             Account.getInstance().getAccountLists().saveToFile();
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
             Scene signUpViewScene = new Scene(signUpParent);
 
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -97,7 +97,7 @@ public class InitialHealthOverviewController implements Initializable, Serializa
             Account.getInstance().setGender(Account.Gender.FEMALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
             Account.getInstance().getAccountLists().saveToFile();
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
             Scene signUpViewScene = new Scene(signUpParent);
 
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -121,7 +121,7 @@ public class InitialHealthOverviewController implements Initializable, Serializa
     }
 
     public void returnHome(ActionEvent actionEvent) throws IOException {
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

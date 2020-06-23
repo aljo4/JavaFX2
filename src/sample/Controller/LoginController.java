@@ -41,7 +41,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
-                Parent signUpParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
                 Scene signUpViewScene = new Scene(signUpParent);
 
                 Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
@@ -62,7 +62,7 @@ public class LoginController {
     }
 
     public void toSignUp(ActionEvent ae) throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("View/Signup.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Signup.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
 
         Stage window = (Stage)((Node)ae.getSource()).getScene().getWindow();
