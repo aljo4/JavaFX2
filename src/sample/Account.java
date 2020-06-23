@@ -312,7 +312,7 @@ public class Account implements Serializable {
 
         public void saveToFile() { //if you are saving to file and it doesn't
             try {
-                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt");
+                File filename = new File("sample\\Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -330,7 +330,7 @@ public class Account implements Serializable {
 
         public void saveGoalToFile(Goals goal) {
             try {
-                File filename = new File("sample/Goals.txt");
+                File filename = new File("sample\\Goals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -348,7 +348,7 @@ public class Account implements Serializable {
 
         public void saveActivityToFile(Activity activities) {
             try {
-                File filename = new File("sample/Activities.txt");
+                File filename = new File("sample\\Activities.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -366,7 +366,7 @@ public class Account implements Serializable {
 
         public void saveMeal(Meal meal) {
             try {
-                File filename = new File("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt");
+                File filename = new File("sample\\Meals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -387,7 +387,7 @@ public class Account implements Serializable {
             boolean existingUser = false;
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -412,7 +412,7 @@ public class Account implements Serializable {
             BufferedReader br = null;
             String password ="";
             try{
-                br = new BufferedReader((new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt")));
+                br = new BufferedReader((new FileReader("C:\\Users\\LozaJ\\Documents\\D&D Campaign\\JavaFX2\\src\\sample\\Accounts.txt")));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -437,7 +437,7 @@ public class Account implements Serializable {
 
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
