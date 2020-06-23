@@ -307,9 +307,9 @@ public class Account implements Serializable {
             return accounts;
         }
 //method to save account to file
-        public void saveToFile() { //make sure to change the path when using this
+        public void saveToFile() {
             try {
-                File filename = new File("sample\\Accounts.txt");
+                File filename = new File("src\\sample\\Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }

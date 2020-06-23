@@ -85,7 +85,6 @@ public class GroupsController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 
@@ -97,7 +96,6 @@ public class GroupsController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 
@@ -107,7 +105,6 @@ public class GroupsController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 
@@ -117,7 +114,6 @@ public class GroupsController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 
@@ -127,7 +123,6 @@ public class GroupsController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 
