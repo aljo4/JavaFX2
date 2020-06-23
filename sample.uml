@@ -4,7 +4,7 @@
   <OriginalElement>sample</OriginalElement>
   <nodes>
     <node x="1054.5002807894002" y="353.0">sample.Goals.goalType</node>
-    <node x="786.0" y="3003.0">sample.Main</node>
+    <node x="786.0" y="3003.0">sample.Model.Main</node>
     <node x="1060.3336141227333" y="842.0">sample.Goals</node>
     <node x="4297.543354946147" y="0.0">sample.DietPageController</node>
     <node x="1047.0" y="2827.0">sample.Group</node>
@@ -98,7 +98,7 @@
       <point x="3586.7933549461463" y="822.0" />
       <point x="-49.74999999999999" y="112.5" />
     </edge>
-    <edge source="sample.Main" target="sample.Account">
+    <edge source="sample.Model.Main" target="sample.Account">
       <point x="60.24999999999977" y="-101.5" />
       <point x="966.7499999999998" y="2777.0" />
       <point x="1400.6433363449555" y="2777.0" />
@@ -469,7 +469,7 @@
   </edges>
   <settings layout="Hierarchic Group" zoom="0.15197313182199831" x="2261.0" y="2372.0" />
   <SelectedNodes>
-    <node>sample.Main</node>
+    <node>sample.Model.Main</node>
   </SelectedNodes>
   <Categories>
     <Category>Fields</Category>

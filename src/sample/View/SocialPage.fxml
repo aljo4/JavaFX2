@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SocialPageController">
+   <left>
+      <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgL">
+               <children>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="toHomePage" minHeight="80.0" minWidth="80.0" onAction="#toHomePage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toYouPage" minHeight="80.0" minWidth="80.0" onAction="#toYouPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="You" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toGoalsPage" minHeight="80.0" minWidth="80.0" onAction="#toGoalsPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Goals" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="59.0" prefWidth="211.0" />
+            <Label style="-fx-background-color: black;" text="HealthSavvy" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="28.0" />
+               </font>
+            </Label>
+            <Region prefHeight="59.0" prefWidth="141.0" />
+            <MenuButton mnemonicParsing="false" style="-fx-background-color: clear;">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icons8-name-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+         </children></HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <VBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="317.0" prefWidth="100.0" styleClass="butbackgR">
+               <children>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton cancelButton="true" disable="true" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0" text="Social" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="currentPageButton" />
+                        <String fx:value="sidebuts" />
+                     </styleClass>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toDietPage" minHeight="80.0" minWidth="80.0" onAction="#toDietPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Diet" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" />
+                  <JFXButton fx:id="toActivityPage" minHeight="80.0" minWidth="80.0" onAction="#toActivityPage" prefHeight="80.0" prefWidth="80.0" styleClass="sidebuts" text="Activity" textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="7.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <HBox maxHeight="500.0" maxWidth="800.0" prefHeight="290.0" prefWidth="360.0" styleClass="midbox" stylesheets="@../../resources/SocialPage.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="277.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Groups" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXListView fx:id="groupsList" prefHeight="253.0" prefWidth="194.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </VBox.margin>
+                  </JFXListView>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="277.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Region prefHeight="0.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="groupSelect" onAction="#selectGroup" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: green;" text="See Group">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="leaveGroup1" onAction="#leaveGroup1" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: green;" text="Leave Group">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="createGroup" onAction="#CreateGroup" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: green;" text="Create Group">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton fx:id="joinGroup" onAction="#joinGroup" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: green;" text="Join Group">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Region prefHeight="0.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+               </children></VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>
