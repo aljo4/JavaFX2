@@ -382,7 +382,7 @@ public class Account implements Serializable {
         public ArrayList<Meal> readMeals() throws IOException {
             BufferedReader br = null;
             try{
-                br = new BufferedReader(new FileReader("C:\\Users\\Samuel\\Documents\\UEA\\Second Year\\Networks\\JavaFX2\\src\\sample\\Meals.txt"));
+                br = new BufferedReader(new FileReader("src\\sample\\Meals.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -424,7 +424,7 @@ public class Account implements Serializable {
             boolean existingUser = false;
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("src\\sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -450,7 +450,7 @@ public class Account implements Serializable {
             BufferedReader br = null;
             String password ="";
             try{
-                br = new BufferedReader((new FileReader("C:\\Users\\LozaJ\\Documents\\D&D Campaign\\JavaFX2\\src\\sample\\Accounts.txt")));
+                br = new BufferedReader((new FileReader("src\\sample\\Accounts.txt")));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -475,7 +475,7 @@ public class Account implements Serializable {
 
             BufferedReader br = null;
             try {
-                br = new BufferedReader(new FileReader("sample\\Accounts.txt"));
+                br = new BufferedReader(new FileReader("src\\sample\\Accounts.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
