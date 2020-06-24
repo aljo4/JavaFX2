@@ -73,6 +73,9 @@ public class InitialHealthOverviewController implements Initializable, Serializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idealWeight.setStyle("-fx-text-inner-color: White;");
+        height.setStyle("-fx-text-inner-color: White;");
+        weight.setStyle("-fx-text-inner-color: White;");
         //fill the combobox
     }
 

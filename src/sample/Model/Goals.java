@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Goals {
 
     public enum goalType {
-        WEIGHTGAIN("Weight Gain"), WEIGHTLOSS("Weight Loss"), DEFAULT("-Select-");
+        WEIGHTGAIN("Weight-Gain".trim()), WEIGHTLOSS("Weight-Loss".trim()), DEFAULT("-Select-".trim());
 
         private String type;
 
@@ -132,11 +132,11 @@ public class Goals {
 
     public String toString() {
         return
-                "Goal Type = " + GoalType + "  ,  "
-                        + "Current Weight = " + currentWeight + "kg  ,  "
-                        + "Goal Weight = " + goalWeight + "kg  ,  "
-                        + "Start Date = " + startDate + "  ,  "
-                        + "End Date = " + endDate;
+                (Account.getInstance().getName() + "," + GoalType + ","
+                        + currentWeight + ","
+                        + +goalWeight + ","
+                        + startDate + ","
+                        + endDate);
     }
 
     public String stringForTimeline() {

@@ -2,6 +2,7 @@ package sample.Model;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -181,7 +182,6 @@ public class Account implements Serializable {
     }
 
 
-
     public TypeOfDiet getTypeOfDiet() {
         return diet;
     }
@@ -306,7 +306,8 @@ public class Account implements Serializable {
         public ArrayList<Account> getAccounts() {
             return accounts;
         }
-//method to save account to file
+
+        //method to save account to file
         public void saveToFile() {
             try {
                 File filename = new File("src\\sample\\Accounts.txt");
@@ -324,17 +325,18 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
-//method to save account's goal to file
+
+        //method to save account's goal to file
         public void saveGoalToFile(Goals goal) {
             try {
-                File filename = new File("sample\\Goals.txt");
+                File filename = new File("src\\sample\\Goals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-                    bw.write(goal.toString());
+                    bw.write(goal.toString().trim());
                     bw.newLine();
                 }
                 bw.close();
@@ -342,10 +344,11 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
-//save activity to file
+
+        //save activity to file
         public void saveActivityToFile(Activity activities) {
             try {
-                File filename = new File("sample\\Activities.txt");
+                File filename = new File("src\\ample\\Activities.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -360,10 +363,11 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
-//method save meal to file
+
+        //method save meal to file
         public void saveMeal(Meal meal) {
             try {
-                File filename = new File("sample\\Meals.txt");
+                File filename = new File("src\\sample\\Meals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -378,17 +382,18 @@ public class Account implements Serializable {
                 e.printStackTrace();
             }
         }
-//this method reads meal from file and adds to the Account's arraylist
+
+        //this method reads meal from file and adds to the Account's arraylist
         public ArrayList<Meal> readMeals() throws IOException {
             BufferedReader br = null;
-            try{
+            try {
                 br = new BufferedReader(new FileReader("src\\sample\\Meals.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             ArrayList<Meal> meals = new ArrayList<>();
 
-            if(br!= null) {
+            if (br != null) {
                 Meal meal;
                 Edible eat;
                 String drink, food, mealType;
@@ -398,19 +403,19 @@ public class Account implements Serializable {
                 try {
                     while ((st = br.readLine()) != null) {
                         String[] splitted = st.split(",");
-                       drink = splitted[0];
-                       drinkCal = Integer.parseInt(splitted[1]);
-                       food = splitted[2];
-                       foodCal = Integer.parseInt(splitted[3]);
-                       mealType= splitted[4];
-                       eat = new Edible(drink,drinkCal,food,foodCal);
-                       meal = new Meal(Meal.mealType.valueOf(mealType),eat);
-                       Account.getInstance().setMeal(meal);
-                       meals.add(meal);
-                       Account.getInstance().getMeal().setListOfFoods(meals);
+                        drink = splitted[0];
+                        drinkCal = Integer.parseInt(splitted[1]);
+                        food = splitted[2];
+                        foodCal = Integer.parseInt(splitted[3]);
+                        mealType = splitted[4];
+                        eat = new Edible(drink, drinkCal, food, foodCal);
+                        meal = new Meal(Meal.mealType.valueOf(mealType), eat);
+                        Account.getInstance().setMeal(meal);
+                        meals.add(meal);
+                        Account.getInstance().getMeal().setListOfFoods(meals);
 
- }
-                }catch(NumberFormatException ex){
+                    }
+                } catch (NumberFormatException ex) {
 
                 }
             }
@@ -418,8 +423,73 @@ public class Account implements Serializable {
 
         }
 
+        public ArrayList<Goals> readGoals() throws IOException {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("src\\sample\\Goals.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            ArrayList<Goals> goals = new ArrayList<Goals>();
 
-//check if the user exists in file when logging in
+            if (br == null) {
+                return null;
+            } else {
+                Goals goal;
+                String goalType;
+                Double currentWeight;
+                double goalWeight;
+                LocalDate startDate;
+                LocalDate endDate;
+                String st;
+                try {
+                    while ((st = br.readLine()) != null) {
+                        String[] splitted = st.split(",");
+                        if (Account.getInstance().fullname == splitted[0]) {
+                            goalType = splitted[1];
+                            currentWeight = Double.parseDouble(splitted[2]);
+                            goalWeight = Double.parseDouble(splitted[3]);
+                            startDate = LocalDate.parse(splitted[4]);
+                            endDate = LocalDate.parse(splitted[5]);
+                            goal = new Goals(Goals.goalType.valueOf(goalType), currentWeight, goalWeight, startDate, endDate);
+                            goals.add(goal);
+                            Account.getInstance().getGoals().add(goal);
+                        }
+                    }
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            return Account.getInstance().getGoals();
+        }
+
+        public void readWeight() throws IOException {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("src\\sample\\Accounts.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            if (br != null) {
+                double weight;
+                String st;
+                try {
+                    while ((st = br.readLine()) != null) {
+                        String[] splitted = st.split(",");
+                        weight = Double.parseDouble(splitted[5]);
+                        Account.getInstance().setWeight(weight);
+
+                    }
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            System.out.println(Account.getInstance().getWeight());
+        }
+
+
+        //check if the user exists in file when logging in
         public static boolean checkUserExists(String email, String password) throws IOException {
             boolean existingUser = false;
             BufferedReader br = null;
@@ -445,20 +515,21 @@ public class Account implements Serializable {
             }
             return existingUser;
         }
-//method to display password for existing customer
+
+        //method to display password for existing customer
         public static String forgottenPassword(String email) throws IOException {
             BufferedReader br = null;
-            String password ="";
-            try{
+            String password = "";
+            try {
                 br = new BufferedReader((new FileReader("src\\sample\\Accounts.txt")));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            if(br !=null){
+            if (br != null) {
                 String st;
-                while ((st = br.readLine()) != null){
+                while ((st = br.readLine()) != null) {
                     String[] splitted = st.split(",");
-                    if(email.equals(splitted[1])){
+                    if (email.equals(splitted[1])) {
                         System.out.println(splitted[3]);
                         password = splitted[3];
                         return password;
@@ -467,10 +538,11 @@ public class Account implements Serializable {
                     }
                 }
             }
-          return password;
+            return password;
 
         }
-//checking
+
+        //checking
         public void checkUserExists() {
 
             BufferedReader br = null;
