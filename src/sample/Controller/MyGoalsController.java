@@ -28,12 +28,12 @@ public class MyGoalsController {
     }
 
 
-    public void initialize() throws FileNotFoundException {
-        ArrayList<String> list = new ArrayList<String>();
+    public void initialize() throws IOException {
+        Account.getInstance().getAccountLists().readGoals();
+        ArrayList<Goals> list = new ArrayList<Goals>();
         for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-            list.add(Account.getInstance().getGoals().get(i).toString());
+            listView.getItems().add(Account.getInstance().getGoals().get(i).toString());
         }
-        listView.getItems().addAll(list);
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {
@@ -42,7 +42,6 @@ public class MyGoalsController {
         Stage window = (Stage) ((Node) aE.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
-        window.setMaximized(true);
         window.show();
     }
 }

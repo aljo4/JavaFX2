@@ -345,8 +345,8 @@ public class Account implements Serializable {
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) { //
-                    bw.write(goal.toString());
+                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
+                    bw.write(goal.toString().trim());
                     bw.newLine();
                 }
                 bw.close();
@@ -426,6 +426,71 @@ public class Account implements Serializable {
             }
             return meals;
 
+        }
+
+        public ArrayList<Goals> readGoals() throws IOException {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("src\\sample\\Goals.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            ArrayList<Goals> goals = new ArrayList<Goals>();
+
+            if (br == null) {
+                return null;
+            } else {
+                Goals goal;
+                String goalType;
+                Double currentWeight;
+                double goalWeight;
+                LocalDate startDate;
+                LocalDate endDate;
+                String st;
+                try {
+                    while ((st = br.readLine()) != null) {
+                        String[] splitted = st.split(",");
+                        if (Account.getInstance().fullname == splitted[0]) {
+                            goalType = splitted[1];
+                            currentWeight = Double.parseDouble(splitted[2]);
+                            goalWeight = Double.parseDouble(splitted[3]);
+                            startDate = LocalDate.parse(splitted[4]);
+                            endDate = LocalDate.parse(splitted[5]);
+                            goal = new Goals(Goals.goalType.valueOf(goalType), currentWeight, goalWeight, startDate, endDate);
+                            goals.add(goal);
+                            Account.getInstance().getGoals().add(goal);
+                        }
+                    }
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            return Account.getInstance().getGoals();
+        }
+
+        public void readWeight() throws IOException {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("src\\sample\\Accounts.txt"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            if (br != null) {
+                double weight;
+                String st;
+                try {
+                    while ((st = br.readLine()) != null) {
+                        String[] splitted = st.split(",");
+                        weight = Double.parseDouble(splitted[5]);
+                        Account.getInstance().setWeight(weight);
+
+                    }
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            System.out.println(Account.getInstance().getWeight());
         }
 
 
