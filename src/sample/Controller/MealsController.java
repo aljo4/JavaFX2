@@ -22,6 +22,7 @@ public class MealsController implements Initializable {
 
     @FXML private TextField foodCalories;
     @FXML private TextField drinkCalories;
+    @FXML private DatePicker mealDate;
 
     FoodType aFood = new FoodType();
         DrinkType aDrink = new DrinkType();
@@ -66,15 +67,15 @@ public class MealsController implements Initializable {
         eat.setFoodCalCount(Integer.parseInt(foodCalories.getText()));
 
 
-        Meal aMeal = new Meal(mealtype.getSelectionModel().getSelectedItem(),eat);
-
+        Meal aMeal = new Meal(mealtype.getSelectionModel().getSelectedItem(),eat,mealDate.getValue());
         Account.getInstance().setMeal(aMeal);
         Account.getInstance().getMeal().setCaloricIntake(Integer.parseInt(drinkCalories.getText())+ Integer.parseInt(foodCalories.getText()));
+
         System.out.println(aMeal.toStringForMeals());
-        Account.getInstance().getMeal().addToMeals(aMeal);
+        Account.getInstance().getAllMyMeals().add(aMeal);
 
         Account.getInstance().getAccountLists().saveMeal(aMeal);
-        System.out.println(Account.getInstance().getMeal().getListOfFoods().size());
+        System.out.println(Account.getInstance().getAllMyMeals().size());
 
 
     }

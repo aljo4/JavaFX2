@@ -2,6 +2,7 @@ package sample.Model;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -11,11 +12,11 @@ public class Account implements Serializable {
     private String email;
     private String password;
     private String name;
-
     private String surname;
     private String fullname;
     private ArrayList<Goals> goals;
     private Meal meal;
+    private ArrayList<Meal> allMyMeals;
     private ArrayList<Activity.Activities> exercises;
     private Activity.Activities activities;
     private TypeOfDiet diet; //user can only have one diet at a time
@@ -60,6 +61,7 @@ public class Account implements Serializable {
         this.idealWeight = idealWeight;
         groupList = new ArrayList<String>();
         friends = new ArrayList();
+        allMyMeals = new ArrayList<>();
         this.gender = gender;
         exercises = new ArrayList<Activity.Activities>();
         this.activities = activities;
@@ -180,7 +182,13 @@ public class Account implements Serializable {
         return friends;
     }
 
+    public ArrayList<Meal> getAllMyMeals() {
+        return allMyMeals;
+    }
 
+    public void setAllMyMeals(ArrayList<Meal> allMyMeals) {
+        this.allMyMeals = allMyMeals;
+    }
 
     public TypeOfDiet getTypeOfDiet() {
         return diet;
@@ -291,6 +299,10 @@ public class Account implements Serializable {
                 "," + exercises;
     }
 
+    public String toStringForFileAppend(){
+        return fullname;
+    }
+
     //nested static class called AccountLists. This stores accounts objects in arraylists in a file
     public static class AccountLists {
         private ArrayList<Account> accounts;
@@ -309,7 +321,7 @@ public class Account implements Serializable {
 //method to save account to file
         public void saveToFile() { //make sure to change the path when using this
             try {
-                File filename = new File("sample\\Accounts.txt");
+                File filename = new File("src\\sample\\Accounts.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -327,13 +339,13 @@ public class Account implements Serializable {
 //method to save account's goal to file
         public void saveGoalToFile(Goals goal) {
             try {
-                File filename = new File("sample\\Goals.txt");
+                File filename = new File("src\\sample\\Goals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
+                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) { //
                     bw.write(goal.toString());
                     bw.newLine();
                 }
@@ -345,7 +357,7 @@ public class Account implements Serializable {
 //save activity to file
         public void saveActivityToFile(Activity activities) {
             try {
-                File filename = new File("sample\\Activities.txt");
+                File filename = new File("src\\sample\\Activities.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
@@ -363,16 +375,14 @@ public class Account implements Serializable {
 //method save meal to file
         public void saveMeal(Meal meal) {
             try {
-                File filename = new File("sample\\Meals.txt");
+                File filename = new File("src\\sample\\Meals.txt");
                 if (!filename.exists()) {
                     filename.createNewFile();
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getMeal().getListOfFoods().size(); i++) {
-                    bw.write(meal.toStringForMeals());
-                    bw.newLine();
-                }
+                bw.write(meal.toStringForMeals());
+                bw.newLine();
                 bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -404,10 +414,10 @@ public class Account implements Serializable {
                        foodCal = Integer.parseInt(splitted[3]);
                        mealType= splitted[4];
                        eat = new Edible(drink,drinkCal,food,foodCal);
-                       meal = new Meal(Meal.mealType.valueOf(mealType),eat);
+                       meal = new Meal(Meal.mealType.valueOf(mealType),eat, LocalDate.parse(splitted[6]));
                        Account.getInstance().setMeal(meal);
                        meals.add(meal);
-                       Account.getInstance().getMeal().setListOfFoods(meals);
+                       Account.getInstance().setAllMyMeals(meals);
 
  }
                 }catch(NumberFormatException ex){

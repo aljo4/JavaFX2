@@ -15,9 +15,9 @@
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #127a51;">
          <children>
-            <AnchorPane opacity="0.72" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane opacity="0.72" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../../resources/homepagebackground.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <JFXButton fx:id="activityButton" layoutX="435.0" layoutY="332.0" onAction="#saveActivity" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css" text="Save Activity" textFill="BLACK">
+                  <JFXButton fx:id="activityButton" layoutX="435.0" layoutY="332.0" onAction="#saveActivity" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../../resources/signupcss.css" text="Save Activity" textFill="BLACK">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -36,7 +36,7 @@
             <ComboBox fx:id="activity" layoutX="110.0" layoutY="105.0" prefWidth="150.0" promptText="Type of Activity" />
             <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="517.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icons8-exercise-50.png" />
+                  <Image url="@../../../resources/icons8-exercise-50.png" />
                </image>
             </ImageView>
             <TextField fx:id="reps" layoutX="436.0" layoutY="104.0" prefHeight="27.0" prefWidth="150.0" promptText="Repetitions" />
@@ -44,10 +44,10 @@
             <TextField fx:id="duration" layoutX="279.0" layoutY="105.0" promptText="Duration in Seconds" />
             <ImageView fitHeight="216.0" fitWidth="269.0" layoutX="11.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png" />
+                  <Image url="@../../../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="HomePage" layoutX="185.0" layoutY="332.0" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css" text="HomePage" textFill="BLACK">
+            <JFXButton fx:id="HomePage" layoutX="185.0" layoutY="332.0" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../../resources/signupcss.css" text="HomePage" textFill="BLACK">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
