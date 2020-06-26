@@ -1,24 +1,4 @@
-bob champion,b.champion@uea.ac.uk,bob,champion,null,null
-samuel bedeau,sambedeau@gmail.com,samuel,testing,null,null
-test user ,test@user.co.uk,test,student,null,null
-samuel bedeau ,samuelbedeau1@gmail.comusername: ,samuelpassword: ,testname: ,nullsurname: ,null
-Sam Bedeau,nkg17tru@uea.ac.uk,sam,samuel,null,null
-Peter Parker,parker@dailybugle.com,parker,spiderman,null,null
-Tony Stark,tony@starktech.com,Ironman ,ironman,null,null
-Tony Stark,tony@starktech.com,Ironman ,ironman,null,null
-Clark Kent,kent@dailyplanet.com,Krypton,superman,null,null
-Health User1,tracker@health.com,health savvy,fitness,null,null
-Health User1,tracker@health.com,health savvy,fitness,null,null
-Steve Rogers,captain@america.com,Captain America,steve,null,null
-Loki Odinson,Loki@Asgard.com,loki,asgard,null,null
-Bob Mitchell,Bob@Mitchell.com,Bobby Mitch,mitchell,null,null,66.0,74.0,170.0,Male
-Ichigo Kurosaki,Ichigo@soulsociety.com,Zangetsu,bleach,67.0,72.0,170.0,Male,[]
-Reed Richards,Richards@fantasticfour.com,Mr Fantastic,Reed,70.0,72.0,173.0,null,Male,[],[]
-Maddy Smith,maddySmith@testemail.com,maddy,smith,134.0,59.0,64.0,null,Female,[],[]
-Maddy Smith,maddySmith@testemail.com,maddy,smith,134.0,59.0,64.0,null,Female,[],[]
-Tom Brady,tomBrady@emailtest.com,tommy,brady,169.0,66.0,72.0,0.0,null,Male,[],[]
-Matt Damon,damon@actors.com,matt ,damon,177.0,66.0,77.0,0.0,null,Male,[],[]
-David Sekibo,mina@mina.com,david90210,naruto,176.0,57.0,76.0,19.0,null,Male,[],[]
-minas,mina@mina.com,mina90210,naruto,178.0,57.0,75.0,0.0,null,Male,[],[]
-minasekibo,minasekibo@mina.com,kicko,mina,178.0,56.0,80.0,18.0,null,Male,[],[]james bond,jamesbond@spy.com,007,jamesbond,169.0,73.0,78.0,0.0,null,Male,[],[]
-james bond,jamesbond@spy.com,007,jamesbond,169.0,73.0,78.0,0.0,null,Male,[],[]
+Clark Kent,clark@dailyplanet.com,Superman,krypton,176.0,84.0,96.0,Male
+Anakin Skywalker,anakin@republic.com,Darth Vader,padme,173.0,70.0,75.0,Male
+Anakin Skywalker,anakin@republic.com,Darth Vader,padme,173.0,70.0,75.0,Male
+Tony Stark,stark@ironman.com,Iron Man,Morgan,167.0,73.0,77.0,Male

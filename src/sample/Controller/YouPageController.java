@@ -235,7 +235,7 @@ public class YouPageController {
     }
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

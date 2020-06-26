@@ -15,6 +15,7 @@ public class Account implements Serializable {
     private String surname;
     private String fullname;
     private ArrayList<Goals> goals;
+    private Goals oneGoal;
     private Meal meal;
     private ArrayList<Meal> allMyMeals;
     private ArrayList<Activity.Activities> exercises;
@@ -55,6 +56,7 @@ public class Account implements Serializable {
         this.surname = surname;
         this.fullname = fullname;
         goals = new ArrayList<Goals>();
+        this.oneGoal = oneGoal;
         this.meal = meal;
         this.height = height;
         this.weight = weight;
@@ -122,6 +124,14 @@ public class Account implements Serializable {
 
     public void setDiet(TypeOfDiet diet) {
         this.diet = diet;
+    }
+
+    public Goals getOneGoal() {
+        return oneGoal;
+    }
+
+    public void setOneGoal(Goals oneGoal) {
+        this.oneGoal = oneGoal;
     }
 
     public Account(String email) {
@@ -292,11 +302,9 @@ public class Account implements Serializable {
                 "," + height +
                 "," + weight +
                 "," + idealWeight +
-                "," + bmi +
-                "," + diet +
-                "," + gender.genderType +
-                "," + goals.toString() +
-                "," + exercises;
+                "," + gender.genderType;
+               // "," + goals.toString() +
+               // "," + exercises;
     }
 
     public String toStringForFileAppend(){
@@ -408,13 +416,13 @@ public class Account implements Serializable {
                 try {
                     while ((st = br.readLine()) != null) {
                         String[] splitted = st.split(",");
-                       drink = splitted[0];
-                       drinkCal = Integer.parseInt(splitted[1]);
-                       food = splitted[2];
-                       foodCal = Integer.parseInt(splitted[3]);
-                       mealType= splitted[4];
+                       drink = splitted[1];
+                       drinkCal = Integer.parseInt(splitted[2]);
+                       food = splitted[3];
+                       foodCal = Integer.parseInt(splitted[4]);
+                       mealType= splitted[5];
                        eat = new Edible(drink,drinkCal,food,foodCal);
-                       meal = new Meal(Meal.mealType.valueOf(mealType),eat, LocalDate.parse(splitted[6]));
+                       meal = new Meal(Meal.mealType.valueOf(mealType),eat, LocalDate.parse(splitted[7]));
                        Account.getInstance().setMeal(meal);
                        meals.add(meal);
                        Account.getInstance().setAllMyMeals(meals);
@@ -435,37 +443,35 @@ public class Account implements Serializable {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            ArrayList<Goals> goals = new ArrayList<Goals>();
+            ArrayList<Goals> goalsList = new ArrayList<Goals>();
 
             if (br == null) {
                 return null;
             } else {
                 Goals goal;
-                String goalType;
-                Double currentWeight;
-                double goalWeight;
-                LocalDate startDate;
-                LocalDate endDate;
-                String st;
+                String goalType, st;
+                double currentWeight, goalWeight;
+                LocalDate startDate, endDate;
                 try {
                     while ((st = br.readLine()) != null) {
                         String[] splitted = st.split(",");
-                        if (Account.getInstance().fullname == splitted[0]) {
+                        if (Account.getInstance().fullname.equals(splitted[0])) {
                             goalType = splitted[1];
                             currentWeight = Double.parseDouble(splitted[2]);
                             goalWeight = Double.parseDouble(splitted[3]);
                             startDate = LocalDate.parse(splitted[4]);
                             endDate = LocalDate.parse(splitted[5]);
-                            goal = new Goals(Goals.goalType.valueOf(goalType), currentWeight, goalWeight, startDate, endDate);
-                            goals.add(goal);
-                            Account.getInstance().getGoals().add(goal);
+                            goal = new Goals(Goals.goalType.valueOf(goalType.toUpperCase()), currentWeight, goalWeight, startDate, endDate);
+                            Account.getInstance().setOneGoal(goal);
+                            goalsList.add(goal);
+                            Account.getInstance().setGoals(goalsList);
                         }
                     }
                 } catch (NumberFormatException ex) {
-                    ex.printStackTrace();
                 }
             }
-            return Account.getInstance().getGoals();
+            System.out.println(goalsList.size());
+            return goalsList;
         }
 
         public void readWeight() throws IOException {
@@ -510,16 +516,24 @@ public class Account implements Serializable {
                     //System.out.println(splitted[1]);
                     if (email.equals(splitted[1]) && password.equals(splitted[3])) {
                         existingUser = true;
+                        Account a = Account.getInstance();
+                        a.setFullname(splitted[0]);
+                        a.setEmail(splitted[1]);
+                        a.setUsername(splitted[2]);
+                        a.setPassword(splitted[3]);
+                        a.setHeight(Double.parseDouble(splitted[4]));
+                        a.setWeight(Double.parseDouble(splitted[5]));
+                        a.setIdealWeight(Double.parseDouble(splitted[6]));
+                       a.setGender(Account.Gender.valueOf(splitted[7].toUpperCase()));
                         break;
                     }
                 }
-//                for (int i = 0; i < accounts.size(); i++)
-//                    if (email.equals(accounts.get(i).getEmail()) && password.equals(accounts.get(i).getPassword())) {
-//                        existingUser = true;
-//                        System.out.println(accounts.get(i).getEmail());
             }
             return existingUser;
         }
+
+
+
 //method to display password for existing customer
         public static String forgottenPassword(String email) throws IOException {
             BufferedReader br = null;

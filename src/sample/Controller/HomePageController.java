@@ -35,6 +35,7 @@ public class HomePageController {
     public void initialize()throws Exception{
        Account a = Account.getInstance();
         System.out.println(a.getFullname());
+        System.out.println(a.getWeight());
         //a.getAccountLists().readMeals();
 //            currentWeight.setText(String.valueOf(a.getWeight()));
 //        if (a.getGoals().size()>0) {

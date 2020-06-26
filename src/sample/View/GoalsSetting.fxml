@@ -23,7 +23,7 @@
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="TargetWeight" focusColor="WHITE" layoutX="23.0" layoutY="151.0" text="Please insert weight" unFocusColor="WHITE" />
+        <JFXTextField fx:id="TargetWeight" focusColor="WHITE" layoutX="23.0" layoutY="151.0" promptText="Please insert weight" unFocusColor="WHITE" />
         <ImageView id="anchor" fitHeight="77.0" fitWidth="53.0" layoutX="465.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../resources/icons8-heart-health-64.png" />

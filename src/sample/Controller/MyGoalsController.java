@@ -30,7 +30,8 @@ public class MyGoalsController {
 
     public void initialize() throws IOException {
         Account.getInstance().getAccountLists().readGoals();
-        ArrayList<Goals> list = new ArrayList<Goals>();
+        System.out.println(Account.getInstance().getGoals().size());
+        ArrayList<Goals> list = new ArrayList<>();
         for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
             listView.getItems().add(Account.getInstance().getGoals().get(i).toString());
         }

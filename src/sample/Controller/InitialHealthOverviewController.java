@@ -80,12 +80,12 @@ public class InitialHealthOverviewController implements Initializable, Serializa
     }
 
     public void proceedButton(ActionEvent actionEvent) throws IOException {
-        Account anAccount = null;
+        Account anAccount;
         anAccount = Account.getInstance();
         System.out.println(anAccount.getEmail());
-        anAccount.setIdealWeight(Double.parseDouble(idealWeight.getText()));
         Account.getInstance().setHeight(Double.parseDouble(height.getText()));
         Account.getInstance().setWeight(Double.parseDouble(weight.getText()));
+        anAccount.setIdealWeight(Double.parseDouble(idealWeight.getText()));
         if (male.isSelected()) {
             Account.getInstance().setGender(Account.Gender.MALE);
             Account.getInstance().getAccountLists().addtolist(Account.getInstance());
