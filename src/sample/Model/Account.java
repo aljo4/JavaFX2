@@ -18,8 +18,8 @@ public class Account implements Serializable {
     private Goals oneGoal;
     private Meal meal;
     private ArrayList<Meal> allMyMeals;
-    private ArrayList<Activity.Activities> exercises;
-    private Activity.Activities activities;
+    private ArrayList<Activity> workouts;
+    private Activity activity;
     private TypeOfDiet diet; //user can only have one diet at a time
     private double height; //TODO: have bounds for this
     private double weight; //TODO: have bounds for this
@@ -59,14 +59,14 @@ public class Account implements Serializable {
         this.oneGoal = oneGoal;
         this.meal = meal;
         this.height = height;
+        this.activity = activity;
         this.weight = weight;
         this.idealWeight = idealWeight;
+        workouts = new ArrayList<>();
         groupList = new ArrayList<String>();
         friends = new ArrayList();
         allMyMeals = new ArrayList<>();
         this.gender = gender;
-        exercises = new ArrayList<Activity.Activities>();
-        this.activities = activities;
         this.bmi = bmi;
     }
 
@@ -83,12 +83,28 @@ public class Account implements Serializable {
         this.password = password;
     }
 
+    public ArrayList<Activity> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(ArrayList<Activity> workouts) {
+        this.workouts = workouts;
+    }
+
     public Account(String fullname, String email, String username, String password) { //constructor when creating an account - signing up
         this();
         this.fullname = fullname;
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     //-------------------------------------START OF ACCESSOR METHODS ------------------------------
@@ -100,22 +116,6 @@ public class Account implements Serializable {
         this.bmi = bmi;
     }
 
-
-    public ArrayList<Activity.Activities> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(ArrayList<Activity.Activities> exercises) {
-        this.exercises = exercises;
-    }
-
-    public Activity.Activities getActivities() {
-        return activities;
-    }
-
-    public void setActivities(Activity.Activities activities) {
-        this.activities = activities;
-    }
 
     public TypeOfDiet getDiet() {
         return diet;
@@ -353,10 +353,8 @@ public class Account implements Serializable {
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-                    bw.write(goal.toString().trim());
-                    bw.newLine();
-                }
+                bw.write(goal.toString().trim());
+                bw.newLine();
                 bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -371,10 +369,8 @@ public class Account implements Serializable {
                 }
                 FileWriter fw = new FileWriter(filename, true);
                 BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < Account.getInstance().getExercises().size(); i++) {
-                    bw.write(activities.getActivitiesEnum().toStringtoFile());
-                    bw.newLine();
-                }
+                bw.write(activities.toStringtoFile());
+                bw.newLine();
                 bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -416,18 +412,20 @@ public class Account implements Serializable {
                 try {
                     while ((st = br.readLine()) != null) {
                         String[] splitted = st.split(",");
-                       drink = splitted[1];
-                       drinkCal = Integer.parseInt(splitted[2]);
-                       food = splitted[3];
-                       foodCal = Integer.parseInt(splitted[4]);
-                       mealType= splitted[5];
-                       eat = new Edible(drink,drinkCal,food,foodCal);
-                       meal = new Meal(Meal.mealType.valueOf(mealType),eat, LocalDate.parse(splitted[7]));
-                       Account.getInstance().setMeal(meal);
-                       meals.add(meal);
-                       Account.getInstance().setAllMyMeals(meals);
+                        if (Account.getInstance().fullname.equals(splitted[0])) {
+                            drink = splitted[1];
+                            drinkCal = Integer.parseInt(splitted[2]);
+                            food = splitted[3];
+                            foodCal = Integer.parseInt(splitted[4]);
+                            mealType = splitted[5];
+                            eat = new Edible(drink, drinkCal, food, foodCal);
+                            meal = new Meal(Meal.mealType.valueOf(mealType), eat, LocalDate.parse(splitted[7]));
+                            Account.getInstance().setMeal(meal);
+                            meals.add(meal);
+                            Account.getInstance().setAllMyMeals(meals);
 
- }
+                        }
+                    }
                 }catch(NumberFormatException ex){
 
                 }
@@ -530,6 +528,42 @@ public class Account implements Serializable {
                 }
             }
             return existingUser;
+        }
+
+        public ArrayList<Activity> readActivities() throws IOException{
+            BufferedReader br = null;
+            try{
+                br = new BufferedReader(new FileReader("src\\sample\\Activities.txt"));
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+            ArrayList<Activity> exercises = new ArrayList<>();
+            if(br!= null){
+                String exercise;
+                int duration, reptitions;
+                String st;
+
+                try{
+                while ((st = br.readLine())!= null) {
+                    String[] splitted = st.split(",");
+                    if (Account.getInstance().fullname.equals(splitted[0])) {
+                        exercise = splitted[1];
+                        duration = Integer.parseInt(splitted[2]);
+                        reptitions = Integer.parseInt(splitted[3]);
+                        Activity a = new Activity(Activity.Activities.valueOf(splitted[1].toUpperCase()), LocalDate.parse(splitted[4]));
+                        a.getActivitiesEnum().setDuration(duration);
+                        a.getActivitiesEnum().setRepetitions(reptitions);
+                        exercises.add(a);
+                        Account.getInstance().setWorkouts(exercises);
+                    }
+                }
+                }catch(NumberFormatException ex){
+
+                }
+            }
+            System.out.println(exercises.size());
+            return exercises;
+
         }
 
 

@@ -66,13 +66,11 @@ public class ActivitiesController implements Initializable {
             alert.showAndWait();
         }
         Activity activity1 = new Activity(activity.getSelectionModel().getSelectedItem(),activityDate.getValue());
-        Account.getInstance().setActivities(activity.getSelectionModel().getSelectedItem());
-        Account.getInstance().getActivities().setDuration(Integer.parseInt(duration.getText()));
-        Account.getInstance().getActivities().setRepetitions(Integer.parseInt(reps.getText()));
-        Account.getInstance().getExercises().add(Account.getInstance().getActivities());
-        System.out.println(activity1.getActivitiesEnum());
-        activity1.getActivitiesEnum().setDuration(Integer.parseInt(duration.getText()));
-        activity1.getActivitiesEnum().setRepetitions(Integer.parseInt(reps.getText()));
+        Account.getInstance().setActivity(activity1);
+        Account.getInstance().getActivity().getActivitiesEnum().setDuration(Integer.parseInt(duration.getText()));
+        Account.getInstance().getActivity().getActivitiesEnum().setRepetitions(Integer.parseInt(reps.getText()));
+        Account.getInstance().getWorkouts().add(activity1);
+        System.out.println(Account.getInstance().getActivity().getActivitiesEnum());
         Account.getInstance().getAccountLists().saveActivityToFile(activity1);
 
 

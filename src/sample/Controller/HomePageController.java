@@ -34,8 +34,7 @@ public class HomePageController {
     @FXML
     public void initialize()throws Exception{
        Account a = Account.getInstance();
-        System.out.println(a.getFullname());
-        System.out.println(a.getWeight());
+        a.getAccountLists().readActivities();
         //a.getAccountLists().readMeals();
 //            currentWeight.setText(String.valueOf(a.getWeight()));
 //        if (a.getGoals().size()>0) {
@@ -117,9 +116,9 @@ public class HomePageController {
         double i = Double.parseDouble(newWeight.getText());
         //a.pastweights.add i + localdate.now
         a.setWeight(i);
-        BufferedReader br = null;
+//        BufferedReader br = null;
 //        try{
-//            br = new BufferedReader((new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt")));
+//            br = new BufferedReader((new FileReader("src\\sample\\Goals.txt")));
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
@@ -127,8 +126,9 @@ public class HomePageController {
 //            String st;
 //            while ((st = br.readLine()) != null) {
 //                String[] splitted = st.split(",");
-//                if (Account.getInstance().getEmail().equals(splitted[1])) {
-//                    Double.parseDouble(splitted[6])) = Account.getInstance().getWeight();
+//                if (a.getFullname().equals(splitted[0])) {
+//                    splitted[2].replace(newWeight.getText());
+//                Account.getInstance().getWeight();
 //                }
 //            }
 //        }

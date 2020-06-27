@@ -11,7 +11,7 @@ public class Activity {
         RUNNING("Running", 0, 0),
         JOGGING("Jogging", 0, 0),
         SWIMMING("Swimming", 0, 0),
-        SQUATS("Sqauts", 0, 0),
+        SQUATS("Squats", 0, 0),
         CYCLING("Cycling", 0, 0),
         DEADLIFTS("Deadlifts", 0, 0),
         ROWS("Rows", 0, 0),
@@ -58,14 +58,14 @@ public class Activity {
             return this.duration = duration;
         }
 
+
         @Override
         public String toString() {
             return title;
         }
 
-
-        public String toStringtoFile() {
-            return "Exercise: " + title + " " + " duration: " + duration + "," + " Number of reps: " + repetitions;
+        public String StringToSave(){
+            return title + "," + duration + "," + repetitions;
         }
     }
 
@@ -73,7 +73,9 @@ public class Activity {
         this.activitiesEnum = activities;
         this.dayCreated = LocalDate.now();
     }
-
+    public String toStringtoFile() {
+        return Account.getInstance().getFullname() + ","+ activitiesEnum.StringToSave() + "," + dayCreated;
+    }
     public Activities getActivitiesEnum() {
         return activitiesEnum;
     }
