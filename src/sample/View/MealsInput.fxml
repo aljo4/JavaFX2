@@ -17,7 +17,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MealsController">
   <children>
-    <AnchorPane blendMode="SRC_ATOP" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51;" styleClass="hpbg" stylesheets="@../../../resources/homepagebackground.css" VBox.vgrow="ALWAYS">
+    <AnchorPane blendMode="SRC_ATOP" maxHeight="-1.0" maxWidth="-1.0" prefHeight="548.0" prefWidth="688.0" style="-fx-background-color: #127a51;" styleClass="hpbg" stylesheets="@../../../resources/homepagebackground.css" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="SaveDiet" layoutX="448.0" layoutY="192.0" mnemonicParsing="false" onAction="#saveDiet" text="Save Diet" />
             <TextField fx:id="foodCalories" layoutX="365.0" layoutY="104.0" promptText="Calories" />
@@ -37,12 +37,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <LineChart layoutX="366.0" layoutY="235.0" prefHeight="233.0" prefWidth="229.0">
+            <LineChart fx:id="lineChart" layoutX="366.0" layoutY="235.0" prefHeight="233.0" prefWidth="229.0" styleClass="menu-button" title="Calorie Tracker">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis label="Day" side="BOTTOM" tickLabelFill="WHITE" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis label="Calories" side="LEFT" />
               </yAxis>
             </LineChart>
             <Label layoutX="244.0" layoutY="468.0" prefHeight="37.0" prefWidth="169.0" styleClass="darker" text="Calories over the week " textFill="WHITE">

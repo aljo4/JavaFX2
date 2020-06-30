@@ -10,6 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.Model.*;
@@ -18,45 +22,50 @@ import java.net.URL;
 import java.util.*;
 
 
-public class MealsController implements Initializable {
+public class MealsController {
 
-    @FXML private TextField foodCalories;
-    @FXML private TextField drinkCalories;
-    @FXML private DatePicker mealDate;
+    @FXML
+    private LineChart<String, Number> lineChart;
 
+    @FXML
+    private TextField foodCalories;
+    @FXML
+    private TextField drinkCalories;
+    @FXML
+    private DatePicker mealDate;
     FoodType aFood = new FoodType();
-        DrinkType aDrink = new DrinkType();
-        @FXML
-        private ChoiceBox<Meal.mealType> mealtype; //for breakfast, lunch, dinner, etc
-        ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
-    @FXML private ComboBox<String> foods;
-   // private ObservableList<FoodType> listFoods = FXCollections.observableArrayList(aFood.getFoods());
+    DrinkType aDrink = new DrinkType();
+    @FXML
+    private ChoiceBox<Meal.mealType> mealtype; //for breakfast, lunch, dinner, etc
+    ObservableList<Meal.mealType> mealTypeChoice = FXCollections.observableArrayList(Meal.mealType.values());
+    @FXML
+    private ComboBox<String> foods;
+    @FXML
+    private ComboBox<String> drink;
+    @FXML
+    private JFXButton HomePage;
 
-        @FXML
-        private ComboBox<String> drink;
-//        ObservableList<DrinkType> drinkChoice = FXCollections.observableList(drink.getItems());
-
-        @FXML
-        private JFXButton HomePage;
-
-
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-            //  String[] array = aFood.getFoods().toArray(new String[aFood.getFoods().size()]);
-            // for(int i = 0; i < aFood.getFoods().size(); i++){
-            //    array[i] = aFood.getFoods().get(i);
-            //     foods.getItems().add(array[i]);
-            //}
-            //foods.getItems().addAll(aFood.getFoods())
-            //  listFoods.
-            // drink.setItems(drinkChoice);
-            mealtype.setItems(mealTypeChoice);
-            //foodChoice.addAll(aFood.getFoods());
-            foods.getItems().addAll(aFood.getFoods());
-            drink.getItems().addAll(aDrink.getDrinks());
-
+    @FXML
+    public void initialize() throws Exception {
+        Account a = Account.getInstance();
+        ArrayList<Meal> foodData = a.getAccountLists().readMeals();
+        System.out.println(foodData.size());
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Meal Graph");
+        for (int i = 0; i < foodData.size(); i++) {
+            series.getData().add(new XYChart.Data(foodData.get(i).getMealDate().toString(), foodData.get(i).getCaloricIntake()));
+            //lineChart.getData().add(series);
         }
 
+        lineChart.getData().add(series);
+
+
+        mealtype.setItems(mealTypeChoice);
+        foods.getItems().addAll(aFood.getFoods());
+        drink.getItems().addAll(aDrink.getDrinks());
+
+
+    }
 
 
     public void saveDiet(javafx.event.ActionEvent actionEvent) {

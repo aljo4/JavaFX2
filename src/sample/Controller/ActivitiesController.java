@@ -74,14 +74,6 @@ public class ActivitiesController implements Initializable {
         Account.getInstance().getAccountLists().saveActivityToFile(activity1);
 
 
-
-//        activity.getSelectionModel().getSelectedItem();
-//        System.out.println(activity.getSelectionModel().getSelectedItem());
-////        Account.getInstance().getActivities().getActivitiesEnum().setDuration(Integer.parseInt(duration.getText()));
-////        Account.getInstance().getActivities().getActivitiesEnum().setRepetitions(Integer.parseInt(reps.getText()));
-////        Account.getInstance().getExercises().add(Account.getInstance().getActivities().getActivitiesEnum());
-////        Account.getInstance().getAccountLists().saveActivityToFile(Account.getInstance().getActivities());
-
     }
 
     public void homeButton(ActionEvent actionEvent) throws IOException {

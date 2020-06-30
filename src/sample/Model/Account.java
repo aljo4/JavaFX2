@@ -561,7 +561,6 @@ public class Account implements Serializable {
 
                 }
             }
-            System.out.println(exercises.size());
             return exercises;
 
         }

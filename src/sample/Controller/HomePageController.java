@@ -34,6 +34,7 @@ public class HomePageController {
     @FXML
     public void initialize()throws Exception{
        Account a = Account.getInstance();
+        Account.getInstance().getAccountLists().readMeals();
         a.getAccountLists().readActivities();
         //a.getAccountLists().readMeals();
 //            currentWeight.setText(String.valueOf(a.getWeight()));
@@ -41,11 +42,14 @@ public class HomePageController {
 //            newTarget.setText(String.valueOf(a.getGoals().get(a.getGoals().size()).getGoalWeight()));
 //        }
         int calin = 0;
-//        for (Meal m:a.getMeal().getFood()) { //TODO: this does not work ?!
-//            if(m.getMealDate().compareTo(LocalDate.now())==0){
-//                calin += m.getCaloricIntake();
-//            }
-//        }
+        for (Meal m:a.getAllMyMeals()) { //TODO: this does not work ?!
+            if(m.getMealDate().compareTo(LocalDate.now())==0){
+                calin += m.getCaloricIntake();
+            }
+        }
+        double curWeight = 0.0;
+        curWeight = a.getWeight();
+        currentWeight.setText(String.valueOf(Double.parseDouble(String.valueOf(curWeight))));
         calInToday.setText(String.valueOf(calin));
         //when activites is done do calburnToday
         newWeight.setStyle("-fx-text-inner-color: White;");

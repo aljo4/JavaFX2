@@ -27,7 +27,6 @@ public class LoginController {
 
     public void initialize() throws IOException {
         //Account.getInstance().getAccountLists().readWeight();
-        Account.getInstance().getAccountLists().readMeals();
         email.setStyle("-fx-text-inner-color: White;");
         password.setStyle("-fx-text-inner-color: White;");
 
@@ -38,7 +37,6 @@ public class LoginController {
             Account account = Account.getInstance();
             account.setEmail(email.getText());
             account.setPassword(password.getText());
-            System.out.println(account.getEmail());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){

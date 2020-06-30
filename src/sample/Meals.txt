@@ -1,3 +1,10 @@
 Peter Parker,Soft Drinks,178,Beef,2000,DINNER,2178,2020-06-27
 Tom Brady,Energy Drinks,350,Chicken,1500,LUNCH,1850,2020-06-28
 Tom Brady,Tea,350,Stews,1500,LUNCH,1850,2020-06-28
+Anakin Skywalker,Alcohol,320,Legumes,1000,LUNCH,1320,2020-06-28
+Anakin Skywalker,Water,300,Chicken,1400,DINNER,1700,2020-06-28
+Anakin Skywalker,Tea,500,Seafoods,700,DINNER,1200,2020-06-28
+Anakin Skywalker,Juices,543,Breads,701,DINNER,1244,2020-06-28
+Anakin Skywalker,Coffee,200,Eggs,1000,DINNER,1200,2020-06-29
+Anakin Skywalker,Soft Drinks,200,Pork,2000,BREAKFAST,2200,2020-06-29
+Anakin Skywalker,Soft Drinks,230,Stews,1400,DINNER,1630,2020-06-30

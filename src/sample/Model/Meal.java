@@ -26,6 +26,7 @@ public class Meal {
         listOfFoods = new ArrayList<>(43);
         this.mealDate = mealDate;
         this.eat = eat;
+        this.caloricIntake = eat.getDrinkCalCount()+ eat.getFoodCalCount();
 //        int cals = 0;
 //        for (Edible e:food){
 //            cals+=e.getDrinkCalCount()+e.getFoodCalCount();

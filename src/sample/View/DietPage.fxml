@@ -203,7 +203,7 @@
                </VBox.margin>
             </HBox>
             <Region prefHeight="0.0" prefWidth="369.0" VBox.vgrow="ALWAYS" />
-            <BarChart maxHeight="500.0" maxWidth="800.0" prefHeight="210.0" prefWidth="369.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 2em;">
+            <BarChart fx:id="barChart" maxHeight="500.0" maxWidth="800.0" prefHeight="210.0" prefWidth="369.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 2em;">
               <xAxis>
                 <CategoryAxis label="Recent Meals" prefHeight="20.0" prefWidth="312.0" side="BOTTOM" tickLabelFill="WHITE" />
               </xAxis>

@@ -7,12 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 import sample.Model.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class DietPageController {
@@ -23,10 +26,19 @@ public class DietPageController {
     @FXML JFXButton toActivityPage;
     @FXML JFXButton toYouPage;
     @FXML MenuButton logout;
+    @FXML BarChart barChart;
 
 
     @FXML
     public void initialize()throws Exception{
+        Account a = Account.getInstance();
+        ArrayList<Meal> foodData = a.getAccountLists().readMeals();
+        XYChart.Series series = new XYChart.Series<>();
+        series.setName("Calories");
+        for (int i =0; i<foodData.size(); i++){
+            series.getData().add(new XYChart.Data(foodData.get(i).getMealDate().toString(),foodData.get(i).getCaloricIntake()));
+        }
+        barChart.getData().add(series);
 
     }
 
