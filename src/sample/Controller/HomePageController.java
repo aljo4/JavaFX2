@@ -36,13 +36,14 @@ public class HomePageController {
        Account a = Account.getInstance();
         Account.getInstance().getAccountLists().readMeals();
         a.getAccountLists().readActivities();
-        //a.getAccountLists().readMeals();
-//            currentWeight.setText(String.valueOf(a.getWeight()));
-//        if (a.getGoals().size()>0) {
-//            newTarget.setText(String.valueOf(a.getGoals().get(a.getGoals().size()).getGoalWeight()));
-//        }
+        a.getAccountLists().readGoals();
+        double targetWeight= 0.0;
+
+        targetWeight = a.getOneGoal().getGoalWeight();
+        System.out.println(a.getOneGoal().getGoalWeight());
+        newTarget.setText(String.valueOf(targetWeight));
         int calin = 0;
-        for (Meal m:a.getAllMyMeals()) { //TODO: this does not work ?!
+        for (Meal m:a.getAllMyMeals()) {
             if(m.getMealDate().compareTo(LocalDate.now())==0){
                 calin += m.getCaloricIntake();
             }
