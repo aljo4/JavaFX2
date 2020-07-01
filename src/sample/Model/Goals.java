@@ -54,7 +54,10 @@ public class Goals {
 
     //Method
     public Boolean CheckGoalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
-        if (currentWeight >= goalWeight && LocalDate.now().isBefore(endDate)) {
+        if (GoalType == goalType.WEIGHTGAIN && currentWeight >= goalWeight && LocalDate.now().isBefore(endDate)) {
+            isComplete = true;
+            setInitialWeight(currentWeight);
+        } else if (GoalType == goalType.WEIGHTLOSS && currentWeight <= goalWeight && LocalDate.now().isBefore(endDate)) {
             isComplete = true;
             setInitialWeight(currentWeight);
         }
