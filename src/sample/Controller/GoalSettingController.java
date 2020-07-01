@@ -14,6 +14,7 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import sample.Model.*;
+
 import java.io.*;
 import java.time.LocalDate;
 
@@ -42,7 +43,6 @@ public class GoalSettingController implements Serializable {
     public GoalSettingController() {
 
     }
-
 
 
     public void initialize() throws IOException {
@@ -86,11 +86,15 @@ public class GoalSettingController implements Serializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can make your target weight lower. Recommendation: 5-10kg lower"));
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), true);
+            Account.getInstance().getAccountLists().saveCompleteGoalsToFile(goal);
             alert.showAndWait();
         } else if (Account.getInstance().getWeight() == Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), true);
+            Account.getInstance().getAccountLists().saveCompleteGoalsToFile(goal);
             alert.showAndWait();
         } else if ((Account.getInstance().getWeight() > Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -103,7 +107,7 @@ public class GoalSettingController implements Serializable {
             alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
         } else {
-            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), false);
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
             Account.getInstance().getAccountLists().saveToFile();
@@ -115,7 +119,6 @@ public class GoalSettingController implements Serializable {
             window.setResizable(true);
             window.setMaximized(true);
             window.show();
-
         }
     }
 

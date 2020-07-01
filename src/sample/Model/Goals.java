@@ -33,25 +33,27 @@ public class Goals {
     public Goals() {
     }
 
-    public Goals(goalType GoalType, double currentWeight, double goalWeight, LocalDate startDate, LocalDate endDate) {
+    public Goals(goalType GoalType, double currentWeight, double goalWeight, LocalDate startDate, LocalDate endDate, boolean isComplete) {
         this.GoalType = GoalType;
         this.currentWeight = currentWeight;
         this.goalWeight = goalWeight;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.isComplete = false;
     }
 
-    public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate, double goalNutritionalAmount) {
+    public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate, double goalNutritionalAmount, boolean isComplete) {
         this.initialWeight = initialWeight;
         this.startDate = startDate;
         this.endDate = endDate;
         this.GoalType = GoalType;
         this.goalNutritionalAmount = goalNutritionalAmount;
         this.goalWeight = goalWeight;
+        this.isComplete = false;
     }
 
     //Method
-    public Boolean goalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
+    public Boolean CheckGoalCompletion(double currentWeight, double goalWeight, LocalDate endDate) {
         if (currentWeight >= goalWeight && LocalDate.now().isBefore(endDate)) {
             isComplete = true;
             setInitialWeight(currentWeight);
@@ -132,10 +134,10 @@ public class Goals {
 
     public String toString() {
         return Account.getInstance().getFullname() + "," + GoalType + ","
-                        + currentWeight + ","
-                        + +goalWeight + ","
-                        + startDate + ","
-                        + endDate;
+                + currentWeight + ","
+                + +goalWeight + ","
+                + startDate + ","
+                + endDate + "," + isComplete;
     }
 
     public String stringForTimeline() {
