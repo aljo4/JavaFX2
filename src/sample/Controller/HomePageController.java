@@ -34,6 +34,7 @@ public class HomePageController {
     @FXML
     public void initialize()throws Exception{
        Account a = Account.getInstance();
+        Account.getInstance().getAccountLists().readWeight();
         Account.getInstance().getAccountLists().readMeals();
         a.getAccountLists().readActivities();
         a.getAccountLists().readGoals();
