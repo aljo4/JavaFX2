@@ -35,10 +35,10 @@ public class MyGoalsController {
     public void initialize() throws IOException {
         Account.getInstance().getAccountLists().readGoals();
         for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-            inProgress.getItems().add(Account.getInstance().getGoals().get(i).toString());
+            inProgress.getItems().add((i + 1) + ". " + Account.getInstance().getGoals().get(i).toString());
         }
         for (int i = 0; i < Account.getInstance().getAccountLists().readCompleteGoals().size(); i++) {
-            CompletedList.getItems().add(Account.getInstance().getAccountLists().readCompleteGoals().get(i).toString());
+            CompletedList.getItems().add((i + 1) + ". " + Account.getInstance().getAccountLists().readCompleteGoals().get(i).toString());
         }
     }
 
