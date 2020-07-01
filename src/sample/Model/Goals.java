@@ -39,7 +39,7 @@ public class Goals {
         this.goalWeight = goalWeight;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.isComplete = false;
+        this.isComplete = isComplete;
     }
 
     public Goals(goalType GoalType, double initialWeight, double goalWeight, LocalDate startDate, LocalDate endDate, double goalNutritionalAmount, boolean isComplete) {
@@ -49,7 +49,7 @@ public class Goals {
         this.GoalType = GoalType;
         this.goalNutritionalAmount = goalNutritionalAmount;
         this.goalWeight = goalWeight;
-        this.isComplete = false;
+        this.isComplete = isComplete;
     }
 
     //Method
@@ -95,6 +95,10 @@ public class Goals {
 
     public void setCurrentWeight(double currentWeight) {
         this.currentWeight = currentWeight;
+    }
+
+    public void setComplete(Boolean isComplete) {
+        this.isComplete = isComplete;
     }
 
     //Getters
