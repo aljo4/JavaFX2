@@ -6,53 +6,64 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../../../resources/signupcss.css"
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="signupbg" stylesheets="@../../resources/signupcss.css"
             xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="sample.Controller.MyGoalsController">
     <children>
-        <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="65.0" layoutY="3.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <image>
-                <Image url="@../../../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png"/>
-            </image>
-        </ImageView>
+        <AnchorPane layoutX="-2.0" layoutY="-2.0" opacity="0.45" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg"
+                    stylesheets="@../../resources/homepagebackground.css" AnchorPane.bottomAnchor="2.0"
+                    AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="-2.0">
+            <children>
+                <ImageView fitHeight="389.0" fitWidth="470.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../../resources/ec5dd8b73eed02e0ade95f14636cd413_outline-heart-png-clipart-transparent-without-background-image-_1000-824.png"/>
+                    </image>
+                </ImageView>
+                <ListView fx:id="inProgress" layoutX="78.0" layoutY="109.0" prefHeight="259.0" prefWidth="200.0"/>
+                <ListView fx:id="CompletedList" layoutX="310.0" layoutY="109.0" prefHeight="259.0" prefWidth="200.0"/>
+                <Label alignment="CENTER" layoutX="310.0" layoutY="73.0" prefHeight="27.0" prefWidth="200.0"
+                       styleClass="signupbg" text="COMPLETED">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="73.0" prefHeight="27.0"
+                       prefWidth="200.0" styleClass="signupbg" text="IN PROGRESS">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
         <ImageView id="anchor" fitHeight="77.0" fitWidth="53.0" layoutX="540.0" layoutY="320.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@../../../resources/icons8-heart-64.png"/>
+                <Image url="@../../resources/icons8-heart-64.png"/>
             </image>
         </ImageView>
-        <AnchorPane layoutX="-2.0" layoutY="-2.0" opacity="0.45" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg"
-                    stylesheets="@../../../resources/homepagebackground.css" AnchorPane.bottomAnchor="2.0"
-                    AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="-2.0">
-            <children>
-                <ListView fx:id="CompletedList" layoutX="332.0" layoutY="77.0" prefHeight="296.0" prefWidth="200.0"/>
-                <Label layoutX="93.0" layoutY="48.0" prefHeight="27.0" prefWidth="185.0" text="In progress"/>
-                <Label layoutX="332.0" layoutY="47.0" prefHeight="27.0" prefWidth="204.0" text="Completed"/>
-            </children>
-        </AnchorPane>
         <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="538.0" layoutY="238.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@../../../resources/icons8-exercise-50.png"/>
+                <Image url="@../../resources/icons8-exercise-50.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="538.0" layoutY="33.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@../../../resources/icons8-dumbbell-50.png"/>
+                <Image url="@../../resources/icons8-dumbbell-50.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="77.0" fitWidth="53.0" layoutX="539.0" layoutY="98.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@../../../resources/icons8-sleeping-in-bed-50.png"/>
+                <Image url="@../../resources/icons8-sleeping-in-bed-50.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="59.0" fitWidth="53.0" layoutX="535.0" layoutY="170.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@../../../resources/icons8-no-smoking-50.png"/>
+                <Image url="@../../resources/icons8-no-smoking-50.png"/>
             </image>
         </ImageView>
         <Label alignment="CENTER" layoutX="241.0" layoutY="6.0" prefHeight="17.0" prefWidth="119.0" text="MY GOALS">
@@ -60,10 +71,11 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <ListView fx:id="inProgress" layoutX="94.0" layoutY="77.0" prefHeight="296.0" prefWidth="204.0"/>
-        <JFXButton fx:id="goBackbut" layoutX="7.0" layoutY="7.0" onAction="#goBackbut" prefHeight="31.0" prefWidth="204.0" styleClass="signupbut" stylesheets="@../../../resources/signupcss.css" text="Go back to Homepage" textFill="BLACK">
+        <JFXButton fx:id="goBackbut" layoutX="7.0" layoutY="7.0" onAction="#goBackbut" prefHeight="31.0"
+                   prefWidth="204.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css"
+                   text="Go back to Homepage" textFill="BLACK">
             <font>
-                <Font name="System Bold" size="15.0" />
+                <Font name="System Bold" size="15.0"/>
             </font>
         </JFXButton>
     </children>
