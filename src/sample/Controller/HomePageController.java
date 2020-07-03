@@ -40,6 +40,13 @@ public class HomePageController {
         a.getAccountLists().readActivities();
         a.getAccountLists().readGoals();
 
+        //testerino
+
+//        a.getAccountLists().saveFriendToFile("james");
+//        a.setFriends(a.getAccountLists().readFriends());
+//        System.out.println(a.getFriends());
+
+
         String typeOfGoal;
         typeOfGoal = a.getOneGoal().getGoalType().toString();
         goalType.setText(typeOfGoal);
@@ -67,6 +74,7 @@ public class HomePageController {
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);
         window.setResizable(true);
+        window.setMaximized(true);
         window.show();
     }
 
