@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<StackPane fx:id="theStack" alignment="BOTTOM_CENTER" prefHeight="330.0" prefWidth="120.0" style="-fx-border-top: white;" styleClass="stackpamne-bg" stylesheets="@../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="theStack" alignment="BOTTOM_CENTER" prefHeight="330.0" prefWidth="120.0" style="-fx-border-top: white;" styleClass="stackpamne-bg" stylesheets="@../../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="mainV" prefHeight="330.0" prefWidth="120.0">
          <children>
-            <VBox fx:id="topV" alignment="TOP_CENTER" maxHeight="308.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="120.0" stylesheets="@../../resources/homepage.css">
+            <VBox fx:id="topV" alignment="TOP_CENTER" maxHeight="308.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="120.0" stylesheets="@../../../resources/homepage.css">
                <children>
                   <HBox fx:id="tophb" alignment="TOP_CENTER" prefHeight="16.0" prefWidth="120.0">
                      <children>

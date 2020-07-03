@@ -25,56 +25,36 @@ import java.util.TreeMap;
 import java.util.Date;
 
 public class DietPlanController<JFXTextField> {
-
-
-    //all fields on page
     @FXML private Button homeButton;
-    @FXML
-    private TextField DietName;
-    @FXML
-    private ChoiceBox DietType;
+    @FXML private ChoiceBox DietType;
     ObservableList<TypeOfDiet.Diets>ChoiceOfDiet = FXCollections.observableArrayList(TypeOfDiet.Diets.values());
-    @FXML
-    private DatePicker FinishDate;
-    @FXML
-    private TextField CaloriesLimit;
-    @FXML
-    private Button SaveDiet;
+    @FXML private Button SaveDiet;
 
     @FXML
     public void initialize() {
-
         DietType.setItems(ChoiceOfDiet);
-
-        FinishDate.setDayCellFactory(picker -> new DateCell() {
-            public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-
-                setDisable(empty || date.compareTo(today) < 0);
-            }
-        });
-
     }
 
     public void toDietPage(ActionEvent ae) throws Exception {
-        if (DietName.getText().trim().isEmpty() || DietType.getSelectionModel().isEmpty()
-                || FinishDate.getChronology().equals(null) || CaloriesLimit.getText().trim().isEmpty()) {
+        if (DietType.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Empty fields, please try again");
             alert.showAndWait();
         }
             else {
-               Account.getInstance().setTypeOfDiet(new TypeOfDiet((TypeOfDiet.Diets)DietType.getValue()));
+               TypeOfDiet diet = new TypeOfDiet((TypeOfDiet.Diets) DietType.getValue());
+                Account.getInstance().setTypeOfDiet(diet);
+               Account.getInstance().getAccountLists().saveDietToFile(diet);
                 System.out.println(Account.getInstance().getTypeOfDiet());
-            Parent DietParent = FXMLLoader.load(getClass().getResource("../View/DietPage.fxml"));
-            Scene signUpViewScene = new Scene(DietParent);
-            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.setResizable(true);
-            window.setMaximized(true);
-            window.show();}
+                Parent DietParent = FXMLLoader.load(getClass().getResource("../View/DietPage.fxml"));
+                Scene signUpViewScene = new Scene(DietParent);
+                Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+                window.setScene(signUpViewScene);
+                window.setResizable(true);
+                window.setMaximized(true);
+                window.show();
+            }
 
         }
 

@@ -14,6 +14,7 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import sample.Model.*;
+
 import java.io.*;
 import java.time.LocalDate;
 
@@ -43,28 +44,9 @@ public class GoalSettingController implements Serializable {
 
     }
 
-    public static double currentWeight() throws IOException {
-        double currentWeight = 0;
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader((new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt")));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (br != null) {
-            String st;
-            while ((st = br.readLine()) != null) {
-                String[] splitted = st.split(",");
-                if (Account.getInstance().getEmail().equals(splitted[1])) {
-                    currentWeight = Double.parseDouble(splitted[6]);
-                    Account.getInstance().setWeight(currentWeight);
-                }
-            }
-        }
-        return Account.getInstance().getWeight();
-    }
 
     public void initialize() throws IOException {
+        Account.getInstance().getWeight();
         CB.getItems().addAll(Goals.goalType.values());
         CB.setValue(Goals.goalType.DEFAULT);
         datePicker.setValue(LocalDate.now());
@@ -83,7 +65,7 @@ public class GoalSettingController implements Serializable {
 
     //Action after the continue button is clicked
     public void continueBut(ActionEvent aE) throws IOException {
-        Goals goal;
+        Goals goal = null;
         if (TargetWeight.getText().isEmpty() || TargetWeight.getText().equals("Please insert weight")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -100,28 +82,34 @@ public class GoalSettingController implements Serializable {
             alert.setTitle("Error Dialog");
             alert.setContentText("Please select a Target date that is not today!");
             alert.showAndWait();
-        } else if ((currentWeight() == Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !TargetWeight.getText().isEmpty()) {
+        } else if ((Account.getInstance().getWeight() == Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS && !TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can make your target weight lower. Recommendation: 5-10kg lower"));
+//            goal.CheckGoalCompletion(Account.getInstance().getWeight(),Double.parseDouble(TargetWeight.getText()),datePicker.getValue());
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), true);
+            Account.getInstance().getAccountLists().saveCompleteGoalsToFile(goal);
             alert.showAndWait();
-        } else if (currentWeight() == Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !TargetWeight.getText().isEmpty()) {
+        } else if (Account.getInstance().getWeight() == Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN && !TargetWeight.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Goal reached");
             alert.setContentText(("If you want to set a new goal, you can increase your target. Recommendation: 5-10kg higher"));
+//            goal.setComplete(true);
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), true);
+            Account.getInstance().getAccountLists().saveCompleteGoalsToFile(goal);
             alert.showAndWait();
-        } else if ((currentWeight() > Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
+        } else if ((Account.getInstance().getWeight() > Double.parseDouble(TargetWeight.getText())) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTGAIN) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be higher than Target weight!");
             alert.showAndWait();
-        } else if (currentWeight() < Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
+        } else if (Account.getInstance().getWeight() < Double.parseDouble(TargetWeight.getText()) && CB.getSelectionModel().getSelectedItem() == Goals.goalType.WEIGHTLOSS) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Current weight can not be lower than Target weight!");
             alert.showAndWait();
         } else {
-            goal = new Goals(CB.getSelectionModel().getSelectedItem(), currentWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue());
+            goal = new Goals(CB.getSelectionModel().getSelectedItem(), Account.getInstance().getWeight(), Double.parseDouble(TargetWeight.getText()), LocalDate.now(), datePicker.getValue(), false);
             Account.getInstance().getGoals().add(goal);
             Account.getInstance().getAccountLists().saveGoalToFile(goal);
             Account.getInstance().getAccountLists().saveToFile();
@@ -132,7 +120,6 @@ public class GoalSettingController implements Serializable {
             window.setScene(signUpViewScene);
             window.setResizable(true);
             window.show();
-
         }
     }
 

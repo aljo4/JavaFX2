@@ -62,8 +62,6 @@ public class Group {
     }
 
 
-
-
 //manipulate storage file for groups
     public static void clearGroupFile()throws IOException{
         Path groupsPath = Paths.get("src/csv/GroupsFile.csv");

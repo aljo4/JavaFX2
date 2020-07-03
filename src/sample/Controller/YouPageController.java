@@ -37,34 +37,18 @@ public class YouPageController {
     @FXML
     public void initialize() throws IOException {
         Account a = Account.getInstance();
-        //test data
-        Edible e1 = new Edible("fanta", 200,"mash potatoes", 600);
-        Edible e2 = new Edible("water", 50, "potato", 150);
-        Edible e3 = new Edible("Coffee", 100 ,"Banana Milkshake", 180);
-        ArrayList<Edible> es = new ArrayList<>();
-        es.add(e1);
-        es.add(e3);
-        es.add(e2);
-        //Meal aMeal = new Meal(Meal.mealType.LUNCH, es);
-        //Account.getInstance().getMeals().add(aMeal);
-        //end of adding test object
-        ArrayList<String> goalsList = new ArrayList<>();
-        ArrayList<String> activitiesList = new ArrayList<>();
 
-
-        ArrayList<LocalDate> timeLineDates = new ArrayList<>();
-        LocalDate firstDateOnLine = LocalDate.now().minusDays(11);
+        ArrayList<LocalDate> timeLineDates = new ArrayList<>(); //an arraylist of datetime objects
+        LocalDate firstDateOnLine = LocalDate.now().minusDays(11); //this is what the start date will be on the screen
         a.getAccountLists().readMeals();
-        System.out.println(a.getMeal().getListOfFoods().size());
-        for(Meal m : a.getMeal().getListOfFoods()){
-            System.out.println(m.toStringForMeals());
-        }
-        for (int i = 0; i <= 21; i++) {
+        a.getAccountLists().readGoals();
+        System.out.println(a.getAllMyMeals().size());
+        for (int i = 0; i <= 21; i++) {//3 week timespan
             timeLineDates.add(firstDateOnLine.plusDays(i));
-            a.getMeal().getListOfFoods().clear();
-            for (Meal m : a.getMeal().getListOfFoods()) {
+            a.getAllMyMeals().clear();
+            for (Meal m : a.getAllMyMeals()) {
                 if (m.getMealDate().compareTo(timeLineDates.get(i)) == 0) {
-                    a.getMeal().getListOfFoods().add(m);
+                    a.getAllMyMeals().add(m);
                 }
             }
 
@@ -77,7 +61,7 @@ public class YouPageController {
 
         for (LocalDate d : timeLineDates) {
             goalsTemp.clear();
-            a.getMeal().getListOfFoods().clear();
+            a.getAllMyMeals().clear();
             activitiesTemp.clear();
             if (a.getGoals().size() > 0) {
                 for (Goals g : a.getGoals()) {
@@ -86,11 +70,11 @@ public class YouPageController {
                     } else goalsTemp.add(null);
                 }
             }
-            if (a.getMeal().getListOfFoods().size() > 0) {
-                for (Meal m : a.getMeal().getListOfFoods()) {//TODO: create date data
+            if (a.getAllMyMeals().size() > 0) {
+                for (Meal m : a.getAllMyMeals()) {//TODO: create date data
                     if (m.getMealDate().compareTo(d) == 0) {
-                        a.getMeal().getListOfFoods().add(m);
-                    } else a.getMeal().getListOfFoods().add(null);
+                        a.getAllMyMeals().add(m);
+                    } else a.getAllMyMeals().add(null);
                 }
             }
             //need Activities to be a class
@@ -102,7 +86,7 @@ public class YouPageController {
 //                    else activitiesTemp.add(null);
 //                }
 //            }
-            QuadList.add(new Quartet(d, new ArrayList<Goals>(goalsTemp), new ArrayList<>(a.getMeal().getListOfFoods()),
+            QuadList.add(new Quartet(d, new ArrayList<Goals>(goalsTemp), new ArrayList<>(a.getAllMyMeals()),
                     new ArrayList<Activity.Activities>(/*activitiesTemp*/)));
         }
 
@@ -239,7 +223,7 @@ public class YouPageController {
         // MealTimeline.setMouseTransparent( true );
         Timeline.setFocusTraversable(false);
         Timeline.getSelectionModel().select(11);
-        Timeline.scrollTo(12);
+        Timeline.scrollTo(12); //3 week scrollable period
     }
 
     public void toHomePage(ActionEvent ae)throws Exception{
@@ -252,7 +236,7 @@ public class YouPageController {
     }
 
     public void toGoalsPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/GoalsSetting.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

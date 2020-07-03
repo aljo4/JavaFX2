@@ -1,0 +1,2 @@
+Mina Sekibo,WeightGain,68.0,68.0,2020-07-01,2020-07-03,true
+Mina Sekibo,WeightLoss,68.0,68.0,2020-07-01,2020-07-17,true

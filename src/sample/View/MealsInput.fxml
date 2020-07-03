@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +17,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MealsController">
   <children>
-    <AnchorPane blendMode="SRC_ATOP" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #127a51;" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" VBox.vgrow="ALWAYS">
+    <AnchorPane blendMode="SRC_ATOP" maxHeight="-1.0" maxWidth="-1.0" prefHeight="548.0" prefWidth="688.0" style="-fx-background-color: #127a51;" styleClass="hpbg" stylesheets="@../../../resources/homepagebackground.css" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="SaveDiet" layoutX="448.0" layoutY="192.0" mnemonicParsing="false" onAction="#saveDiet" text="Save Diet" />
             <TextField fx:id="foodCalories" layoutX="365.0" layoutY="104.0" promptText="Calories" />
@@ -36,12 +37,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <LineChart layoutX="216.0" layoutY="225.0" prefHeight="243.0" prefWidth="307.0">
+            <LineChart fx:id="lineChart" layoutX="366.0" layoutY="235.0" prefHeight="233.0" prefWidth="229.0" styleClass="menu-button" title="Calorie Tracker">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis label="Day" side="BOTTOM" tickLabelFill="WHITE" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis label="Calories" side="LEFT" />
               </yAxis>
             </LineChart>
             <Label layoutX="244.0" layoutY="468.0" prefHeight="37.0" prefWidth="169.0" styleClass="darker" text="Calories over the week " textFill="WHITE">
@@ -57,11 +58,17 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="HomePage" layoutX="14.0" layoutY="31.0" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css" text="HomePage" textFill="BLACK">
+            <JFXButton fx:id="HomePage" layoutX="14.0" layoutY="31.0" onAction="#homeButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../../resources/signupcss.css" text="HomePage" textFill="BLACK">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
+            <DatePicker fx:id="mealDate" layoutX="163.0" layoutY="248.0" />
+            <Label layoutX="109.0" layoutY="251.0" prefHeight="25.0" prefWidth="38.0" styleClass="darker" text="Date" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
          <opaqueInsets>
             <Insets bottom="5.0" left="7.0" right="7.0" top="6.0" />

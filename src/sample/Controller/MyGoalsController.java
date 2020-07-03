@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.Model.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,21 +20,26 @@ import java.util.Scanner;
 
 public class MyGoalsController {
     @FXML
-    private ListView<String> listView;
+    private ListView<String> inProgress;
+
     @FXML
     private JFXButton goBackbut;
 
-    public MyGoalsController() {
+    @FXML
+    private ListView<String> CompletedList;
 
+    public MyGoalsController() {
     }
 
 
-    public void initialize() throws FileNotFoundException {
-        ArrayList<String> list = new ArrayList<String>();
+    public void initialize() throws IOException {
+        Account.getInstance().getAccountLists().readGoals();
         for (int i = 0; i < Account.getInstance().getGoals().size(); i++) {
-            list.add(Account.getInstance().getGoals().get(i).toString());
+            inProgress.getItems().add((i + 1) + ". " + Account.getInstance().getGoals().get(i).toString());
         }
-        listView.getItems().addAll(list);
+        for (int i = 0; i < Account.getInstance().getAccountLists().readCompleteGoals().size(); i++) {
+            CompletedList.getItems().add((i + 1) + ". " + Account.getInstance().getAccountLists().readCompleteGoals().get(i).toString());
+        }
     }
 
     public void goBackbut(ActionEvent aE) throws IOException {

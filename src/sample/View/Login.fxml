@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color : #127a51;" styleClass="hpbg">
          <children>
             <ImageView fitHeight="48.0" fitWidth="52.0" layoutX="278.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icons8-plus-math-100.png" />
+                  <Image url="@../../../resources/icons8-plus-math-100.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="-4.0" layoutY="1.0" opacity="0.62" prefHeight="400.0" prefWidth="606.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" />
+            <AnchorPane layoutX="-4.0" layoutY="1.0" opacity="0.51" prefHeight="400.0" prefWidth="606.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" />
             <Label layoutX="243.0" layoutY="55.0" text="Health " textFill="#60be92">
                <font>
                   <Font name="Leelawadee UI Bold" size="18.0" />
@@ -30,21 +30,21 @@
                   <Font name="Leelawadee UI Bold" size="18.0" />
                </font>
             </Label>
-            <JFXButton layoutX="527.0" layoutY="14.0" onAction="#toSignUp" prefHeight="18.0" prefWidth="63.0" styleClass="signupbutton" stylesheets="@../../resources/loginpagecss.css" text="Sign Up" textFill="#cccecb" />
+            <JFXButton layoutX="527.0" layoutY="14.0" onAction="#toSignUp" prefHeight="18.0" prefWidth="63.0" styleClass="signupbutton" stylesheets="@../../../resources/loginpagecss.css" text="Sign Up" textFill="#cccecb" />
             <Label layoutX="406.0" layoutY="18.0" prefHeight="18.0" prefWidth="127.0" text="Don't have an account? " textFill="WHITE" />
             <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="148.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icons8-happy-24.png" />
+                  <Image url="@../../../resources/icons8-happy-24.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="148.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icons8-lock-24.png" />
+                  <Image url="@../../../resources/icons8-lock-24.png" />
                </image>
             </ImageView>
-            <JFXCheckBox checkedColor="#33bad6" layoutX="208.0" layoutY="279.0" styleClass="rememberme" stylesheets="@../../resources/loginpagecss.css" text="Remember me?" textFill="#cccecb" unCheckedColor="#fafafa" />
-            <JFXButton fx:id="login" layoutX="334.0" layoutY="275.0" onAction="#validateLogin" prefHeight="25.0" prefWidth="55.0" styleClass="loginbutton" stylesheets="@../../resources/loginpagecss.css" text="Login" textFill="WHITE" />
-         <JFXButton fx:id="forgotpwdButton" layoutX="238.0" layoutY="340.0" onAction="#showPassword" styleClass="forgotpassbutton" stylesheets="@../../resources/loginpagecss.css" text="Forgotten password?" textFill="#cccecb" />
+            <JFXCheckBox checkedColor="#33bad6" layoutX="208.0" layoutY="279.0" styleClass="rememberme" stylesheets="@../../../resources/loginpagecss.css" text="Remember me?" textFill="#cccecb" unCheckedColor="#fafafa" />
+            <JFXButton fx:id="login" layoutX="334.0" layoutY="275.0" onAction="#validateLogin" prefHeight="25.0" prefWidth="55.0" styleClass="loginbutton" stylesheets="@../../../resources/loginpagecss.css" text="Login" textFill="WHITE" />
+         <JFXButton fx:id="forgotpwdButton" layoutX="238.0" layoutY="340.0" onAction="#showPassword" styleClass="forgotpassbutton" stylesheets="@../../../resources/loginpagecss.css" text="Forgotten password?" textFill="#cccecb" />
          <JFXButton layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="109.0" text="Group 19 project" textFill="#cccecb" />
             <JFXTextField fx:id="email" focusColor="WHITE" layoutX="183.0" layoutY="175.0" prefHeight="25.0" prefWidth="231.0" promptText="Email" style="-fx-prompt-text-fill: #cccecb;" unFocusColor="WHITE">
                <font>

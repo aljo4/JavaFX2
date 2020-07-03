@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DietPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../../resources/homepage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DietPageController">
    <left>
       <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
@@ -75,7 +75,7 @@
                <graphic>
                   <ImageView fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/icons8-name-64.png" />
+                        <Image url="@../../../resources/icons8-name-64.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -129,12 +129,12 @@
                      <children>
                         <Label minWidth="167.0" prefHeight="45.0" prefWidth="167.0" text="Current Diet" textFill="WHITE">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                         <Label minWidth="199.0" prefHeight="45.0" prefWidth="199.0" text="Calories Today" textFill="WHITE">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                      </children>
@@ -148,29 +148,29 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <children>
-                        <Label alignment="TOP_CENTER" minWidth="108.0" prefHeight="45.0" prefWidth="108.0" text="No Diet" textFill="WHITE" underline="true">
+                        <Label fx:id="dietName" alignment="TOP_CENTER" minWidth="108.0" prefHeight="45.0" prefWidth="157.0" text="No Diet" textFill="#33cc00" underline="true">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                         <HBox>
                            <children>
-                              <Label text="X" textFill="WHITE">
+                              <Label fx:id="currentCal" text="X" textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                                  <padding>
                                     <Insets left="4.0" />
                                  </padding>
                               </Label>
-                              <Label prefHeight="45.0" prefWidth="31.0" text=" / " textFill="WHITE">
+                              <Label prefHeight="45.0" prefWidth="31.0" text=" / " textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </Label>
-                              <Label text="Y" textFill="WHITE">
+                              <Label fx:id="totalCal" text="Y" textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -203,7 +203,7 @@
                </VBox.margin>
             </HBox>
             <Region prefHeight="0.0" prefWidth="369.0" VBox.vgrow="ALWAYS" />
-            <BarChart maxHeight="500.0" maxWidth="800.0" prefHeight="210.0" prefWidth="369.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 2em;">
+            <BarChart fx:id="barChart" maxHeight="500.0" maxWidth="800.0" prefHeight="210.0" prefWidth="369.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 2em;">
               <xAxis>
                 <CategoryAxis label="Recent Meals" prefHeight="20.0" prefWidth="312.0" side="BOTTOM" tickLabelFill="WHITE" />
               </xAxis>

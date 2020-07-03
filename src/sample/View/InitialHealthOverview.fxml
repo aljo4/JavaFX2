@@ -13,14 +13,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #127a51;" styleClass="signupbg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.InitialHealthOverviewController">
    <children>
-      <AnchorPane layoutY="-3.0" opacity="0.49" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+      <AnchorPane layoutY="-3.0" opacity="0.49" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../../resources/homepagebackground.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
       <JFXTextField fx:id="height" focusColor="WHITE" layoutX="122.0" layoutY="64.0" unFocusColor="WHITE" />
-      <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#returnHome" prefHeight="17.0" prefWidth="81.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css" text="Cancel" textFill="WHITE">
+      <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#returnHome" prefHeight="17.0" prefWidth="81.0" styleClass="signupbut" stylesheets="@resources/signupcss.css" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <JFXButton fx:id="proceedbutton" layoutX="244.0" layoutY="340.0" onAction="#proceedButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../resources/signupcss.css" text="Proceed" textFill="WHITE">
+      <JFXButton fx:id="proceedbutton" layoutX="244.0" layoutY="340.0" onAction="#proceedButton" prefHeight="39.0" prefWidth="135.0" styleClass="signupbut" stylesheets="@../../../resources/signupcss.css" text="Proceed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -37,7 +37,7 @@
          <graphic>
             <ImageView fitHeight="106.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/endomorph.jpg" />
+                  <Image url="@../../../resources/endomorph.jpg" />
                </image>
             </ImageView>
          </graphic>
@@ -46,7 +46,7 @@
          <graphic>
             <ImageView fitHeight="102.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/mesomorph.jpg" />
+                  <Image url="@../../../resources/mesomorph.jpg" />
                </image>
             </ImageView>
          </graphic>
@@ -54,11 +54,11 @@
       <Button layoutX="36.0" layoutY="258.0" mnemonicParsing="false" onAction="#calculateBMI" prefHeight="25.0" prefWidth="106.0" text="Calculate BMI" />
       <ImageView fitHeight="106.0" fitWidth="50.0" layoutX="343.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../resources/ectomorph.jpg" />
+            <Image url="@../../../resources/ectomorph.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="37.0" layoutY="120.0" text="Weight" textFill="WHITE" />
-      <Label layoutX="38.0" layoutY="68.0" text="Height" textFill="WHITE" />
+      <Label layoutX="37.0" layoutY="120.0" text="Weight in kg" textFill="WHITE" />
+      <Label layoutX="38.0" layoutY="68.0" text="Height in cm" textFill="WHITE" />
       <Label layoutX="208.0" layoutY="20.0" prefHeight="26.0" prefWidth="187.0" text="Initial Health Overview" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -67,6 +67,6 @@
    </children>
    <stylesheets>
       <URL value="@anchor.css" />
-      <URL value="@../resources/signupcss.css" />
+      <URL value="@resources/signupcss.css" />
    </stylesheets>
 </AnchorPane>

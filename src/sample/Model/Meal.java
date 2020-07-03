@@ -14,17 +14,19 @@ public class Meal {
         }
     }
     private mealType mealtype; //every meal object will have an enum
-    private ArrayList<Meal> listOfFoods; //arraylist of edible which that class has enum to specify whether food or drink
+    private ArrayList<Edible> listOfFoods; //arraylist of edible which that class has enum to specify whether food or drink
     private int caloricIntake; //combine calorie for meal
     private LocalDate mealDate; //when you ate
     private Edible eat;
+    private Account account = Account.getInstance();
 
 
-    public Meal(mealType mealtype, Edible eat){
+    public Meal(mealType mealtype, Edible eat, LocalDate mealDate){
         this.mealtype = mealtype;
         listOfFoods = new ArrayList<>(43);
-        this.mealDate = LocalDate.now();
+        this.mealDate = mealDate;
         this.eat = eat;
+        this.caloricIntake = eat.getDrinkCalCount()+ eat.getFoodCalCount();
 //        int cals = 0;
 //        for (Edible e:food){
 //            cals+=e.getDrinkCalCount()+e.getFoodCalCount();
@@ -40,7 +42,7 @@ public class Meal {
 
     }
 
-    public ArrayList<Meal> getListOfFoods() {
+    public ArrayList<Edible> getListOfFoods() {
         return listOfFoods;
     }
 
@@ -64,7 +66,7 @@ public class Meal {
         this.caloricIntake = caloricIntake;
     }
 
-    public void setListOfFoods(ArrayList<Meal> listOfFoods) {
+    public void setListOfFoods(ArrayList<Edible> listOfFoods) {
         this.listOfFoods = listOfFoods;
     }
 
@@ -85,11 +87,11 @@ public class Meal {
 
     public void calculateDailyCaloricIntake(){
     }
-    public void addToMeals(Meal meal){
-        listOfFoods.add(meal);
+    public void addToMeals(Edible edible){
+        listOfFoods.add(edible);
     }
 
-    public Meal(mealType mealtype, ArrayList<Meal> listOfFoods, int caloricIntake, LocalDate mealDate) {
+    public Meal(mealType mealtype, ArrayList<Edible> listOfFoods, int caloricIntake, LocalDate mealDate) {
         this.mealtype = mealtype;
         this.listOfFoods = listOfFoods;
         this.caloricIntake = caloricIntake;
@@ -97,7 +99,7 @@ public class Meal {
     }
 
     public String toStringForMeals(){
-        return eat + "," + mealtype + "," + caloricIntake;
+         return Account.getInstance().toStringForFileAppend() + "," + eat + "," + mealtype + "," + caloricIntake +  "," + mealDate;
     }
 
 

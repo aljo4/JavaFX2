@@ -26,7 +26,7 @@ public class LoginController {
     private JFXPasswordField password;
 
     public void initialize() throws IOException {
-        Account.getInstance().getAccountLists().readMeals();
+        //Account.getInstance().getAccountLists().readWeight();
         email.setStyle("-fx-text-inner-color: White;");
         password.setStyle("-fx-text-inner-color: White;");
 
@@ -37,7 +37,6 @@ public class LoginController {
             Account account = Account.getInstance();
             account.setEmail(email.getText());
             account.setPassword(password.getText());
-            System.out.println(account.getEmail());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
@@ -47,6 +46,7 @@ public class LoginController {
                 Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
                 window.setScene(signUpViewScene);
                 window.setResizable(true);
+                window.setMaximized(true);
                 window.show();
             }else{
                 alert.close();

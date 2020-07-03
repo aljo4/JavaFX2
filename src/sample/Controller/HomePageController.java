@@ -17,6 +17,7 @@ import sample.Model.*;
 
 public class HomePageController {
 
+    @FXML Label goalType;
     @FXML JFXButton toSocialPage;
     @FXML JFXButton toGoalsPage;
     @FXML JFXButton toDietPage;
@@ -34,17 +35,27 @@ public class HomePageController {
     @FXML
     public void initialize()throws Exception{
        Account a = Account.getInstance();
-        //a.getAccountLists().readMeals();
-//            currentWeight.setText(String.valueOf(a.getWeight()));
-//        if (a.getGoals().size()>0) {
-//            newTarget.setText(String.valueOf(a.getGoals().get(a.getGoals().size()).getGoalWeight()));
-//        }
+        Account.getInstance().getAccountLists().readWeight();
+        Account.getInstance().getAccountLists().readMeals();
+        a.getAccountLists().readActivities();
+        a.getAccountLists().readGoals();
+
+        String typeOfGoal;
+        typeOfGoal = a.getOneGoal().getGoalType().toString();
+        goalType.setText(typeOfGoal);
+        double targetWeight= 0.0;
+        targetWeight = a.getOneGoal().getGoalWeight();
+        System.out.println(a.getOneGoal().getGoalWeight());
+        newTarget.setText(String.valueOf(targetWeight));
         int calin = 0;
-//        for (Meal m:a.getMeal().getFood()) { //TODO: this does not work ?!
-//            if(m.getMealDate().compareTo(LocalDate.now())==0){
-//                calin += m.getCaloricIntake();
-//            }
-//        }
+        for (Meal m:a.getAllMyMeals()) {
+            if(m.getMealDate().compareTo(LocalDate.now())==0){
+                calin += m.getCaloricIntake();
+            }
+        }
+        double curWeight = 0.0;
+        curWeight = a.getWeight();
+        currentWeight.setText(String.valueOf(Double.parseDouble(String.valueOf(curWeight))));
         calInToday.setText(String.valueOf(calin));
         //when activites is done do calburnToday
         newWeight.setStyle("-fx-text-inner-color: White;");
@@ -115,9 +126,9 @@ public class HomePageController {
         double i = Double.parseDouble(newWeight.getText());
         //a.pastweights.add i + localdate.now
         a.setWeight(i);
-        BufferedReader br = null;
+//        BufferedReader br = null;
 //        try{
-//            br = new BufferedReader((new FileReader("C:\\Users\\TOGS\\IdeaProjects\\JavaFX2(2)\\Accounts.txt")));
+//            br = new BufferedReader((new FileReader("src\\sample\\Goals.txt")));
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
@@ -125,8 +136,9 @@ public class HomePageController {
 //            String st;
 //            while ((st = br.readLine()) != null) {
 //                String[] splitted = st.split(",");
-//                if (Account.getInstance().getEmail().equals(splitted[1])) {
-//                    Double.parseDouble(splitted[6])) = Account.getInstance().getWeight();
+//                if (a.getFullname().equals(splitted[0])) {
+//                    splitted[2].replace(newWeight.getText());
+//                Account.getInstance().getWeight();
 //                }
 //            }
 //        }

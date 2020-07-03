@@ -1,6 +1,5 @@
-Exercise: Burpees duration: 33
-Exercise: Pullups  duration: 30 Number of reps: 3
-sample.Activity@49355b4f
-Exercise: Running  duration: 60, Number of reps: 4
-Exercise: Deadlifts  duration: 30, Number of reps: 4
-Exercise: Planks  duration: 30, Number of reps: 3
+Anakin Skywalker,Planks,63,3,2020-06-27
+Anakin Skywalker,Pushups,30,4,2020-06-27
+Anakin Skywalker,Rows,30,4,2020-06-27
+Anakin Skywalker,Planks,30,4,2020-06-27
+Anakin Skywalker,Squats,30,7,2020-06-27
