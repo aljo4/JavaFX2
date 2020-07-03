@@ -106,7 +106,7 @@ public class DietPageController {
     }
 
     public void toActivityPage(ActionEvent ae)throws Exception{
-        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/ActivityPage.fxml"));
+        Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Activity.fxml"));
         Scene signUpViewScene = new Scene(signUpParent);
         Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         window.setScene(signUpViewScene);

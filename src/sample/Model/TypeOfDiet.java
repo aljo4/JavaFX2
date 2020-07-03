@@ -14,7 +14,7 @@ public class TypeOfDiet{
         Atkins(1800,"no sugar, no grains, no vegetable oils"),
         HCG(500,"no butter, no oils,no sugar"),
         Zone(1500,"no processed grains, no potatoes, no egg yolks, no organ meets, no soda"),
-        IntermittentFasting(600,"eating full meals every other day");
+        IntermittentFasting(3000,"eating full meals every other day");
 
         //TODO: display diet on homepage
 

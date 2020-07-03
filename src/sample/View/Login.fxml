@@ -10,16 +10,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color : #127a51;" styleClass="hpbg">
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color : #127a51;" styleClass="hpbg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="52.0" layoutX="278.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons8-plus-math-100.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="-4.0" layoutY="1.0" opacity="0.51" prefHeight="400.0" prefWidth="606.0" styleClass="hpbg" stylesheets="@../../resources/homepagebackground.css" />
+            <AnchorPane layoutX="-4.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0" styleClass="hpbg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Label layoutX="243.0" layoutY="55.0" text="Health " textFill="#60be92">
                <font>
                   <Font name="Leelawadee UI Bold" size="18.0" />

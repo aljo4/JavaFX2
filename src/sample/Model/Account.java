@@ -631,6 +631,7 @@ public class Account implements Serializable {
                         Activity a = new Activity(Activity.Activities.valueOf(splitted[1].toUpperCase()), LocalDate.parse(splitted[4]));
                         a.getActivitiesEnum().setDuration(duration);
                         a.getActivitiesEnum().setRepetitions(reptitions);
+                        a.setDayCreated(LocalDate.parse(splitted[4]));
                         exercises.add(a);
                         Account.getInstance().setWorkouts(exercises);
                     }
