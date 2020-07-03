@@ -11,15 +11,20 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 import sample.Model.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class DietPageController {
 
+    @FXML Label currentCal;
+    @FXML Label dietName;
+    @FXML Label totalCal;
     @FXML JFXButton toHomePage;
     @FXML JFXButton toGoalsPage;
     @FXML JFXButton toSocialPage;
@@ -32,6 +37,28 @@ public class DietPageController {
     @FXML
     public void initialize()throws Exception{
         Account a = Account.getInstance();
+        a.getAccountLists().readDietPlan();
+
+        String nameOfDiet;
+
+        nameOfDiet = a.getTypeOfDiet().toStringForScreen();
+        dietName.setText(nameOfDiet);
+        totalCal.setText(String.valueOf(a.getTypeOfDiet().getChosenDiet().getCalories()));
+
+        int currentCalorie =0;
+        for (Meal m:a.getAllMyMeals()) {
+            if(m.getMealDate().compareTo(LocalDate.now())==0){
+                currentCalorie += m.getCaloricIntake();
+            }
+        }
+        currentCal.setText(String.valueOf(currentCalorie));
+
+        if (currentCalorie > a.getTypeOfDiet().getChosenDiet().getCalories()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("You have eaten more calories than prescribed diet!");
+            alert.showAndWait();
+        }
         ArrayList<Meal> foodData = a.getAccountLists().readMeals();
         XYChart.Series series = new XYChart.Series<>();
         series.setName("Calories");

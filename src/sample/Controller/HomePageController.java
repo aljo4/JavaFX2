@@ -17,6 +17,7 @@ import sample.Model.*;
 
 public class HomePageController {
 
+    @FXML Label goalType;
     @FXML JFXButton toSocialPage;
     @FXML JFXButton toGoalsPage;
     @FXML JFXButton toDietPage;
@@ -38,8 +39,11 @@ public class HomePageController {
         Account.getInstance().getAccountLists().readMeals();
         a.getAccountLists().readActivities();
         a.getAccountLists().readGoals();
-        double targetWeight= 0.0;
 
+        String typeOfGoal;
+        typeOfGoal = a.getOneGoal().getGoalType().toString();
+        goalType.setText(typeOfGoal);
+        double targetWeight= 0.0;
         targetWeight = a.getOneGoal().getGoalWeight();
         System.out.println(a.getOneGoal().getGoalWeight());
         newTarget.setText(String.valueOf(targetWeight));

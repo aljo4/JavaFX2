@@ -18,6 +18,8 @@ public class TypeOfDiet{
 
         //TODO: display diet on homepage
 
+
+
         private int calories;
         private String description;
 
@@ -44,15 +46,28 @@ public class TypeOfDiet{
         }
     }
 
-    Diets chosenDiet;
+    private Diets chosenDiet;
 
 
     public TypeOfDiet(Diets diet){
         this.chosenDiet= diet;
     }
 
-    public Diets getDiet() {
+    @Override
+    public String toString() {
+        return Account.getInstance().getFullname() + ","+ chosenDiet + "," + chosenDiet.calories;
+    }
+
+    public String toStringForScreen(){
+        return chosenDiet + "";
+    }
+
+
+    public Diets getChosenDiet() {
         return chosenDiet;
     }
 
+    public void setChosenDiet(Diets chosenDiet) {
+        this.chosenDiet = chosenDiet;
     }
+}

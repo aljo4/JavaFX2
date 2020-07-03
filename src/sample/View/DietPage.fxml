@@ -129,12 +129,12 @@
                      <children>
                         <Label minWidth="167.0" prefHeight="45.0" prefWidth="167.0" text="Current Diet" textFill="WHITE">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                         <Label minWidth="199.0" prefHeight="45.0" prefWidth="199.0" text="Calories Today" textFill="WHITE">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                      </children>
@@ -148,29 +148,29 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <children>
-                        <Label alignment="TOP_CENTER" minWidth="108.0" prefHeight="45.0" prefWidth="108.0" text="No Diet" textFill="WHITE" underline="true">
+                        <Label fx:id="dietName" alignment="TOP_CENTER" minWidth="108.0" prefHeight="45.0" prefWidth="157.0" text="No Diet" textFill="#33cc00" underline="true">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
                         <HBox>
                            <children>
-                              <Label text="X" textFill="WHITE">
+                              <Label fx:id="currentCal" text="X" textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                                  <padding>
                                     <Insets left="4.0" />
                                  </padding>
                               </Label>
-                              <Label prefHeight="45.0" prefWidth="31.0" text=" / " textFill="WHITE">
+                              <Label prefHeight="45.0" prefWidth="31.0" text=" / " textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </Label>
-                              <Label text="Y" textFill="WHITE">
+                              <Label fx:id="totalCal" text="Y" textFill="#33cc00">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </Label>
                            </children>

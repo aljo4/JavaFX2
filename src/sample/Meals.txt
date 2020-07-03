@@ -8,3 +8,4 @@ Anakin Skywalker,Juices,543,Breads,701,DINNER,1244,2020-06-28
 Anakin Skywalker,Coffee,200,Eggs,1000,DINNER,1200,2020-06-29
 Anakin Skywalker,Soft Drinks,200,Pork,2000,BREAKFAST,2200,2020-06-29
 Anakin Skywalker,Soft Drinks,230,Stews,1400,DINNER,1630,2020-06-30
+Anakin Skywalker,Juices,300,Breads,1500,DINNER,1800,2020-07-02

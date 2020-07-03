@@ -1,2 +1,2 @@
-Anakin Skywalker,WeightGain,70.0,84.0,2020-06-26,2020-07-10
-Clark Kent,WeightLoss,84.0,81.0,2020-06-26,2020-07-04
+Anakin Skywalker,WeightGain,70.0,84.0,2020-06-26,2020-07-10,false
+Clark Kent,WeightLoss,84.0,81.0,2020-06-26,2020-07-04,true
