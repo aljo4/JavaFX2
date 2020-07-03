@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Stack;
+
+import javafx.scene.control.*;
 import sample.Model.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -16,15 +18,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 
 import javax.swing.*;
 
@@ -32,9 +31,9 @@ public class SocialPageController {
 
     @FXML JFXListView groupsList;
     @FXML JFXButton groupSelect;
-    @FXML JFXButton leaveGroup1;
-    @FXML JFXButton createGroup;
-    @FXML JFXButton joinGroup;
+    @FXML JFXButton viewFriend;
+    @FXML JFXButton delFriend;
+    @FXML JFXButton addFriend;
     @FXML JFXButton toHomePage;
     @FXML JFXButton toGoalsPage;
     @FXML JFXButton toDietPage;
@@ -43,83 +42,49 @@ public class SocialPageController {
 
 
     //groupsList.getItems().addAll(LoginController.currentAccount.groupList); //when login is working tis will use the
-    //for now just fill with test data
-    Account a = new Account("FullName", "Email.com","userN","pass1");
-    Account b = new Account("FullName2", "Email.com2","userN2","pass2");
-    Account c = new Account("FullName3", "Email.com3","userN3","pass3");
-
-
-    Group gA = new Group(a,"group1","a");
-    Group gB = new Group(b,"group2","b");
-    Group gC = new Group(c,"group3","c");
-    Group gD = new Group(a,"group4","d");
-    Group gE = new Group(b,"group5","e");
 
 
 
     @FXML
     public void initialize()throws Exception {
-        ArrayList<Group> gr = new ArrayList<>();
-        gr.add(gA);gr.add(gB);gr.add(gC);gr.add(gD);gr.add(gE);
-        ObservableList<Group> olg = FXCollections.observableArrayList(gr);
-        groupsList.setItems(olg);
-        //get the list of strings from current account
-        //read these from the file
-        //populate the listview with the matching objects
+        Account a = Account.getInstance();
+        ArrayList<String> fr = a.getAccountLists().readFriends();
+        System.out.println(fr);
+        ObservableList<String> olf = FXCollections.observableArrayList(fr);
+        groupsList.setItems(olf);
     }
 
-    public void selectGroup(ActionEvent ae)throws Exception{
-        if (groupsList.getSelectionModel().getSelectedItems().size() > 0) {
-            Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            System.out.println(selectedGroup);
-            GroupsController.currentGroup = selectedGroup;
-            Parent signUpParent = FXMLLoader.load(getClass().getResource("../View/Groups.fxml"));
-            Scene signUpViewScene = new Scene(signUpParent);
-            Stage window = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-            window.setScene(signUpViewScene);
-            window.setResizable(true);
-            window.show();
-        }
-        else
-            System.out.println("select a group");
-    }
-
-    public void leaveGroup1(ActionEvent ae) {
+    public void delFriend(ActionEvent ae) throws Exception {
+        Account a = Account.getInstance();
 
         if (groupsList.getSelectionModel().getSelectedItems().size()>0){
-            Group selectedGroup = (Group) groupsList.getSelectionModel().getSelectedItem();
-            if (Account.getInstance().getUsername()!=selectedGroup.getGroupOwner()){
-                groupsList.getItems().remove(selectedGroup);
-                if(selectedGroup.getGroupAdmins().contains(Account.getInstance().getUsername()))
-                    selectedGroup.getGroupAdmins().remove(Account.getInstance().getUsername());
-                Account.getInstance().getGroupList().remove(selectedGroup);
-                selectedGroup.getGroupMembers().remove(Account.getInstance().getUsername());
-            }
+            String selecteduser = (String) groupsList.getSelectionModel().getSelectedItem();
+            groupsList.getItems().remove(selecteduser);
+            ArrayList<String> b = a.getFriends();
+            b.remove(selecteduser);
+            a.setFriends(b);
         }
     }
 
-    public void CreateGroup(ActionEvent ae) throws Exception{
-        System.out.println("create group");
-        Parent p = FXMLLoader.load(getClass().getResource("../View/NewGroupPop.fxml"));
-        Stage w = new Stage();
-        w.initModality(Modality.APPLICATION_MODAL);
-        //w = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-        w.setTitle("New Group");
-        w.setResizable(false);
-        Scene x = new Scene(p);
-        w.setScene(x);
-        w.showAndWait();
+    public void addFriend(ActionEvent ae) throws Exception{
+        Account a = Account.getInstance();
+        TextInputDialog td = new TextInputDialog("Username?");
+        td.setHeaderText("enter a username");
+        td.showAndWait();
+        String name = td.getEditor().getText();
+        System.out.println(name);
+        if (Account.AccountLists.checkUsernameExists(name)){
+            a.getAccountLists().saveFriendToFile(name);
+            ArrayList<String> b =  a.getFriends();
+            b.add(name);
+            a.setFriends(b);
+            groupsList.getItems().add(name);
+        }
+
     }
 
-    public void joinGroup(ActionEvent ae)throws Exception{
-        Parent p = FXMLLoader.load(getClass().getResource("../View/JoinGroupPop.fxml"));
-        Stage w = new Stage();
-        w.initModality(Modality.APPLICATION_MODAL);
-        w.setTitle("Join Group");
-        w.setResizable(false);
-        Scene x = new Scene(p);
-        w.setScene(x);
-        w.showAndWait();
+    public void viewFriend(ActionEvent ae)throws Exception{
+
     }
 
     public void toHomePage(ActionEvent ae)throws Exception{
